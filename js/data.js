@@ -742,7 +742,7 @@ const HookPointData = {
       title: "The Ultimate Guide to Surf Fishing in Heavy Currents",
       category: "Fishing Techniques",
       categorySlug: "techniques",
-      excerpt: "Master the art of reading rip currents, choosing aerodynamic pyramid sinkers, and launching beyond breaking breakers.",
+      excerpt: "Master the art of reading wave hydraulics, choosing aerodynamic pyramid sinkers, and launching heavy terminal tackle past breaking breakers into deep feeding troughs.",
       author: {
         name: "Capt. Rajesh Nair",
         role: "Chief Coastal Guide",
@@ -779,7 +779,7 @@ const HookPointData = {
       title: "Topwater vs Deep Diving Lures: When to Throw What",
       category: "Bait and Lure Guides",
       categorySlug: "lures",
-      excerpt: "Demystifying water column dynamics to help you trigger explosive surface smashes or extract stubborn bottom lurkers.",
+      excerpt: "Demystifying water column dynamics to help you trigger explosive surface smashes with topwater poppers or extract stubborn bottom lurkers using deep divers.",
       author: {
         name: "Vikram Sengupta",
         role: "Tournament Pro Angler & Lure Designer",
@@ -810,7 +810,7 @@ const HookPointData = {
       title: "Beginner Angler Roadmap: First 5 Tackle Items You Actually Need",
       category: "Beginner Fishing Guides",
       categorySlug: "beginner",
-      excerpt: "Cut through tackle shop clutter. Avoid buying useless accessories and invest in the essential gear that lands fish.",
+      excerpt: "Cut through tackle shop clutter and marketing noise. Avoid buying useless accessories and invest in the essential five-piece gear arsenal that actually lands fish.",
       author: {
         name: "Pooja Fernandez",
         role: "Youth & Inshore Instructor",
@@ -837,7 +837,7 @@ const HookPointData = {
       title: "Saltwater Reel Maintenance: Preserving Bearings from Corrosion",
       category: "Equipment Care",
       categorySlug: "equipment",
-      excerpt: "Simple 5-minute post-fishing cleaning rituals that prevent saltwater pitting and keep your drags silky smooth for decades.",
+      excerpt: "Simple 5-minute post-fishing cleaning rituals and drag washer lubrication that prevent saltwater pitting and keep precision bearings silky smooth for decades.",
       author: {
         name: "Dinesh Karthik",
         role: "Head Reel Technician & Saltwater Specialist",
@@ -866,7 +866,7 @@ const HookPointData = {
       title: "Reading the Tides: How Solunar Phases Dictate Feeding Windows",
       category: "Seasonal Fishing Tips",
       categorySlug: "seasonal",
-      excerpt: "Aligning your fishing calendar with the lunar gravitational pull to target trophy fish when feeding urgency peaks.",
+      excerpt: "Aligning your coastal fishing calendar with the lunar gravitational pull to target trophy pelagic predators when feeding urgency peaks during spring tides.",
       author: {
         name: "Dr. Meera Nambiar",
         role: "Marine Biologist & Coastal Oceanographer",
@@ -888,7 +888,7 @@ const HookPointData = {
       title: "Essential Ocean Safety: Life Jackets, Wave Reading & Reef Navigation",
       category: "Fishing Safety",
       categorySlug: "safety",
-      excerpt: "Never turn your back on the sea. Critical survival knowledge for rock fishers, surf waders, and boaters.",
+      excerpt: "Never turn your back on the sea. Critical survival knowledge, rogue wave awareness, emergency PFD protocols, and safe ledge navigation for all coastal anglers.",
       author: {
         name: "Karan Singhania",
         role: "Offshore Rescue Specialist & Marine Safety Officer",

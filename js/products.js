@@ -345,21 +345,39 @@ function initProductsCatalogue() {
     });
   }
 
+  function setProductView(view) {
+    currentView = view;
+    if (view === "grid") {
+      if (viewToggleGrid) {
+        viewToggleGrid.classList.add("active", "text-ocean-aqua", "bg-ocean-aqua/20");
+        viewToggleGrid.classList.remove("text-ocean-text-secondary");
+      }
+      if (viewToggleList) {
+        viewToggleList.classList.remove("active", "text-ocean-aqua", "bg-ocean-aqua/20");
+        viewToggleList.classList.add("text-ocean-text-secondary");
+      }
+    } else {
+      if (viewToggleList) {
+        viewToggleList.classList.add("active", "text-ocean-aqua", "bg-ocean-aqua/20");
+        viewToggleList.classList.remove("text-ocean-text-secondary");
+      }
+      if (viewToggleGrid) {
+        viewToggleGrid.classList.remove("active", "text-ocean-aqua", "bg-ocean-aqua/20");
+        viewToggleGrid.classList.add("text-ocean-text-secondary");
+      }
+    }
+    render();
+  }
+
   if (viewToggleGrid) {
     viewToggleGrid.addEventListener("click", () => {
-      currentView = "grid";
-      viewToggleGrid.classList.add("text-ocean-aqua");
-      viewToggleList.classList.remove("text-ocean-aqua");
-      render();
+      setProductView("grid");
     });
   }
 
   if (viewToggleList) {
     viewToggleList.addEventListener("click", () => {
-      currentView = "list";
-      viewToggleList.classList.add("text-ocean-aqua");
-      viewToggleGrid.classList.remove("text-ocean-aqua");
-      render();
+      setProductView("list");
     });
   }
 
@@ -385,6 +403,7 @@ function initProductsCatalogue() {
         }
       });
 
+      setProductView("grid");
       visibleCount = 12;
       render();
     });

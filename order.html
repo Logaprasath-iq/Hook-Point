@@ -201,20 +201,56 @@
 
   <main class="flex-1">
 
-    <!-- Header Banner -->
-    <section class="py-14 bg-ocean-navy-surface border-b border-ocean-navy-border/60 relative overflow-hidden">
-      <div class="underwater-light"></div>
-      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <nav class="flex items-center gap-2 text-xs text-ocean-muted-blue mb-3">
-          <a href="index.html" class="hover:text-ocean-aqua transition">Home</a>
-          <span>/</span>
-          <span class="text-ocean-gold font-medium">Order Enquiry</span>
-        </nav>
-        <span class="text-xs uppercase font-extrabold tracking-widest text-ocean-gold">Direct Dispatch Registry</span>
-        <h1 class="text-2xl sm:text-4xl font-black text-white mt-1">Submit Order Enquiry</h1>
-        <p class="text-xs sm:text-sm text-ocean-text-secondary max-w-2xl mt-1.5">
-          No mandatory registration or account required. Submit your tackle enquiry and our dispatch desk will confirm payment and shipping.
-        </p>
+    <!-- Header Banner with Cinematic Background & Centered Content -->
+    <section class="page-hero-banner relative py-24 sm:py-32 bg-ocean-navy border-b border-ocean-navy-border/60 overflow-hidden flex items-center justify-center min-h-[380px] sm:min-h-[440px]">
+      <!-- Background Image with High Visibility & Contrast -->
+      <div class="absolute inset-0 z-0">
+        <img src="assets/images/order.jpg" alt="HookPoint Tackle Dispatch Desk & Harbor" class="w-full h-full object-cover object-center filter brightness-[0.72] contrast-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-ocean-navy via-ocean-navy/40 to-black/55"></div>
+        <div class="underwater-light"></div>
+      </div>
+
+      <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div class="reveal-group">
+          <!-- Centered Breadcrumb -->
+          <nav class="flex items-center justify-center gap-2 text-xs text-ocean-muted-blue mb-4">
+            <a href="index.html" class="hover:text-ocean-aqua transition">Home</a>
+            <span>/</span>
+            <span class="text-ocean-gold font-medium">Order Enquiry</span>
+          </nav>
+
+          <!-- Eyebrow Pill -->
+          <span class="hero-eyebrow inline-flex items-center gap-2 text-xs uppercase font-extrabold tracking-widest text-ocean-aqua bg-ocean-navy-deep/85 border border-ocean-aqua/40 px-4 py-1.5 rounded-full shadow-lg backdrop-blur-md mb-4">
+            <span class="w-2 h-2 rounded-full bg-ocean-gold animate-ping"></span>
+            <span>Direct Dispatch Registry</span>
+          </span>
+
+          <!-- Title -->
+          <h1 class="hero-title text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
+            Submit Order Enquiry
+          </h1>
+
+          <!-- Description -->
+          <p class="hero-desc text-sm sm:text-base text-slate-100 max-w-2xl mx-auto mt-4 leading-relaxed font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            No mandatory registration or account required. Submit your tackle enquiry and our dispatch desk will confirm payment and shipping.
+          </p>
+
+          <!-- Centered Trust Badges -->
+          <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 pt-6 text-xs font-semibold">
+            <div class="hero-trust-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-slate-100 shadow-md">
+              <svg class="w-4 h-4 text-ocean-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              <span>Same-Day Dispatch Desk</span>
+            </div>
+            <div class="hero-trust-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-slate-100 shadow-md">
+              <svg class="w-4 h-4 text-ocean-aqua shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              <span>Zero Account Required</span>
+            </div>
+            <div class="hero-trust-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-slate-100 shadow-md">
+              <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Direct Pan-India Delivery</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

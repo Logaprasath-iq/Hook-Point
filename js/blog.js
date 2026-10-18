@@ -92,7 +92,7 @@ function initBlogGrid() {
               <a href="blog-details.html?id=${post.id}">${post.title}</a>
             </h3>
 
-            <p class="text-xs text-ocean-text-secondary mt-2.5 line-clamp-3 leading-relaxed min-h-[3.25rem]">
+            <p class="text-xs text-ocean-text-secondary mt-2.5 line-clamp-3 leading-relaxed min-h-[3.75rem]">
               ${post.excerpt}
             </p>
 
@@ -163,7 +163,7 @@ function initBlogGrid() {
               <a href="blog-details.html?id=${post.id}">${post.title}</a>
             </h3>
 
-            <p class="text-xs text-ocean-text-secondary mt-2.5 line-clamp-3 leading-relaxed min-h-[3.25rem]">
+            <p class="text-xs text-ocean-text-secondary mt-2.5 line-clamp-3 leading-relaxed min-h-[3.75rem]">
               ${post.excerpt}
             </p>
           </div>

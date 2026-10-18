@@ -1653,4 +1653,42 @@ html.light .field-error-msg {
   }
 }
 
+/* Product Catalog Grid vs List View Toggle Pill */
+.view-toggle-btn {
+  transition: all 0.2s ease;
+  color: var(--ocean-text-secondary);
+  background-color: transparent;
+}
+
+.view-toggle-btn:hover {
+  color: #FFFFFF;
+}
+
+.view-toggle-btn.active {
+  background-color: rgba(66, 198, 232, 0.22) !important;
+  color: var(--ocean-aqua) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+html.light .view-toggle-btn {
+  color: #64748B;
+}
+
+html.light .view-toggle-btn:hover {
+  color: #0F172A;
+}
+
+html.light .view-toggle-btn.active {
+  background-color: rgba(8, 126, 171, 0.15) !important;
+  color: #087EAB !important;
+}
+
+/* Explicit overflow-visible override for cards with exterior floating badges */
+.ocean-card.\!overflow-visible,
+.ocean-card.overflow-visible {
+  overflow: visible !important;
+}
+
+
+
 
