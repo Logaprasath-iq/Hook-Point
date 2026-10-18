@@ -46,10 +46,10 @@
         <a href="index.html" class="flex items-center gap-3 shrink-0 group">
           <img src="assets/images/logo.png" alt="HookPoint Logo" class="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-105" />
           <div class="flex flex-col">
-            <span class="text-2xl font-black tracking-tight text-white group-hover:text-ocean-aqua transition leading-none">
+            <span class="brand-name text-2xl font-black tracking-tight text-white group-hover:text-ocean-aqua transition leading-none">
               Hook<span class="text-ocean-gold">Point</span>
             </span>
-            <span class="text-[10px] tracking-widest uppercase font-semibold text-ocean-muted-blue mt-0.5">
+            <span class="brand-tagline hidden xl:block text-[10px] tracking-widest uppercase font-semibold text-ocean-muted-blue mt-0.5">
               Gear Up &bull; Cast Out &bull; Reel In
             </span>
           </div>
@@ -113,8 +113,10 @@
           <a href="order.html" class="hidden sm:inline-flex nav-action-btn px-5 gold-button rounded-xl text-xs font-bold uppercase tracking-wider shadow-md shrink-0">ORDER</a>
 
           <!-- Mobile Hamburger Menu Button -->
-          <button type="button" id="mobile-menu-btn" class="lg:hidden nav-action-btn nav-action-square rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-white transition shrink-0" aria-label="Open Navigation Menu" aria-expanded="false">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+          <button type="button" id="mobile-menu-btn" class="lg:hidden nav-action-btn nav-action-square rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-white transition shrink-0 inline-flex items-center justify-center p-0" aria-label="Open Navigation Menu" aria-expanded="false">
+            <svg class="w-5 h-5 block m-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
           </button>
         </div>
 
@@ -191,7 +193,11 @@
       </a>
     </nav>
 
-    <div class="pt-6 border-t border-ocean-navy-border space-y-3">
+    <div class="pt-5 border-t border-ocean-navy-border space-y-3">
+      <div class="flex items-center justify-between text-xs text-ocean-text-secondary">
+        <span class="font-semibold text-ocean-muted-blue">Appearance Mode:</span>
+        <button type="button" class="theme-toggle-btn nav-action-btn nav-action-square rounded-xl bg-ocean-navy hover:bg-ocean-navy-card border border-ocean-navy-border text-ocean-aqua transition" aria-label="Toggle Theme"></button>
+      </div>
       <div class="flex items-center justify-between text-xs text-ocean-text-secondary">
         <span class="font-semibold text-ocean-muted-blue">Language / Direction:</span>
         <button type="button" class="direction-toggle-btn nav-action-btn px-3 rounded-xl bg-ocean-navy hover:bg-ocean-navy-card border border-ocean-aqua/30 text-ocean-aqua transition" aria-label="Toggle Direction"></button>

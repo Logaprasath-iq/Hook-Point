@@ -54,10 +54,10 @@
         <a href="index.html" class="flex items-center gap-3 shrink-0 group">
           <img src="assets/images/logo.png" alt="HookPoint Logo" class="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-105" />
           <div class="flex flex-col">
-            <span class="text-2xl font-black tracking-tight text-white group-hover:text-ocean-aqua transition leading-none">
+            <span class="brand-name text-2xl font-black tracking-tight text-white group-hover:text-ocean-aqua transition leading-none">
               Hook<span class="text-ocean-gold">Point</span>
             </span>
-            <span class="text-[10px] tracking-widest uppercase font-semibold text-ocean-muted-blue mt-0.5">
+            <span class="brand-tagline hidden xl:block text-[10px] tracking-widest uppercase font-semibold text-ocean-muted-blue mt-0.5">
               Gear Up &bull; Cast Out &bull; Reel In
             </span>
           </div>
@@ -132,9 +132,9 @@
           </a>
 
           <!-- Mobile Hamburger Menu Button -->
-          <button type="button" id="mobile-menu-btn" class="lg:hidden nav-action-btn nav-action-square rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-white transition shrink-0" aria-label="Open Navigation Menu" aria-expanded="false">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          <button type="button" id="mobile-menu-btn" class="lg:hidden nav-action-btn nav-action-square rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-white transition shrink-0 inline-flex items-center justify-center p-0" aria-label="Open Navigation Menu" aria-expanded="false">
+            <svg class="w-5 h-5 block m-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
@@ -212,7 +212,11 @@
       </a>
     </nav>
 
-    <div class="pt-6 border-t border-ocean-navy-border space-y-3">
+    <div class="pt-5 border-t border-ocean-navy-border space-y-3">
+      <div class="flex items-center justify-between text-xs text-ocean-text-secondary">
+        <span class="font-semibold text-ocean-muted-blue">Appearance Mode:</span>
+        <button type="button" class="theme-toggle-btn nav-action-btn nav-action-square rounded-xl bg-ocean-navy hover:bg-ocean-navy-card border border-ocean-navy-border text-ocean-aqua transition" aria-label="Toggle Theme"></button>
+      </div>
       <div class="flex items-center justify-between text-xs text-ocean-text-secondary">
         <span class="font-semibold text-ocean-muted-blue">Language / Direction:</span>
         <button type="button" class="direction-toggle-btn nav-action-btn px-3 rounded-xl bg-ocean-navy hover:bg-ocean-navy-card border border-ocean-aqua/30 text-ocean-aqua transition" aria-label="Toggle Direction"></button>
@@ -242,15 +246,15 @@
         <div class="w-full max-w-6xl xl:max-w-7xl space-y-8 sm:space-y-10 reveal-up flex flex-col items-center text-center">
           
           <!-- Trust Badge Pill -->
-          <div class="hero-badge-pill inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-ocean-navy-deep/90 border border-ocean-aqua/40 backdrop-blur-md shadow-lg">
-            <span class="w-2.5 h-2.5 rounded-full bg-ocean-gold animate-ping"></span>
-            <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-ocean-aqua">Crafted for Saltwater Monsters</span>
-            <span class="text-ocean-aqua/40">|</span>
-            <span class="text-xs sm:text-sm text-white font-medium">40T Carbon &amp; IPX6 Sealing</span>
+          <div class="hero-badge-pill inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full bg-ocean-navy-deep/90 border border-ocean-aqua/40 backdrop-blur-md shadow-lg max-w-full flex-wrap justify-center text-center">
+            <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-ocean-gold animate-ping shrink-0"></span>
+            <span class="text-[11px] sm:text-sm font-bold uppercase tracking-wider text-ocean-aqua">Crafted for Saltwater Monsters</span>
+            <span class="hidden xs:inline text-ocean-aqua/40">|</span>
+            <span class="text-[11px] sm:text-sm text-white font-medium">40T Carbon &amp; IPX6 Sealing</span>
           </div>
 
           <!-- Headline (Expanded Width Matching Logo to Order Button Bounds) -->
-          <h1 class="hero-title text-5xl sm:text-7xl lg:text-8xl xl:text-[5.5rem] font-black text-white tracking-tight leading-[1.05] max-w-5xl xl:max-w-6xl mx-auto">
+          <h1 class="hero-title text-4xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-[5.5rem] font-black text-white tracking-tight leading-[1.08] max-w-5xl xl:max-w-6xl mx-auto">
             <span class="block text-white" style="text-shadow: 0 4px 20px rgba(0,0,0,0.9);">Your Next Great Catch</span>
             <span class="hero-gradient-text inline-block font-black text-transparent bg-clip-text bg-gradient-to-r from-ocean-aqua via-cyan-100 to-ocean-gold">
               Starts Here.
@@ -258,41 +262,41 @@
           </h1>
 
           <!-- Brand Description -->
-          <p class="hero-desc text-lg sm:text-xl lg:text-2xl text-slate-100 leading-relaxed max-w-4xl font-normal mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+          <p class="hero-desc text-sm sm:text-lg md:text-xl lg:text-2xl text-slate-100 leading-relaxed max-w-4xl font-normal mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] px-2">
             Discover quality fishing rods, reels, tackle, bait, and outdoor essentials designed for your next fishing adventure.
           </p>
 
           <!-- CTA Buttons (Centered, Scaled Up) -->
-          <div class="reveal-text flex flex-wrap items-center justify-center gap-4 sm:gap-5 pt-3">
-            <a href="products.html" class="gold-button text-base sm:text-lg py-4 px-8 sm:px-10 shadow-2xl flex items-center gap-2.5">
+          <div class="reveal-text flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-5 pt-3 w-full sm:w-auto">
+            <a href="products.html" class="gold-button text-sm sm:text-base md:text-lg py-3.5 sm:py-4 px-6 sm:px-10 shadow-2xl flex items-center justify-center gap-2.5 w-full sm:w-auto text-center">
               <span>Shop All Products</span>
               <svg class="w-5 h-5 rtl-flip" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
             </a>
-            <a href="#best-sellers" class="water-button text-base sm:text-lg py-4 px-7 sm:px-9 shadow-xl">
+            <a href="#best-sellers" class="water-button text-sm sm:text-base md:text-lg py-3.5 sm:py-4 px-6 sm:px-9 shadow-xl w-full sm:w-auto text-center">
               <span>Explore Best Sellers</span>
             </a>
-            <a href="fishing-reports.html" class="outline-ocean-button text-base sm:text-lg py-4 px-6 sm:px-8 shadow-xl">
+            <a href="fishing-reports.html" class="outline-ocean-button text-sm sm:text-base md:text-lg py-3.5 sm:py-4 px-6 sm:px-8 shadow-xl w-full sm:w-auto text-center">
               <span>View Fishing Reports</span>
             </a>
           </div>
 
           <!-- Feature Highlights Grid (Expanded Width Matching Logo to Order Button Bounds) -->
-          <div class="pt-10 sm:pt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-12 border-t border-white/20 w-full max-w-5xl xl:max-w-6xl mx-auto text-center">
-            <div class="space-y-1.5 text-center">
-              <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-ocean-gold drop-shadow-md">100%</div>
-              <div class="text-xs sm:text-sm text-slate-200 font-medium">Saltwater Tested</div>
+          <div class="pt-8 sm:pt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 lg:gap-12 border-t border-white/20 w-full max-w-5xl xl:max-w-6xl mx-auto text-center">
+            <div class="space-y-1 text-center">
+              <div class="text-xl sm:text-3xl lg:text-4xl font-black text-ocean-gold drop-shadow-md">100%</div>
+              <div class="text-[11px] sm:text-sm text-slate-200 font-medium">Saltwater Tested</div>
             </div>
-            <div class="space-y-1.5 text-center">
-              <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-ocean-aqua drop-shadow-md">Pan-India</div>
-              <div class="text-xs sm:text-sm text-slate-200 font-medium">Express Delivery</div>
+            <div class="space-y-1 text-center">
+              <div class="text-xl sm:text-3xl lg:text-4xl font-black text-ocean-aqua drop-shadow-md">Pan-India</div>
+              <div class="text-[11px] sm:text-sm text-slate-200 font-medium">Express Delivery</div>
             </div>
-            <div class="space-y-1.5 text-center">
-              <div class="hero-stat-val text-2xl sm:text-3xl lg:text-4xl font-black text-white drop-shadow-md" style="color: #FFFFFF !important;">2-Year</div>
-              <div class="text-xs sm:text-sm text-slate-200 font-medium">Blank Guarantee</div>
+            <div class="space-y-1 text-center">
+              <div class="hero-stat-val text-xl sm:text-3xl lg:text-4xl font-black text-white drop-shadow-md" style="color: #FFFFFF !important;">2-Year</div>
+              <div class="text-[11px] sm:text-sm text-slate-200 font-medium">Blank Guarantee</div>
             </div>
-            <div class="space-y-1.5 text-center">
-              <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-ocean-gold drop-shadow-md">25,000+</div>
-              <div class="text-xs sm:text-sm text-slate-200 font-medium">Trophies Landed</div>
+            <div class="space-y-1 text-center">
+              <div class="text-xl sm:text-3xl lg:text-4xl font-black text-ocean-gold drop-shadow-md">25,000+</div>
+              <div class="text-[11px] sm:text-sm text-slate-200 font-medium">Trophies Landed</div>
             </div>
           </div>
 
