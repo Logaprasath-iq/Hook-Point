@@ -1,7 +1,7 @@
 /**
  * HOOKPOINT — Forms & Order Checkout Engine
  * Handles order calculations, validation, demo reference generation on order.html,
- * and contact enquiry form validation on contact.html.
+ * contact enquiry form validation on contact.html, and telemetry catch reports.
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,7 +11,405 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("contact-form")) {
     initContactPage();
   }
+  if (document.getElementById("catch-report-form")) {
+    initCatchReportValidation();
+  }
 });
+
+// ==========================================================================
+// FORM VALIDATION & UI ERROR FEEDBACK HELPERS
+// ==========================================================================
+
+function getFieldElement(target) {
+  return typeof target === "string" ? document.getElementById(target) : target;
+}
+
+function showFieldError(target, message) {
+  const input = getFieldElement(target);
+  if (!input) return;
+
+  // Add invalid state classes
+  input.classList.remove("border-ocean-navy-border", "focus:border-ocean-aqua");
+  input.classList.add("input-invalid");
+
+  // Find or create inline error container
+  const parent = input.parentElement;
+  if (!parent) return;
+
+  let errorEl = parent.querySelector(".field-error-msg");
+  if (!errorEl) {
+    errorEl = document.createElement("div");
+    errorEl.className = "field-error-msg";
+    input.insertAdjacentElement("afterend", errorEl);
+  }
+
+  errorEl.innerHTML = `
+    <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+    </svg>
+    <span>${message}</span>
+  `;
+}
+
+function clearFieldError(target) {
+  const input = getFieldElement(target);
+  if (!input) return;
+
+  input.classList.remove("input-invalid");
+  input.classList.add("border-ocean-navy-border");
+
+  const parent = input.parentElement;
+  if (parent) {
+    const errorEl = parent.querySelector(".field-error-msg");
+    if (errorEl) errorEl.remove();
+  }
+}
+
+// --------------------------------------------------------------------------
+// Real-time Field Binders
+// --------------------------------------------------------------------------
+
+/**
+ * Full Name restriction:
+ * - NO numbers allowed under any circumstance.
+ * - Minimum more than 2 letters (at least 3 letters).
+ * - Real-time keydown & input stripping.
+ */
+function bindNameRestrictions(input, fieldLabel = "Full Name") {
+  if (!input) return;
+
+  input.addEventListener("keydown", (e) => {
+    // If user types a digit 0-9
+    if (/^[0-9]$/.test(e.key)) {
+      e.preventDefault();
+      showFieldError(input, `Numbers are not allowed in ${fieldLabel}. Letters only.`);
+    }
+  });
+
+  input.addEventListener("input", () => {
+    const hadDigits = /[0-9]/.test(input.value);
+    // Strip digits and non-name characters (letters, spaces, hyphens, dots, apostrophes allowed)
+    input.value = input.value.replace(/[0-9]/g, "").replace(/[^a-zA-Z\s\.\'-]/g, "");
+
+    const lettersCount = (input.value.match(/[a-zA-Z]/g) || []).length;
+
+    if (hadDigits) {
+      showFieldError(input, `Numbers are not allowed in ${fieldLabel} (letters only).`);
+    } else if (input.value.trim().length === 0) {
+      clearFieldError(input);
+    } else if (lettersCount < 3) {
+      showFieldError(input, `${fieldLabel} must be more than 2 letters (minimum 3 letters, no numbers).`);
+    } else {
+      clearFieldError(input);
+    }
+  });
+
+  input.addEventListener("blur", () => {
+    const val = input.value.trim();
+    if (!val) {
+      clearFieldError(input);
+      return;
+    }
+    const lettersCount = (val.match(/[a-zA-Z]/g) || []).length;
+    if (lettersCount < 3) {
+      showFieldError(input, `${fieldLabel} must be more than 2 letters (minimum 3 letters, no numbers).`);
+    } else {
+      clearFieldError(input);
+    }
+  });
+}
+
+/**
+ * Phone Number restriction:
+ * - NO letters allowed under any circumstance.
+ * - Numbers only, max 10 digits.
+ * - Must be valid 10-digit mobile number (starting with 6, 7, 8, or 9).
+ */
+function bindPhoneRestrictions(input) {
+  if (!input) return;
+
+  input.addEventListener("keydown", (e) => {
+    // Allowed control keys
+    if (["Backspace", "Delete", "Tab", "ArrowLeft", "ArrowRight", "Enter", "Home", "End"].includes(e.key) || e.ctrlKey || e.metaKey) {
+      return;
+    }
+    // Block letters and symbols
+    if (!/^[0-9]$/.test(e.key)) {
+      e.preventDefault();
+      showFieldError(input, "Letters are not allowed in Phone Number. Numbers only.");
+    }
+  });
+
+  input.addEventListener("input", () => {
+    const hadNonDigits = /[^\d]/.test(input.value);
+    const cleaned = input.value.replace(/\D/g, "").slice(0, 10);
+    input.value = cleaned;
+
+    if (hadNonDigits) {
+      showFieldError(input, "Letters and symbols are not allowed in Phone Number (numbers only).");
+    } else if (cleaned.length === 0) {
+      clearFieldError(input);
+    } else if (cleaned.length < 10) {
+      showFieldError(input, "Phone number must be 10 digits (numbers only, e.g. 9876543210).");
+    } else if (!/^[6-9]/.test(cleaned)) {
+      showFieldError(input, "Please enter a valid mobile number starting with 6, 7, 8, or 9.");
+    } else {
+      clearFieldError(input);
+    }
+  });
+
+  input.addEventListener("blur", () => {
+    const val = input.value.trim();
+    if (!val) {
+      clearFieldError(input);
+      return;
+    }
+    if (val.length !== 10 || !/^[6-9]\d{9}$/.test(val)) {
+      showFieldError(input, "Please enter a valid 10-digit mobile number (numbers only, e.g. 9876543210).");
+    } else {
+      clearFieldError(input);
+    }
+  });
+}
+
+/**
+ * Email Address restriction:
+ * - Must strictly match proper email structure (user@domain.extension).
+ * - No spaces allowed.
+ */
+function bindEmailRestrictions(input) {
+  if (!input) return;
+
+  input.addEventListener("input", () => {
+    input.value = input.value.replace(/\s/g, "");
+    if (input.value.length === 0) {
+      clearFieldError(input);
+    }
+  });
+
+  input.addEventListener("blur", () => {
+    const val = input.value.trim();
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!val) {
+      clearFieldError(input);
+      return;
+    }
+    if (!emailRegex.test(val)) {
+      showFieldError(input, "Please enter a valid email address (e.g. name@domain.com).");
+    } else {
+      clearFieldError(input);
+    }
+  });
+}
+
+/**
+ * City & State restriction:
+ * - NO numbers allowed under any circumstance.
+ * - Minimum more than 2 letters (at least 3 letters).
+ */
+function bindCityRestrictions(input) {
+  if (!input) return;
+
+  input.addEventListener("keydown", (e) => {
+    if (/^[0-9]$/.test(e.key)) {
+      e.preventDefault();
+      showFieldError(input, "Numbers are not allowed in City & State. Letters only.");
+    }
+  });
+
+  input.addEventListener("input", () => {
+    const hadDigits = /[0-9]/.test(input.value);
+    input.value = input.value.replace(/[0-9]/g, "").replace(/[^a-zA-Z\s,\.\'-]/g, "");
+
+    const lettersCount = (input.value.match(/[a-zA-Z]/g) || []).length;
+
+    if (hadDigits) {
+      showFieldError(input, "Numbers are not allowed in City & State (letters only).");
+    } else if (input.value.trim().length === 0) {
+      clearFieldError(input);
+    } else if (lettersCount < 3) {
+      showFieldError(input, "City & State must be more than 2 letters (minimum 3 letters, no numbers).");
+    } else {
+      clearFieldError(input);
+    }
+  });
+
+  input.addEventListener("blur", () => {
+    const val = input.value.trim();
+    if (!val) {
+      clearFieldError(input);
+      return;
+    }
+    const lettersCount = (val.match(/[a-zA-Z]/g) || []).length;
+    if (lettersCount < 3) {
+      showFieldError(input, "City & State must be more than 2 letters (minimum 3 letters, no numbers).");
+    } else {
+      clearFieldError(input);
+    }
+  });
+}
+
+/**
+ * PIN / Postal Code restriction:
+ * - NO letters allowed under any circumstance.
+ * - Exactly 6 digits (numbers only, starts with 1-9).
+ */
+function bindPostalRestrictions(input) {
+  if (!input) return;
+
+  input.addEventListener("keydown", (e) => {
+    if (["Backspace", "Delete", "Tab", "ArrowLeft", "ArrowRight", "Enter", "Home", "End"].includes(e.key) || e.ctrlKey || e.metaKey) {
+      return;
+    }
+    if (!/^[0-9]$/.test(e.key)) {
+      e.preventDefault();
+      showFieldError(input, "Letters are not allowed in PIN code. Numbers only.");
+    }
+  });
+
+  input.addEventListener("input", () => {
+    const hadNonDigits = /[^\d]/.test(input.value);
+    const cleaned = input.value.replace(/\D/g, "").slice(0, 6);
+    input.value = cleaned;
+
+    if (hadNonDigits) {
+      showFieldError(input, "Letters are not allowed in PIN code (numbers only).");
+    } else if (cleaned.length === 0) {
+      clearFieldError(input);
+    } else if (cleaned.length < 6) {
+      showFieldError(input, "PIN code must be exactly 6 digits (numbers only, e.g. 682001).");
+    } else if (cleaned[0] === "0") {
+      showFieldError(input, "PIN code cannot start with 0.");
+    } else {
+      clearFieldError(input);
+    }
+  });
+
+  input.addEventListener("blur", () => {
+    const val = input.value.trim();
+    if (!val) {
+      clearFieldError(input);
+      return;
+    }
+    if (!/^[1-9][0-9]{5}$/.test(val)) {
+      showFieldError(input, "PIN code must be a valid 6-digit number (numbers only, e.g. 682001).");
+    } else {
+      clearFieldError(input);
+    }
+  });
+}
+
+// --------------------------------------------------------------------------
+// Validation Evaluators (Used upon Form Submission)
+// --------------------------------------------------------------------------
+
+function validateName(input, fieldLabel = "Full Name") {
+  if (!input) return false;
+  const val = input.value.trim();
+  if (!val) {
+    showFieldError(input, `Please enter your ${fieldLabel}.`);
+    return false;
+  }
+  if (/[0-9]/.test(val)) {
+    showFieldError(input, `Numbers are not allowed in ${fieldLabel}. Letters only.`);
+    return false;
+  }
+  const lettersCount = (val.match(/[a-zA-Z]/g) || []).length;
+  if (lettersCount < 3) {
+    showFieldError(input, `${fieldLabel} must be more than 2 letters (minimum 3 letters, no numbers).`);
+    return false;
+  }
+  clearFieldError(input);
+  return true;
+}
+
+function validatePhone(input) {
+  if (!input) return false;
+  const val = input.value.trim().replace(/\D/g, "");
+  if (!val) {
+    showFieldError(input, "Please enter your 10-digit mobile number.");
+    return false;
+  }
+  if (val.length !== 10 || !/^[6-9]\d{9}$/.test(val)) {
+    showFieldError(input, "Please enter a valid 10-digit mobile number (numbers only, e.g. 9876543210).");
+    return false;
+  }
+  clearFieldError(input);
+  return true;
+}
+
+function validateEmail(input) {
+  if (!input) return false;
+  const val = input.value.trim();
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!val) {
+    showFieldError(input, "Please enter your email address.");
+    return false;
+  }
+  if (!emailRegex.test(val)) {
+    showFieldError(input, "Please enter a valid email address (e.g. name@domain.com).");
+    return false;
+  }
+  clearFieldError(input);
+  return true;
+}
+
+function validateAddress(input) {
+  if (!input) return false;
+  const val = input.value.trim();
+  if (!val || val.length < 5) {
+    showFieldError(input, "Please provide a complete delivery address (minimum 5 characters).");
+    return false;
+  }
+  clearFieldError(input);
+  return true;
+}
+
+function validateCity(input) {
+  if (!input) return false;
+  const val = input.value.trim();
+  if (!val) {
+    showFieldError(input, "Please enter your City & State.");
+    return false;
+  }
+  if (/[0-9]/.test(val)) {
+    showFieldError(input, "Numbers are not allowed in City & State. Letters only.");
+    return false;
+  }
+  const lettersCount = (val.match(/[a-zA-Z]/g) || []).length;
+  if (lettersCount < 3) {
+    showFieldError(input, "City & State must be more than 2 letters (minimum 3 letters, no numbers).");
+    return false;
+  }
+  clearFieldError(input);
+  return true;
+}
+
+function validatePostal(input) {
+  if (!input) return false;
+  const val = input.value.trim();
+  if (!val) {
+    showFieldError(input, "Please enter your 6-digit PIN code.");
+    return false;
+  }
+  if (!/^[1-9][0-9]{5}$/.test(val)) {
+    showFieldError(input, "PIN code must be a valid 6-digit number (numbers only, e.g. 682001).");
+    return false;
+  }
+  clearFieldError(input);
+  return true;
+}
+
+function validateMessage(input) {
+  if (!input) return false;
+  const val = input.value.trim();
+  if (!val || val.length < 10) {
+    showFieldError(input, "Please enter a detailed message (minimum 10 characters).");
+    return false;
+  }
+  clearFieldError(input);
+  return true;
+}
 
 // ==========================================================================
 // 1. ORDER ENQUIRY ENGINE (order.html)
@@ -23,6 +421,21 @@ function initOrderPage() {
   const orderShippingEl = document.getElementById("order-shipping");
   const orderTotalEl = document.getElementById("order-total");
   const shippingMethodRadios = document.querySelectorAll('input[name="shipping_speed"]');
+
+  // Input references
+  const nameInput = document.getElementById("order-name");
+  const phoneInput = document.getElementById("order-phone");
+  const emailInput = document.getElementById("order-email");
+  const addressInput = document.getElementById("order-address");
+  const cityInput = document.getElementById("order-city");
+  const postalInput = document.getElementById("order-postal");
+
+  // Bind real-time character blocking & sanitizers
+  bindNameRestrictions(nameInput, "Full Name");
+  bindPhoneRestrictions(phoneInput);
+  bindEmailRestrictions(emailInput);
+  bindCityRestrictions(cityInput);
+  bindPostalRestrictions(postalInput);
 
   // Read URL query params
   const urlParams = new URLSearchParams(window.location.search);
@@ -92,7 +505,7 @@ function initOrderPage() {
         <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded-lg object-cover shrink-0 border border-ocean-navy-border" />
         <div class="flex-1 min-w-0">
           <div class="text-xs font-bold text-white truncate">${item.name}</div>
-          <div class="text-xs text-ocean-gold font-semibold">${window.HookPointCart ? window.HookPointCart.formatINR(item.price) : '₹' + item.price} × ${item.quantity}</div>
+          <div class="text-xs text-ocean-gold font-semibold">${window.HookPointCart ? window.HookPointCart.formatINR(item.price) : "₹" + item.price} × ${item.quantity}</div>
         </div>
         <div class="flex items-center gap-1.5">
           <button type="button" class="w-6 h-6 rounded bg-ocean-navy-surface text-ocean-text-secondary hover:text-white flex items-center justify-center text-xs" onclick="HookPointCart.updateQuantity('${item.id}', ${item.quantity - 1})">−</button>
@@ -117,7 +530,7 @@ function initOrderPage() {
   // Initial render of summary
   renderOrderItems();
 
-  // Order Form Submission & Validation
+  // Order Form Submission & Strict Validation
   orderForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -129,42 +542,44 @@ function initOrderPage() {
       return;
     }
 
-    const name = document.getElementById("order-name").value.trim();
-    const phone = document.getElementById("order-phone").value.trim();
-    const email = document.getElementById("order-email").value.trim();
-    const address = document.getElementById("order-address").value.trim();
-    const city = document.getElementById("order-city").value.trim();
-    const postal = document.getElementById("order-postal").value.trim();
+    // Comprehensive field validation
+    const isNameOk = validateName(nameInput, "Full Name");
+    const isPhoneOk = validatePhone(phoneInput);
+    const isEmailOk = validateEmail(emailInput);
+    const isAddressOk = validateAddress(addressInput);
+    const isCityOk = validateCity(cityInput);
+    const isPostalOk = validatePostal(postalInput);
+
+    if (!isNameOk || !isPhoneOk || !isEmailOk || !isAddressOk || !isCityOk || !isPostalOk) {
+      // Find and focus the first invalid field
+      const checks = [
+        { ok: isNameOk, el: nameInput },
+        { ok: isPhoneOk, el: phoneInput },
+        { ok: isEmailOk, el: emailInput },
+        { ok: isAddressOk, el: addressInput },
+        { ok: isCityOk, el: cityInput },
+        { ok: isPostalOk, el: postalInput },
+      ];
+      const firstInvalid = checks.find((c) => !c.ok);
+      if (firstInvalid && firstInvalid.el) {
+        firstInvalid.el.focus();
+        firstInvalid.el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      if (window.HookPointCart) {
+        window.HookPointCart.showToast("Please correct the highlighted form errors before proceeding.", "error");
+      }
+      return;
+    }
+
+    const name = nameInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const email = emailInput.value.trim();
+    const address = addressInput.value.trim();
+    const city = cityInput.value.trim();
+    const postal = postalInput.value.trim();
     const payment = document.querySelector('input[name="payment_method"]:checked')?.value || "COD";
     const notes = document.getElementById("order-notes")?.value.trim() || "None";
-
-    // Validation
-    if (name.length < 2) {
-      showFieldError("order-name", "Please enter your full name.");
-      return;
-    }
-    const phoneRegex = /^[6-9]\d{9}$/;
-    if (!phoneRegex.test(phone.replace(/\D/g, ""))) {
-      showFieldError("order-phone", "Please enter a valid 10-digit mobile number.");
-      return;
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      showFieldError("order-email", "Please enter a valid email address.");
-      return;
-    }
-    if (address.length < 5) {
-      showFieldError("order-address", "Please provide a complete delivery address.");
-      return;
-    }
-    if (city.length < 2) {
-      showFieldError("order-city", "Please enter your city.");
-      return;
-    }
-    if (postal.length < 4) {
-      showFieldError("order-postal", "Please enter a valid PIN code.");
-      return;
-    }
 
     // Generate reference code
     const randomNum = Math.floor(10000 + Math.random() * 90000);
@@ -183,7 +598,7 @@ function initOrderPage() {
       payment,
       notes,
       items: cart,
-      total: window.HookPointCart ? window.HookPointCart.formatINR(total) : `₹${total}`
+      total: window.HookPointCart ? window.HookPointCart.formatINR(total) : `₹${total}`,
     });
 
     // Clear cart
@@ -191,18 +606,6 @@ function initOrderPage() {
       window.HookPointCart.clearCart();
     }
   });
-
-  function showFieldError(fieldId, msg) {
-    const el = document.getElementById(fieldId);
-    if (el) {
-      el.focus();
-      el.classList.add("border-red-500");
-      setTimeout(() => el.classList.remove("border-red-500"), 3000);
-    }
-    if (window.HookPointCart) {
-      window.HookPointCart.showToast(msg, "error");
-    }
-  }
 
   function showOrderSuccessModal(orderData) {
     let modal = document.getElementById("order-success-modal");
@@ -280,9 +683,19 @@ function initContactPage() {
   const contactForm = document.getElementById("contact-form");
   if (!contactForm) return;
 
+  const nameInput = document.getElementById("contact-name");
+  const phoneInput = document.getElementById("contact-phone");
+  const emailInput = document.getElementById("contact-email");
+  const subjectSelect = document.getElementById("contact-subject");
+  const messageInput = document.getElementById("contact-message");
+
+  // Bind real-time input sanitizers and restrictions
+  bindNameRestrictions(nameInput, "Your Full Name");
+  bindPhoneRestrictions(phoneInput);
+  bindEmailRestrictions(emailInput);
+
   // Quick topic selection chips
   const topicPills = document.querySelectorAll(".quick-topic-btn");
-  const subjectSelect = document.getElementById("contact-subject");
   if (topicPills.length && subjectSelect) {
     topicPills.forEach((pill) => {
       pill.addEventListener("click", () => {
@@ -306,26 +719,31 @@ function initContactPage() {
     });
   }
 
+  // Contact Form Submission & Strict Validation
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const name = document.getElementById("contact-name").value.trim();
-    const email = document.getElementById("contact-email").value.trim();
-    const phone = document.getElementById("contact-phone").value.trim();
-    const subject = document.getElementById("contact-subject").value;
-    const message = document.getElementById("contact-message").value.trim();
+    const isNameOk = validateName(nameInput, "Your Full Name");
+    const isPhoneOk = validatePhone(phoneInput);
+    const isEmailOk = validateEmail(emailInput);
+    const isMessageOk = validateMessage(messageInput);
 
-    if (name.length < 2) {
-      if (window.HookPointCart) window.HookPointCart.showToast("Please enter your name.", "error");
-      return;
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      if (window.HookPointCart) window.HookPointCart.showToast("Please enter a valid email address.", "error");
-      return;
-    }
-    if (message.length < 10) {
-      if (window.HookPointCart) window.HookPointCart.showToast("Please enter a detailed message (minimum 10 characters).", "error");
+    if (!isNameOk || !isPhoneOk || !isEmailOk || !isMessageOk) {
+      const checks = [
+        { ok: isNameOk, el: nameInput },
+        { ok: isPhoneOk, el: phoneInput },
+        { ok: isEmailOk, el: emailInput },
+        { ok: isMessageOk, el: messageInput },
+      ];
+      const firstInvalid = checks.find((c) => !c.ok);
+      if (firstInvalid && firstInvalid.el) {
+        firstInvalid.el.focus();
+        firstInvalid.el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      if (window.HookPointCart) {
+        window.HookPointCart.showToast("Please correct the highlighted form errors before submitting.", "error");
+      }
       return;
     }
 
@@ -338,5 +756,30 @@ function initContactPage() {
     }
 
     contactForm.reset();
+    [nameInput, phoneInput, emailInput, messageInput].forEach((el) => clearFieldError(el));
   });
+}
+
+// ==========================================================================
+// 3. FISHING REPORT VALIDATION (fishing-reports.html)
+// ==========================================================================
+function initCatchReportValidation() {
+  const anglerNameInput = document.getElementById("report-angler-name");
+  if (anglerNameInput) {
+    bindNameRestrictions(anglerNameInput, "Angler Name");
+  }
+
+  const reportForm = document.getElementById("catch-report-form");
+  if (reportForm && anglerNameInput) {
+    reportForm.addEventListener("submit", (e) => {
+      if (!validateName(anglerNameInput, "Angler Name")) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        anglerNameInput.focus();
+        if (window.HookPointCart) {
+          window.HookPointCart.showToast("Please enter a valid Angler Name (minimum 3 letters, no numbers).", "error");
+        }
+      }
+    }, true);
+  }
 }

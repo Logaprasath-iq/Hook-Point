@@ -300,19 +300,25 @@ function initWaterBubbles() {
 function initNewsletterForms() {
   const forms = document.querySelectorAll(".newsletter-form");
   forms.forEach((form) => {
+    const input = form.querySelector('input[type="email"]');
+    if (input) {
+      input.addEventListener("input", () => {
+        input.value = input.value.replace(/\s/g, "");
+      });
+    }
+
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const input = form.querySelector('input[type="email"]');
       if (!input) return;
 
       const email = input.value.trim();
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
       if (!email || !emailRegex.test(email)) {
         if (window.HookPointCart && window.HookPointCart.showToast) {
-          window.HookPointCart.showToast("Please enter a valid email address.", "error");
+          window.HookPointCart.showToast("Please enter a valid email address (e.g. name@domain.com).", "error");
         } else {
-          alert("Please enter a valid email address.");
+          alert("Please enter a valid email address (e.g. name@domain.com).");
         }
         input.focus();
         return;
