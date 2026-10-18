@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details — HookPoint Fishing Tackle</title>
+  <meta name="description" content="View detailed technical specifications, blank materials, suitable fishing applications, and user reviews for HookPoint gear." />
+  
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'ocean-navy': '#061B2C',
+            'ocean-navy-deep': '#030D16',
+            'ocean-navy-surface': '#0B253A',
+            'ocean-navy-card': '#0E2E47',
+            'ocean-blue': '#087EAB',
+            'ocean-blue-hover': '#0A96CC',
+            'ocean-aqua': '#42C6E8',
+            'ocean-gold': '#D6A928',
+            'ocean-gold-hover': '#E8B936',
+            'ocean-white': '#FFFFFF',
+            'ocean-soft-white': '#F4FAFC',
+            'ocean-muted-blue': '#7894A8',
+            'ocean-text-secondary': '#94AEC0'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/theme.js"></script>
+  <script src="js/direction.js"></script>
+</head>
+<body class="bg-ocean-navy text-white min-h-screen flex flex-col antialiased selection:bg-ocean-aqua selection:text-ocean-navy">
+
+  <!-- Sticky Navbar -->
+  <header class="site-nav">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <a href="index.html" class="flex items-center gap-3 shrink-0 group">
+          <img src="assets/images/logo.png" alt="HookPoint Logo" class="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-105" />
+          <div class="flex flex-col">
+            <span class="text-2xl font-black tracking-tight text-white group-hover:text-ocean-aqua transition leading-none">
+              Hook<span class="text-ocean-gold">Point</span>
+            </span>
+            <span class="text-[10px] tracking-widest uppercase font-semibold text-ocean-muted-blue mt-0.5">
+              Gear Up &bull; Cast Out &bull; Reel In
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center lg:gap-3.5 xl:gap-6 text-xs xl:text-sm">
+          <!-- Home Dropdown -->
+          <div class="nav-dropdown group">
+            <button type="button" class="nav-link nav-dropdown-btn flex items-center gap-1.5 py-2 cursor-pointer outline-none" aria-haspopup="true" aria-expanded="false">
+              <span>Home</span>
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a href="index.html" class="nav-dropdown-item group/item">
+                <div>
+                  <div class="font-bold text-white group-hover/item:text-ocean-aqua transition">Home 1</div>
+                  <div class="text-[11px] text-ocean-muted-blue font-normal">Cinematic Storefront</div>
+                </div>
+                <span class="text-xs text-ocean-gold">→</span>
+              </a>
+              <a href="home-2.html" class="nav-dropdown-item group/item mt-1">
+                <div>
+                  <div class="font-bold text-white group-hover/item:text-ocean-aqua transition">Home 2</div>
+                  <div class="text-[11px] text-ocean-muted-blue font-normal">Equipment Showcase</div>
+                </div>
+                <span class="text-xs text-ocean-gold">→</span>
+              </a>
+            </div>
+          </div>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="products.html" class="nav-link active">Products</a>
+          <a href="pricing.html" class="nav-link">Pricing</a>
+          <a href="fishing-reports.html" class="nav-link">Fishing Reports</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-2 sm:gap-2.5">
+          <!-- Theme Toggle -->
+          <button type="button" class="theme-toggle-btn nav-action-btn nav-action-square rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-ocean-aqua transition shrink-0" aria-label="Toggle Theme"></button>
+
+          <!-- RTL / LTR Toggle -->
+          <button type="button" class="direction-toggle-btn nav-action-btn px-3 rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-aqua/30 hover:border-ocean-aqua text-ocean-aqua transition shrink-0" aria-label="Toggle Direction"></button>
+
+          <!-- Favorite Heart Button (After RTL Button) -->
+          <button type="button" class="open-favorites-btn nav-action-btn nav-action-square relative rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-ocean-gold hover:text-rose-400 hover:border-rose-400/50 transition shrink-0" aria-label="Saved Favorites" title="View Saved Favorites">
+            <svg class="w-5 h-5 transition-transform hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            <span class="fav-count-badge hidden absolute -top-1.5 -end-1.5 w-5 h-5 rounded-full bg-rose-500 text-white text-[11px] font-black flex items-center justify-center shadow-lg transition-transform">0</span>
+          </button>
+
+          <!-- Tackle Box / Cart Trigger -->
+          <button type="button" class="open-cart-btn nav-action-btn nav-action-square relative rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-ocean-aqua hover:border-ocean-aqua transition shrink-0" aria-label="Open Tackle Box" title="Open Tackle Box Cart">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+            <span class="cart-count-badge hidden absolute -top-1.5 -end-1.5 w-5 h-5 rounded-full bg-ocean-gold text-ocean-navy text-[11px] font-black flex items-center justify-center shadow-lg transition-transform">0</span>
+          </button>
+
+          <!-- Order CTA Button -->
+          <a href="order.html" class="hidden sm:inline-flex nav-action-btn px-5 gold-button rounded-xl text-xs font-bold uppercase tracking-wider shadow-md shrink-0">ORDER</a>
+
+          <!-- Mobile Hamburger Menu Button -->
+          <button type="button" id="mobile-menu-btn" class="lg:hidden nav-action-btn nav-action-square rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-white transition shrink-0" aria-label="Open Navigation Menu" aria-expanded="false">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer Backdrop -->
+  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-ocean-navy-deep/80 backdrop-blur-sm z-40 hidden transition-opacity lg:hidden"></div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu-drawer" class="fixed top-0 bottom-0 end-0 w-80 max-w-[85vw] bg-ocean-navy-surface border-s border-ocean-navy-border z-50 transition-transform duration-300 ease-out flex flex-col p-6 overflow-y-auto lg:hidden">
+    <div class="flex items-center justify-between pb-6 border-b border-ocean-navy-border">
+      <div class="flex items-center gap-2">
+        <img src="assets/images/logo.png" alt="HookPoint" class="w-8 h-8 object-contain" />
+        <span class="text-lg font-bold text-white">Hook<span class="text-ocean-gold">Point</span></span>
+      </div>
+      <button type="button" id="mobile-menu-close-btn" class="mobile-menu-close p-2 text-ocean-text-secondary hover:text-white rounded-lg" aria-label="Close menu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+
+    <nav class="flex-1 py-6 space-y-2">
+      <!-- Mobile Accordion for Home -->
+      <div class="space-y-1">
+        <button type="button" class="mobile-dropdown-toggle w-full flex items-center justify-between p-3 rounded-xl bg-ocean-navy text-white text-sm font-semibold transition border border-ocean-navy-border/60">
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-ocean-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            <span>Home</span>
+          </span>
+          <svg class="w-4 h-4 dropdown-arrow text-ocean-gold transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="hidden ps-4 space-y-1 pt-1">
+          <a href="index.html" class="flex items-center justify-between p-2.5 rounded-lg text-ocean-text-secondary hover:text-white hover:bg-ocean-navy text-xs font-medium transition">
+            <span>Home 1 — Storefront</span>
+            <span class="text-[10px] text-ocean-muted-blue">Cinematic</span>
+          </a>
+          <a href="home-2.html" class="flex items-center justify-between p-2.5 rounded-lg text-ocean-text-secondary hover:text-white hover:bg-ocean-navy text-xs font-medium transition">
+            <span>Home 2 — Equipment</span>
+            <span class="text-[10px] text-ocean-muted-blue">Showcase</span>
+          </a>
+        </div>
+      </div>
+
+      <a href="about.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>About</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="products.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Products</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="pricing.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Pricing &amp; Offers</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="fishing-reports.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Fishing Reports</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="blog.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Blog</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="contact.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Contact</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="order.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl bg-ocean-gold/15 text-ocean-gold text-sm font-bold transition">
+        <span>Order &amp; Cart</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+    </nav>
+
+    <div class="pt-6 border-t border-ocean-navy-border space-y-3">
+      <div class="flex items-center justify-between text-xs text-ocean-text-secondary">
+        <span class="font-semibold text-ocean-muted-blue">Language / Direction:</span>
+        <button type="button" class="direction-toggle-btn nav-action-btn px-3 rounded-xl bg-ocean-navy hover:bg-ocean-navy-card border border-ocean-aqua/30 text-ocean-aqua transition" aria-label="Toggle Direction"></button>
+      </div>
+      <a href="order.html" class="w-full gold-button py-3 text-center text-xs font-bold block rounded-xl shadow-md">Create Order Enquiry</a>
+    </div>
+  </div>
+
+  <main class="flex-1">
+
+    <!-- Top Breadcrumb Bar -->
+    <div class="bg-ocean-navy-surface border-b border-ocean-navy-border/60 py-4">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex items-center gap-2 text-xs text-ocean-muted-blue truncate">
+          <a href="index.html" class="hover:text-ocean-aqua transition">Home</a>
+          <span>/</span>
+          <a href="products.html" class="hover:text-ocean-aqua transition">Products</a>
+          <span>/</span>
+          <a href="products.html" id="breadcrumb-category" class="hover:text-ocean-aqua transition">Category</a>
+          <span>/</span>
+          <span id="breadcrumb-product" class="text-ocean-gold font-medium truncate">Product Details</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Main Dynamic Details Section (Injected by js/products.js) -->
+    <section class="section-spacing bg-ocean-navy">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="product-details-container">
+          <!-- Dynamically populated via js/products.js -->
+          <div class="py-24 text-center text-ocean-muted-blue">
+            <svg class="w-8 h-8 animate-spin mx-auto mb-3 text-ocean-aqua" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+            Loading product data...
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shared Footer -->
+  <!-- Shared Footer -->
+  <footer class="bg-ocean-navy-deep border-t border-ocean-navy-border/60 text-ocean-text-secondary text-xs pt-16 pb-12">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12 border-b border-ocean-navy-border/60">
+        
+        <!-- Brand Column -->
+        <div class="space-y-4">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/15 p-1.5 flex items-center justify-center shrink-0">
+              <img src="assets/images/logo.png" alt="HookPoint Logo" class="w-full h-full object-contain" />
+            </div>
+            <div>
+              <div class="text-xl font-black text-white tracking-wide">HOOK<span class="text-ocean-gold">POINT</span></div>
+              <div class="text-[9px] tracking-widest uppercase font-bold text-ocean-gold mt-0.5">GEAR UP. CAST OUT. REEL IN.</div>
+            </div>
+          </a>
+          <p class="text-xs text-ocean-muted-blue leading-relaxed">
+            India's dedicated saltwater fishing tackle brand. We engineer, calibrate, and supply marine-grade carbon rods, sealed drag reels, tournament artificial lures, and coastal baits built for Indian waters.
+          </p>
+          <div class="flex items-center gap-2.5 pt-1">
+            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500 hover:text-white flex items-center justify-center transition" aria-label="WhatsApp" title="Chat on WhatsApp">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-rose-950/40 border border-rose-500/30 text-rose-400 hover:bg-rose-600 hover:text-white flex items-center justify-center transition" aria-label="Instagram" title="Follow on Instagram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/5 border border-white/15 text-slate-300 hover:bg-white/20 hover:text-white flex items-center justify-center transition" aria-label="X" title="Follow on X">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-blue-950/40 border border-blue-500/30 text-blue-400 hover:bg-blue-600 hover:text-white flex items-center justify-center transition" aria-label="Facebook" title="Follow on Facebook">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Catalog & Store Column -->
+        <div class="space-y-3.5">
+          <div class="text-xs font-black uppercase tracking-wider text-white">CATALOG &amp; STORE</div>
+          <ul class="space-y-2.5 text-xs text-ocean-muted-blue">
+            <li><a href="index.html" class="hover:text-ocean-aqua transition">Home 1 (Cinematic)</a></li>
+            <li><a href="home-2.html" class="hover:text-ocean-aqua transition">Home 2 (Equipment Showcase)</a></li>
+            <li><a href="products.html" class="hover:text-ocean-aqua transition">All Fishing Tackle</a></li>
+            <li><a href="products.html?category=rods" class="hover:text-ocean-aqua transition">Rods &amp; Reels</a></li>
+            <li><a href="products.html?category=lures" class="hover:text-ocean-aqua transition">Artificial Lures &amp; Baits</a></li>
+            <li><a href="pricing.html" class="hover:text-ocean-aqua transition">Tackle Packages &amp; Offers</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Support Column -->
+        <div class="space-y-3.5">
+          <div class="text-xs font-black uppercase tracking-wider text-white">CUSTOMER SUPPORT</div>
+          <ul class="space-y-2.5 text-xs text-ocean-muted-blue">
+            <li><a href="order.html" class="hover:text-ocean-aqua transition">Your Tackle Box &amp; Orders</a></li>
+            <li><a href="about.html" class="hover:text-ocean-aqua transition">About Our Brand &amp; Heritage</a></li>
+            <li><a href="pricing.html#pricing-faqs" class="hover:text-ocean-aqua transition">Equipment &amp; Pricing FAQs</a></li>
+            <li><a href="fishing-reports.html" class="hover:text-ocean-aqua transition">Live Coastal Fishing Reports</a></li>
+            <li><a href="blog.html" class="hover:text-ocean-aqua transition">Saltwater Angler Journal</a></li>
+            <li><a href="contact.html" class="hover:text-ocean-aqua transition">Contact Storefront &amp; Dispatch</a></li>
+          </ul>
+        </div>
+
+        <!-- Chennai Outpost Column -->
+        <div class="space-y-3.5">
+          <div class="text-xs font-black uppercase tracking-wider text-white">CHENNAI OUTPOST</div>
+          <div class="space-y-2 text-xs text-ocean-muted-blue leading-relaxed">
+            <div class="font-bold text-white">HookPoint Tackle Shop — Chennai</div>
+            <p>Marina Beach Road / ECR Coastal Highway<br>Chennai, Tamil Nadu, India</p>
+            <div class="pt-2">
+              <span class="font-semibold text-white">Hours:</span> Mon – Sat: 06:00 AM – 08:30 PM
+            </div>
+            <div>
+              <span class="font-semibold text-white">Phone:</span> <a href="tel:+919876543210" class="hover:text-ocean-aqua transition text-ocean-muted-blue">+91 98765 43210</a>
+            </div>
+            <div>
+              <span class="font-semibold text-white">WhatsApp:</span> <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition text-ocean-muted-blue">+91 98765 43210</a>
+            </div>
+            <div>
+              <span class="font-semibold text-white">Email:</span> <a href="mailto:support@hookpoint-tackle.com" class="hover:text-ocean-aqua transition text-ocean-muted-blue">support@hookpoint-tackle.com</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bottom Bar -->
+      <div class="pt-8 text-center text-xs text-ocean-muted-blue">
+        &copy; 2026 HookPoint &mdash; Fishing Tackle &amp; Bait Shop. All Rights Reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/favorites.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>
+

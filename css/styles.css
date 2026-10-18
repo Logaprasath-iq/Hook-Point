@@ -1,0 +1,1621 @@
+/* ==========================================================================
+   HOOKPOINT — GRAND CINEMATIC DEEP OCEAN DESIGN SYSTEM
+   ========================================================================== */
+
+:root {
+  /* Deep Ocean Brand Palette */
+  --ocean-navy: #061B2C;
+  --ocean-navy-deep: #030D16;
+  --ocean-navy-surface: #0B253A;
+  --ocean-navy-card: #0E2E47;
+  --ocean-navy-border: rgba(66, 198, 232, 0.15);
+  --ocean-blue: #087EAB;
+  --ocean-blue-hover: #0A96CC;
+  --ocean-aqua: #42C6E8;
+  --ocean-aqua-glow: rgba(66, 198, 232, 0.35);
+  --ocean-gold: #D6A928;
+  --ocean-gold-hover: #E8B936;
+  --ocean-gold-glow: rgba(214, 169, 40, 0.35);
+  --ocean-white: #FFFFFF;
+  --ocean-soft-white: #F4FAFC;
+  --ocean-muted-blue: #7894A8;
+  --ocean-text-secondary: #94AEC0;
+
+  /* Global Container System */
+  --page-max-width: 1280px;
+  --page-padding: 16px;
+  --section-space: 80px;
+
+  /* Component Tokens */
+  --bg-primary: #061B2C;
+  --bg-surface: #0B253A;
+  --bg-card: #0E2E47;
+  --bg-card-hover: #133956;
+  --border-color: rgba(66, 198, 232, 0.16);
+  --border-color-hover: rgba(66, 198, 232, 0.45);
+  --text-primary: #FFFFFF;
+  --text-secondary: #7894A8;
+  --text-muted: #5C788D;
+  --accent-blue: #087EAB;
+  --accent-aqua: #42C6E8;
+  --accent-gold: #D6A928;
+  --nav-bg: rgba(6, 27, 44, 0.88);
+  --nav-scrolled: rgba(6, 27, 44, 0.96);
+  --input-bg: rgba(11, 37, 58, 0.85);
+  --shadow-ocean: 0 10px 30px -10px rgba(4, 17, 28, 0.7);
+  --shadow-glow: 0 0 25px rgba(66, 198, 232, 0.2);
+}
+
+/* Light Theme Variables */
+html.light {
+  color-scheme: light;
+  --bg-primary: #F4FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F0F9FC;
+  --border-color: rgba(8, 126, 171, 0.18);
+  --border-color-hover: rgba(8, 126, 171, 0.45);
+  --text-primary: #061B2C;
+  --text-secondary: #3E5A70;
+  --text-muted: #6B879C;
+  --nav-bg: rgba(244, 250, 252, 0.92);
+  --nav-scrolled: rgba(244, 250, 252, 0.98);
+  --input-bg: #FFFFFF;
+  --shadow-ocean: 0 10px 30px -10px rgba(8, 126, 171, 0.12);
+  --shadow-glow: 0 0 25px rgba(8, 126, 171, 0.15);
+}
+
+/* ==========================================================================
+   COMPREHENSIVE LIGHT THEME ENGINE (ALL PAGES)
+   ========================================================================== */
+html.light body {
+  background-color: #F4FAFC !important;
+  color: #061B2C !important;
+}
+
+/* Background utilities in Light Mode */
+html.light .bg-ocean-navy {
+  background-color: #F4FAFC !important;
+}
+
+html.light .bg-ocean-navy-deep {
+  background-color: #E8F3F7 !important;
+}
+
+html.light .bg-ocean-navy-surface {
+  background-color: #FFFFFF !important;
+}
+
+html.light .bg-ocean-navy-card {
+  background-color: #FFFFFF !important;
+}
+
+/* Semi-transparent background overrides */
+html.light .bg-ocean-navy\/40,
+html.light .bg-ocean-navy\/60 {
+  background-color: rgba(244, 250, 252, 0.85) !important;
+}
+
+html.light .bg-ocean-navy-surface\/40,
+html.light .bg-ocean-navy-surface\/50,
+html.light .bg-ocean-navy-surface\/80,
+html.light .bg-ocean-navy-surface\/90 {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+}
+
+html.light .bg-ocean-navy-card\/60,
+html.light .bg-ocean-navy-card\/90 {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+}
+
+html.light .bg-ocean-navy-deep\/40,
+html.light .bg-ocean-navy-deep\/50,
+html.light .bg-ocean-navy-deep\/60,
+html.light .bg-ocean-navy-deep\/70,
+html.light .bg-ocean-navy-deep\/80,
+html.light .bg-ocean-navy-deep\/85,
+html.light .bg-ocean-navy-deep\/90 {
+  background-color: rgba(232, 243, 247, 0.95) !important;
+}
+
+/* Cards & Elevated Containers */
+html.light .ocean-card {
+  background-color: #FFFFFF !important;
+  border-color: rgba(8, 126, 171, 0.16) !important;
+  box-shadow: 0 4px 20px -2px rgba(8, 126, 171, 0.08) !important;
+}
+
+html.light .ocean-card:hover {
+  border-color: var(--ocean-blue) !important;
+  box-shadow: 0 12px 28px -4px rgba(8, 126, 171, 0.16) !important;
+}
+
+/* Typography in Light Mode */
+html.light .text-white,
+html.light h1.text-white,
+html.light h2.text-white,
+html.light h3.text-white,
+html.light h4.text-white,
+html.light h5.text-white {
+  color: #061B2C !important;
+}
+
+html.light .text-ocean-text-secondary {
+  color: #3E5A70 !important;
+}
+
+html.light .text-ocean-muted-blue {
+  color: #5E7C91 !important;
+}
+
+html.light .text-ocean-aqua {
+  color: #06729B !important;
+}
+
+html.light .text-ocean-gold {
+  color: #B58A14 !important;
+}
+
+/* PRESERVE WHITE/CONTRAST TEXT on solid buttons and badges */
+html.light .gold-button,
+html.light .gold-button * {
+  color: #061B2C !important;
+}
+
+html.light .water-button,
+html.light .water-button *,
+html.light .bg-ocean-blue,
+html.light .bg-ocean-blue *,
+html.light .bg-emerald-500,
+html.light .bg-emerald-500 *,
+html.light .bg-rose-500,
+html.light .bg-rose-500 *,
+html.light .bg-ocean-gold .text-ocean-navy,
+html.light .cart-count-badge,
+html.light .fav-count-badge,
+html.light .badge,
+html.light span.bg-ocean-blue,
+html.light span.bg-emerald-500,
+html.light span.bg-rose-500 {
+  color: #FFFFFF !important;
+}
+
+html.light .cart-count-badge {
+  color: #061B2C !important;
+}
+
+/* PRESERVE WHITE TEXT on Image Overlay cards (Category cards, Hero, etc.) */
+html.light .relative > .absolute .text-white,
+html.light .absolute.inset-x-6 .text-white,
+html.light .absolute.bottom-6 .text-white,
+html.light [class*="h-72"] .text-white,
+html.light .hero-content .text-white {
+  color: #FFFFFF !important;
+}
+
+html.light .relative > .absolute .text-ocean-text-secondary,
+html.light .absolute.inset-x-6 .text-ocean-text-secondary,
+html.light .absolute.bottom-6 .text-ocean-text-secondary,
+html.light [class*="h-72"] .text-ocean-text-secondary {
+  color: #D1E4ED !important;
+}
+
+/* Borders in Light Mode */
+html.light .border-ocean-navy-border,
+html.light .border-ocean-navy-border\/60,
+html.light .border-ocean-navy-border\/80 {
+  border-color: rgba(8, 126, 171, 0.15) !important;
+}
+
+html.light .border-ocean-aqua\/20,
+html.light .border-ocean-aqua\/30,
+html.light .border-ocean-aqua\/40,
+html.light .border-ocean-aqua\/50 {
+  border-color: rgba(8, 126, 171, 0.22) !important;
+}
+
+html.light .border-ocean-gold\/20,
+html.light .border-ocean-gold\/25,
+html.light .border-ocean-gold\/30,
+html.light .border-ocean-gold\/40,
+html.light .border-ocean-gold\/50 {
+  border-color: rgba(181, 138, 20, 0.3) !important;
+}
+
+/* Dividers & Accent Containers in Light Mode */
+html.light .divide-ocean-navy-border > :not([hidden]) ~ :not([hidden]),
+html.light .divide-ocean-navy-border\/60 > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgba(8, 126, 171, 0.15) !important;
+}
+
+html.light .bg-ocean-blue\/10,
+html.light .bg-ocean-blue\/15,
+html.light .bg-ocean-blue\/20 {
+  background-color: rgba(8, 126, 171, 0.08) !important;
+}
+
+html.light .bg-emerald-950,
+html.light .bg-emerald-950\/70,
+html.light .bg-emerald-950\/80,
+html.light .bg-emerald-950\/90 {
+  background-color: #E6F7ED !important;
+  color: #0E7B3B !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+}
+
+html.light .bg-emerald-950 *,
+html.light .bg-emerald-950\/70 *,
+html.light .bg-emerald-950\/80 *,
+html.light .bg-emerald-950\/90 * {
+  color: #0E7B3B !important;
+}
+
+html.light .bg-amber-950,
+html.light .bg-amber-950\/70,
+html.light .bg-amber-950\/80,
+html.light .bg-amber-950\/90 {
+  background-color: #FEF3C7 !important;
+  color: #B45309 !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+}
+
+/* Form Controls & Inputs */
+html.light input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+html.light textarea,
+html.light select {
+  background-color: #FFFFFF !important;
+  color: #061B2C !important;
+  border-color: rgba(8, 126, 171, 0.25) !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #7894A8 !important;
+}
+
+html.light input:focus,
+html.light textarea:focus,
+html.light select:focus {
+  border-color: var(--ocean-blue) !important;
+  box-shadow: 0 0 0 3px rgba(8, 126, 171, 0.12) !important;
+}
+
+/* Buttons in Light Mode */
+html.light .outline-ocean-button {
+  background: #FFFFFF !important;
+  border-color: rgba(8, 126, 171, 0.3) !important;
+  color: #061B2C !important;
+}
+
+html.light .outline-ocean-button:hover {
+  background: rgba(8, 126, 171, 0.08) !important;
+  border-color: var(--ocean-blue) !important;
+  color: var(--ocean-blue) !important;
+}
+
+/* Header & Navbar Controls */
+html.light .site-nav {
+  background-color: rgba(244, 250, 252, 0.92) !important;
+  border-bottom: 1px solid rgba(8, 126, 171, 0.15) !important;
+}
+
+html.light .site-nav.scrolled {
+  background-color: rgba(244, 250, 252, 0.98) !important;
+  box-shadow: 0 4px 20px rgba(8, 126, 171, 0.08) !important;
+}
+
+html.light .nav-link {
+  color: #3E5A70 !important;
+}
+
+html.light .nav-link:hover {
+  color: #06729B !important;
+}
+
+html.light .nav-link.active {
+  color: #B58A14 !important;
+}
+
+html.light .nav-dropdown-menu {
+  background-color: #FFFFFF !important;
+  border-color: rgba(8, 126, 171, 0.18) !important;
+  box-shadow: 0 10px 30px rgba(8, 126, 171, 0.12) !important;
+}
+
+html.light .nav-dropdown-item {
+  color: #3E5A70 !important;
+}
+
+html.light .nav-dropdown-item:hover,
+html.light .nav-dropdown-item.active {
+  background-color: #F0F8FB !important;
+  color: #06729B !important;
+}
+
+html.light .nav-dropdown-item.active {
+  color: #B58A14 !important;
+}
+
+html.light .nav-dropdown-item .text-white {
+  color: #061B2C !important;
+}
+
+html.light .nav-dropdown-item .text-ocean-muted-blue {
+  color: #5E7C91 !important;
+}
+
+html.light .nav-action-btn.bg-ocean-navy-surface {
+  background-color: #FFFFFF !important;
+  border-color: rgba(8, 126, 171, 0.2) !important;
+  color: #061B2C !important;
+}
+
+html.light .nav-action-btn.bg-ocean-navy-surface:hover {
+  background-color: #F0F8FB !important;
+  border-color: var(--ocean-blue) !important;
+}
+
+html.light .direction-toggle-btn {
+  background-color: #FFFFFF !important;
+  border-color: rgba(8, 126, 171, 0.25) !important;
+}
+
+html.light .direction-toggle-btn span {
+  color: #06729B !important;
+}
+
+/* Drawers & Modals */
+html.light #mobile-menu-drawer,
+html.light #favorites-drawer,
+html.light #cart-drawer {
+  background-color: #FFFFFF !important;
+  border-color: rgba(8, 126, 171, 0.15) !important;
+  color: #061B2C !important;
+}
+
+html.light #mobile-menu-drawer .text-white,
+html.light #favorites-drawer .text-white,
+html.light #cart-drawer .text-white {
+  color: #061B2C !important;
+}
+
+html.light #mobile-menu-drawer .text-ocean-text-secondary,
+html.light #favorites-drawer .text-ocean-text-secondary,
+html.light #cart-drawer .text-ocean-text-secondary {
+  color: #3E5A70 !important;
+}
+
+/* Category Filter Pills & Toggle Buttons */
+html.light .category-filter-btn.bg-ocean-navy,
+html.light .report-filter-btn.bg-ocean-navy {
+  background-color: #FFFFFF !important;
+  color: #3E5A70 !important;
+  border-color: rgba(8, 126, 171, 0.18) !important;
+}
+
+html.light .category-filter-btn.bg-ocean-navy:hover,
+html.light .report-filter-btn.bg-ocean-navy:hover {
+  background-color: #F0F8FB !important;
+  color: #061B2C !important;
+  border-color: var(--ocean-blue) !important;
+}
+
+/* Data Tables in Light Mode */
+html.light table thead tr {
+  background-color: #EBF4F7 !important;
+  color: #3E5A70 !important;
+}
+
+html.light table tbody tr:hover {
+  background-color: #F0F8FA !important;
+}
+
+html.light table td.text-white,
+html.light table td .text-white {
+  color: #061B2C !important;
+}
+
+/* Footer in Light Mode */
+html.light footer.bg-ocean-navy-deep {
+  background-color: #E8F1F5 !important;
+  border-top-color: rgba(8, 126, 171, 0.15) !important;
+}
+
+html.light footer .text-white {
+  color: #061B2C !important;
+}
+
+html.light footer .text-ocean-muted-blue {
+  color: #4A6B82 !important;
+}
+
+html.light footer a:not(.gold-button):hover {
+  color: #06729B !important;
+}
+
+html.light footer .border-white\/10,
+html.light footer .border-white\/15 {
+  border-color: rgba(8, 126, 171, 0.2) !important;
+}
+
+html.light footer .bg-white\/10,
+html.light footer .bg-white\/5 {
+  background-color: #FFFFFF !important;
+}
+
+/* Gradients in Light Mode */
+html.light .from-ocean-navy-surface {
+  --tw-gradient-from: #FFFFFF var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgba(255, 255, 255, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+html.light .via-ocean-navy-card {
+  --tw-gradient-to: rgba(240, 248, 251, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), #F0F8FB var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+
+html.light .to-ocean-navy-surface {
+  --tw-gradient-to: #FFFFFF var(--tw-gradient-to-position) !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: clip;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   GLOBAL CONTAINER SYSTEM (Strict alignment rule)
+   ========================================================================== */
+.container-main {
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin-inline: auto;
+  padding-inline: var(--page-padding);
+}
+
+.section-spacing {
+  padding-block: var(--section-space);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --page-padding: 24px;
+    --section-space: 96px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-padding: 32px;
+    --section-space: 112px;
+  }
+}
+
+@media (max-width: 639px) {
+  :root {
+    --section-space: 64px;
+  }
+}
+
+/* ==========================================================================
+   CINEMATIC WATER EFFECTS & THEMES
+   ========================================================================== */
+.ocean-background {
+  background: radial-gradient(circle at 50% 20%, #0E3554 0%, #061B2C 70%, #030D16 100%);
+  position: relative;
+}
+
+html.light .ocean-background {
+  background: radial-gradient(circle at 50% 20%, #E2F2F8 0%, #F4FAFC 70%, #E5EFF3 100%);
+}
+
+/* Underwater Light Rays */
+.underwater-light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse 600px 800px at 25% 0%, rgba(66, 198, 232, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 800px 900px at 75% 0%, rgba(8, 126, 171, 0.18) 0%, transparent 70%);
+  animation: pulse-light 12s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+@keyframes pulse-light {
+  0% {
+    opacity: 0.6;
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05) translateY(-10px);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(0.98) translateY(5px);
+  }
+}
+
+/* Water Wave SVG Layers */
+.water-waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.wave-layer {
+  display: block;
+  width: 200%;
+  height: 60px;
+}
+
+.wave-layer-1 {
+  fill: rgba(8, 126, 171, 0.3);
+  animation: wave-motion-1 16s linear infinite;
+}
+
+.wave-layer-2 {
+  fill: rgba(66, 198, 232, 0.18);
+  animation: wave-motion-2 22s linear infinite reverse;
+}
+
+.wave-layer-3 {
+  fill: var(--bg-primary);
+  animation: wave-motion-3 12s linear infinite;
+}
+
+@keyframes wave-motion-1 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes wave-motion-2 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes wave-motion-3 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Floating Water Bubbles */
+.bubble-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -40px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(66, 198, 232, 0.15) 60%, rgba(66, 198, 232, 0) 80%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(66, 198, 232, 0.3);
+  animation: rise 14s infinite ease-in;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(0.8) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-900px) scale(1.2) translateX(30px);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   OCEAN CARDS & COMPONENTS
+   ========================================================================== */
+.ocean-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--shadow-ocean);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.ocean-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--ocean-aqua), transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.ocean-card:hover {
+  border-color: var(--border-color-hover);
+  box-shadow: 0 14px 28px -4px rgba(4, 17, 28, 0.75), 0 0 20px var(--ocean-aqua-glow);
+}
+
+.ocean-card:hover::before {
+  opacity: 1;
+}
+
+.aqua-glow {
+  box-shadow: 0 0 25px var(--ocean-aqua-glow);
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px var(--ocean-gold-glow);
+}
+
+/* Buttons */
+.water-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #087EAB 0%, #0A96CC 50%, #42C6E8 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(66, 198, 232, 0.4);
+  box-shadow: 0 4px 15px rgba(8, 126, 171, 0.4);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.water-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(66, 198, 232, 0.5);
+  border-color: #42C6E8;
+  color: #FFFFFF;
+}
+
+.gold-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #D6A928 0%, #F5C542 50%, #D6A928 100%);
+  background-size: 200% auto;
+  color: #061B2C;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 18px rgba(214, 169, 40, 0.45);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.gold-button:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(214, 169, 40, 0.65);
+  color: #030D16;
+}
+
+/* ==========================================================================
+   NAVBAR UNIFIED ACTION BUTTON HEIGHT SYSTEM
+   Ensures Theme, RTL, Favorites, Cart, and Order buttons have exact equal height
+   ========================================================================== */
+.nav-action-btn {
+  height: 2.5rem !important; /* 40px */
+  min-height: 2.5rem !important;
+  max-height: 2.5rem !important;
+  box-sizing: border-box !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.nav-action-btn:not(.hidden):not(.lg\:hidden):not(.xl\:hidden):not([hidden]) {
+  display: inline-flex !important;
+}
+
+.nav-action-btn.nav-action-square {
+  width: 2.5rem !important; /* 40px */
+  min-width: 2.5rem !important;
+  max-width: 2.5rem !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Mobile Menu Drawer Animation & RTL Support */
+#mobile-menu-drawer {
+  transform: translateX(100%) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[dir="rtl"] #mobile-menu-drawer {
+  transform: translateX(-100%) !important;
+}
+
+#mobile-menu-drawer.open,
+[dir="rtl"] #mobile-menu-drawer.open {
+  transform: translateX(0) !important;
+}
+
+/* Strictly hide mobile menu elements on desktop display mode (1024px and wider) */
+@media (min-width: 1024px) {
+  #mobile-menu-btn,
+  button#mobile-menu-btn,
+  .nav-action-btn#mobile-menu-btn,
+  .mobile-menu-btn,
+  .mobile-menu-toggle,
+  #mobile-menu-drawer,
+  #mobile-menu-backdrop {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   PAGE HERO BANNERS (Centered with Vibrant Background Image & Contrast)
+   ========================================================================== */
+.page-hero-banner {
+  position: relative;
+  min-height: 380px;
+}
+
+@media (min-width: 640px) {
+  .page-hero-banner {
+    min-height: 440px;
+  }
+}
+
+.page-hero-banner h1,
+.page-hero-banner .hero-title {
+  color: #FFFFFF !important;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
+}
+
+.page-hero-banner p,
+.page-hero-banner .hero-desc {
+  color: #F0F6FA !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+/* Light mode overrides to keep hero photo overlays high contrast */
+html.light .page-hero-banner h1,
+html.light .page-hero-banner .hero-title {
+  color: #FFFFFF !important;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
+}
+
+html.light .page-hero-banner p,
+html.light .page-hero-banner .hero-desc {
+  color: #F0F6FA !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+.outline-ocean-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background: rgba(11, 37, 58, 0.6);
+  backdrop-filter: blur(8px);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.outline-ocean-button:hover {
+  background: rgba(8, 126, 171, 0.2);
+  border-color: var(--ocean-aqua);
+  color: var(--ocean-aqua);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   SCROLL REVEAL ANIMATIONS
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.revealed {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+}
+
+/* Staggered Card Scroll Reveal */
+.reveal-card {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Wordings & Headings Scroll Reveal */
+.reveal-heading,
+.reveal-text {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal-heading.is-visible,
+.reveal-text.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-image {
+  opacity: 0;
+  transform: scale(0.96) translateY(16px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal-image.is-visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Stagger delay helpers */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
+
+/* ==========================================================================
+   NAVIGATION & HOME DROPDOWN SPECIFICS
+   ========================================================================== */
+.site-nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 220px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(8, 126, 171, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+  z-index: 60;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+[dir="rtl"] .nav-dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+.nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.85rem;
+  border-radius: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.nav-dropdown-item:hover,
+.nav-dropdown-item.active {
+  background-color: var(--bg-card);
+  color: var(--ocean-aqua);
+}
+
+.nav-dropdown-item.active {
+  color: var(--ocean-gold);
+}
+
+.site-nav.scrolled {
+  background-color: var(--nav-scrolled);
+  box-shadow: 0 4px 20px rgba(3, 13, 22, 0.3);
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  text-decoration: none;
+  padding-block: 0.25rem;
+}
+
+.nav-link:hover {
+  color: var(--ocean-aqua);
+}
+
+.nav-link.active {
+  color: var(--ocean-gold);
+  font-weight: 600;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--ocean-aqua);
+  transition: width 0.25s ease;
+  border-radius: 2px;
+}
+
+.nav-link.active::after {
+  width: 100%;
+  background: var(--ocean-gold);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ==========================================================================
+   TOAST NOTIFICATION SYSTEM
+   ========================================================================== */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+[dir="rtl"] #toast-container {
+  right: auto;
+  left: 24px;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border-radius: 12px;
+  border: 1px solid var(--ocean-aqua);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 15px var(--ocean-aqua-glow);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 280px;
+  max-width: 400px;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast-success {
+  border-color: #10B981;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(16, 185, 129, 0.25);
+}
+
+.toast-gold {
+  border-color: var(--ocean-gold);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 15px var(--ocean-gold-glow);
+}
+
+/* ==========================================================================
+   CART SLIDE-OUT DRAWER
+   ========================================================================== */
+.cart-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 13, 22, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.cart-drawer-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  max-width: 440px;
+  background: var(--bg-surface);
+  border-left: 1px solid var(--border-color);
+  z-index: 95;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+}
+
+[dir="rtl"] .cart-drawer {
+  right: auto;
+  left: 0;
+  border-left: none;
+  border-right: 1px solid var(--border-color);
+  transform: translateX(-100%);
+}
+
+.cart-drawer.active {
+  transform: translateX(0);
+}
+
+/* ==========================================================================
+   RTL LOGICAL ALIGNMENT HELPERS
+   ========================================================================== */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* ==========================================================================
+   CUSTOM SCROLLBAR
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ocean-navy);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0B3554;
+  border-radius: 5px;
+  border: 2px solid var(--ocean-navy);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ocean-blue);
+}
+
+/* ==========================================================================
+   PREFERS REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale,
+  .reveal-card {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   FOOTER SOCIAL ICONS CONTRAST SYSTEM (LIGHT & DARK MODE)
+   ========================================================================== */
+html.light footer a[href*="wa.me"] {
+  background-color: #E8F8EE !important;
+  color: #128C7E !important;
+  border: 1.5px solid #25D366 !important;
+  box-shadow: 0 2px 6px rgba(37, 211, 102, 0.2) !important;
+}
+html.light footer a[href*="wa.me"]:hover {
+  background-color: #25D366 !important;
+  color: #FFFFFF !important;
+  border-color: #1EBE5D !important;
+}
+
+html.light footer a[href*="instagram.com"] {
+  background-color: #FDF2F4 !important;
+  color: #E1306C !important;
+  border: 1.5px solid #E1306C !important;
+  box-shadow: 0 2px 6px rgba(225, 48, 108, 0.2) !important;
+}
+html.light footer a[href*="instagram.com"]:hover {
+  background-color: #E1306C !important;
+  color: #FFFFFF !important;
+}
+
+html.light footer a[href*="x.com"] {
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+  border: 1.5px solid #64748B !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12) !important;
+}
+html.light footer a[href*="x.com"]:hover {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+  border-color: #0F172A !important;
+}
+
+html.light footer a[href*="facebook.com"] {
+  background-color: #EFF6FF !important;
+  color: #1877F2 !important;
+  border: 1.5px solid #1877F2 !important;
+  box-shadow: 0 2px 6px rgba(24, 119, 242, 0.2) !important;
+}
+html.light footer a[href*="facebook.com"]:hover {
+  background-color: #1877F2 !important;
+  color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   HERO SECTIONS TEXT CONTRAST ENGINE (LIGHT & DARK MODE)
+   ========================================================================== */
+/* Home 1 Hero & Any Photographic Dark Hero in Light Mode */
+html.light .hero-section,
+html.light .hero-section .hero-title,
+html.light .hero-section h1.text-white,
+html.light .hero-section h1,
+html.light .page-hero-banner .hero-title,
+html.light .page-hero-banner h1.text-white,
+html.light .page-hero-banner h1 {
+  color: #FFFFFF !important;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.9) !important;
+}
+
+html.light .hero-section .hero-desc,
+html.light .hero-section p.text-slate-100,
+html.light .page-hero-banner .hero-desc,
+html.light .page-hero-banner p.text-slate-100 {
+  color: #F1F5F9 !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* Feature stats in Home 1 Hero */
+html.light .hero-section .text-slate-200 {
+  color: #E2E8F0 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+}
+html.light .hero-section .hero-stat-val,
+html.light .hero-section .text-white,
+html.light .hero-section div.text-white {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85) !important;
+}
+html.light .hero-section .text-ocean-gold {
+  color: #FBBF24 !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7) !important;
+}
+html.light .hero-section .text-ocean-aqua {
+  color: #38BDF8 !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7) !important;
+}
+html.light .hero-section .border-white\/20 {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Ensure gradient text is NEVER smudged by inherited text-shadow or filter */
+.hero-gradient-text,
+.bg-clip-text,
+[class*="bg-clip-text"],
+html.light .hero-gradient-text,
+html.light .bg-clip-text,
+html.light [class*="bg-clip-text"],
+html.light .hero-section .hero-gradient-text,
+html.light .hero-section .bg-clip-text {
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Hero Badge Pills over dark backgrounds */
+html.light .hero-section .hero-badge-pill,
+html.light .page-hero-banner .hero-eyebrow {
+  background-color: rgba(6, 27, 44, 0.92) !important;
+  border-color: rgba(66, 198, 232, 0.45) !important;
+}
+html.light .hero-section .hero-badge-pill .text-white,
+html.light .hero-section .hero-badge-pill * {
+  color: #FFFFFF !important;
+}
+html.light .hero-section .hero-badge-pill .text-ocean-aqua {
+  color: #38BDF8 !important;
+}
+
+/* Hero Trust Badges in Page Banners (Products, etc.) */
+.hero-trust-badge {
+  background-color: rgba(6, 27, 44, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+html.light .hero-trust-badge {
+  background-color: rgba(6, 27, 44, 0.92) !important;
+  border-color: rgba(66, 198, 232, 0.45) !important;
+}
+
+html.light .hero-trust-badge,
+html.light .hero-trust-badge span {
+  color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   CONTACT PAGE TRUST BADGES & CONSULTATION CARD (LIGHT & DARK)
+   ========================================================================== */
+.contact-trust-pill {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+html.light .contact-trust-pill {
+  background-color: #FFFFFF !important;
+  border-color: rgba(8, 126, 171, 0.2) !important;
+  box-shadow: 0 2px 8px rgba(8, 126, 171, 0.06) !important;
+}
+
+html.light .contact-trust-pill .contact-pill-title {
+  color: #061B2C !important;
+}
+
+html.light .contact-trust-pill .contact-pill-desc {
+  color: #3E5A70 !important;
+}
+
+.contact-wa-card {
+  background-color: var(--bg-surface);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  transition: all 0.2s ease;
+}
+
+html.light .contact-wa-card {
+  background-color: #F0FDF4 !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.08) !important;
+}
+
+html.light .contact-wa-card .contact-wa-title {
+  color: #065F46 !important;
+}
+
+html.light .contact-wa-card .contact-wa-desc {
+  color: #047857 !important;
+}
+
+/* Quick Consultation Service Banner in Contact Form */
+.contact-consultation-banner {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+html.light .contact-consultation-banner {
+  background-color: #F8FCFD !important;
+  border-color: rgba(8, 126, 171, 0.22) !important;
+  box-shadow: 0 2px 8px rgba(8, 126, 171, 0.05) !important;
+}
+
+html.light .contact-consultation-banner .banner-item-title {
+  color: #061B2C !important;
+}
+
+html.light .contact-consultation-banner .banner-item-desc {
+  color: #3E5A70 !important;
+}
+
+/* Quick Topic Shortcut Chips */
+.quick-topic-btn {
+  transition: all 0.2s ease;
+}
+
+.quick-topic-btn.active-topic {
+  background-color: var(--ocean-blue) !important;
+  color: #FFFFFF !important;
+  border-color: var(--ocean-aqua) !important;
+}
+
+html.light .quick-topic-btn {
+  background-color: #F0F8FA !important;
+  border-color: rgba(8, 126, 171, 0.25) !important;
+  color: #3E5A70 !important;
+}
+
+html.light .quick-topic-btn:hover {
+  background-color: rgba(8, 126, 171, 0.12) !important;
+  color: #06729B !important;
+  border-color: var(--ocean-blue) !important;
+}
+
+html.light .quick-topic-btn.active-topic {
+  background-color: #087EAB !important;
+  color: #FFFFFF !important;
+  border-color: #087EAB !important;
+}
+
+/* Home 2 Hero Contrast in Light Mode */
+html.light #home2-hero h1,
+html.light #home2-hero h1.text-white {
+  color: #061B2C !important;
+}
+html.light #home2-hero .hero-gradient-text {
+  background-image: linear-gradient(to right, #087EAB, #06729B, #B58A14) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+html.light #home2-hero p.text-ocean-text-secondary {
+  color: #2A4558 !important;
+}
+html.light #home2-hero .text-ocean-gold {
+  color: #B58A14 !important;
+}
+html.light #home2-hero .text-ocean-aqua {
+  color: #06729B !important;
+}
+
+/* Floating Image Badges (e.g. Home 2 Apex Rod Card) */
+.image-overlay-badge,
+html.light .image-overlay-badge {
+  background-color: rgba(6, 27, 44, 0.92) !important;
+  border-color: rgba(66, 198, 232, 0.4) !important;
+}
+.image-overlay-badge h4,
+html.light .image-overlay-badge h4,
+.image-overlay-badge .text-white,
+html.light .image-overlay-badge .text-white {
+  color: #FFFFFF !important;
+}
+.image-overlay-badge .text-ocean-gold,
+html.light .image-overlay-badge .text-ocean-gold {
+  color: #FBBF24 !important;
+}
+.image-overlay-badge .text-ocean-aqua,
+html.light .image-overlay-badge .text-ocean-aqua {
+  color: #38BDF8 !important;
+}
+
+/* ==========================================================================
+   INTERACTIVE FAQ ACCORDION STYLES
+   ========================================================================== */
+details.faq-accordion summary::-webkit-details-marker,
+details.faq-accordion summary::marker {
+  display: none !important;
+}
+details.faq-accordion[open] {
+  border-color: rgba(66, 198, 232, 0.45);
+  box-shadow: 0 8px 24px -4px rgba(4, 17, 28, 0.5);
+}
+html.light details.faq-accordion[open] {
+  border-color: var(--ocean-blue) !important;
+  box-shadow: 0 8px 24px -4px rgba(8, 126, 171, 0.16) !important;
+}
+
+/* ==========================================================================
+   CROSS-BROWSER LINE CLAMP UTILITIES
+   ========================================================================== */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   INSIDE CARD ALIGNMENT UTILITIES (ACROSS ALL PAGES)
+   Guarantees uniform vertical alignment for product, blog, bundle, & report cards
+   ========================================================================== */
+
+/* Universal Card Flex Layout */
+.ocean-card.flex-col,
+.ocean-card.flex.flex-col {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ocean-card.flex-col > .flex-1,
+.ocean-card.flex.flex-col > .flex-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 1 0%;
+}
+
+/* Product Card Titles in Grids */
+.ocean-card h3.product-title,
+#best-sellers .ocean-card h3,
+#special-offers .ocean-card h3,
+#discount-offers .ocean-card h3,
+.catalog-product-card h3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.5rem;
+  line-height: 1.35;
+}
+
+/* Product Card Descriptions in Grids */
+.ocean-card p.product-desc,
+#best-sellers .ocean-card p.line-clamp-2,
+#special-offers .ocean-card p.line-clamp-2,
+#discount-offers .ocean-card p.line-clamp-2,
+.catalog-product-card p.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.25rem;
+  line-height: 1.45;
+}
+
+/* Bottom Action / Price Row Pinning & Guaranteed Divider Clearance */
+/* Ensure the inside card line (border-t) NEVER touches text or words above it across all cards & pages */
+.ocean-card div:has(+ [class*="border-t"]),
+.ocean-card p:has(+ [class*="border-t"]),
+.ocean-card ul:has(+ [class*="border-t"]),
+.report-card div:has(+ [class*="border-t"]),
+.catalog-product-card div:has(+ [class*="border-t"]),
+.ocean-card .flex-1 > div:first-child,
+.ocean-card.flex-col > div:first-child:not([class*="aspect-"]):not([class*="relative"]):not([class*="h-"]),
+.ocean-card.flex.flex-col > div:first-child:not([class*="aspect-"]):not([class*="relative"]):not([class*="h-"]) {
+  margin-bottom: 1.25rem !important;
+}
+
+/* Ensure paragraph line height in cards prevents descender clipping */
+.ocean-card p,
+.ocean-card .product-desc,
+.ocean-card .line-clamp-2,
+.ocean-card .line-clamp-3,
+.ocean-card .line-clamp-4 {
+  line-height: 1.55 !important;
+}
+
+/* Bottom action row / price container pinning */
+.ocean-card [class*="border-t"],
+.ocean-card .pt-3.border-t,
+.ocean-card .pt-4.border-t,
+.ocean-card .pt-5.border-t,
+.ocean-card .pt-6.border-t,
+.report-card [class*="border-t"],
+.catalog-product-card [class*="border-t"] {
+  margin-top: auto;
+}
+

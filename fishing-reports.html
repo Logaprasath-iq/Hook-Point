@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coastal Fishing Reports & Telemetry — HookPoint</title>
+  <meta name="description" content="Simulated real-time coastal water temperatures, tides, wave swell heights, and verified catch logs from Arabian Sea and Bay of Bengal hotspots." />
+  
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'ocean-navy': '#061B2C',
+            'ocean-navy-deep': '#030D16',
+            'ocean-navy-surface': '#0B253A',
+            'ocean-navy-card': '#0E2E47',
+            'ocean-blue': '#087EAB',
+            'ocean-blue-hover': '#0A96CC',
+            'ocean-aqua': '#42C6E8',
+            'ocean-gold': '#D6A928',
+            'ocean-gold-hover': '#E8B936',
+            'ocean-white': '#FFFFFF',
+            'ocean-soft-white': '#F4FAFC',
+            'ocean-muted-blue': '#7894A8',
+            'ocean-text-secondary': '#94AEC0'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/theme.js"></script>
+  <script src="js/direction.js"></script>
+</head>
+<body class="bg-ocean-navy text-white min-h-screen flex flex-col antialiased selection:bg-ocean-aqua selection:text-ocean-navy">
+
+  <!-- Sticky Navbar -->
+  <header class="site-nav">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <a href="index.html" class="flex items-center gap-3 shrink-0 group">
+          <img src="assets/images/logo.png" alt="HookPoint Logo" class="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-105" />
+          <div class="flex flex-col">
+            <span class="text-2xl font-black tracking-tight text-white group-hover:text-ocean-aqua transition leading-none">
+              Hook<span class="text-ocean-gold">Point</span>
+            </span>
+            <span class="text-[10px] tracking-widest uppercase font-semibold text-ocean-muted-blue mt-0.5">
+              Gear Up &bull; Cast Out &bull; Reel In
+            </span>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center lg:gap-3.5 xl:gap-6 text-xs xl:text-sm">
+          <!-- Home Dropdown -->
+          <div class="nav-dropdown group">
+            <button type="button" class="nav-link nav-dropdown-btn flex items-center gap-1.5 py-2 cursor-pointer outline-none" aria-haspopup="true" aria-expanded="false">
+              <span>Home</span>
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a href="index.html" class="nav-dropdown-item group/item">
+                <div>
+                  <div class="font-bold text-white group-hover/item:text-ocean-aqua transition">Home 1</div>
+                  <div class="text-[11px] text-ocean-muted-blue font-normal">Cinematic Storefront</div>
+                </div>
+                <span class="text-xs text-ocean-gold">→</span>
+              </a>
+              <a href="home-2.html" class="nav-dropdown-item group/item mt-1">
+                <div>
+                  <div class="font-bold text-white group-hover/item:text-ocean-aqua transition">Home 2</div>
+                  <div class="text-[11px] text-ocean-muted-blue font-normal">Equipment Showcase</div>
+                </div>
+                <span class="text-xs text-ocean-gold">→</span>
+              </a>
+            </div>
+          </div>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="products.html" class="nav-link">Products</a>
+          <a href="pricing.html" class="nav-link">Pricing</a>
+          <a href="fishing-reports.html" class="nav-link active">Fishing Reports</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-2 sm:gap-2.5">
+          <!-- Theme Toggle -->
+          <button type="button" class="theme-toggle-btn nav-action-btn nav-action-square rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-ocean-aqua transition shrink-0" aria-label="Toggle Theme"></button>
+
+          <!-- RTL / LTR Toggle -->
+          <button type="button" class="direction-toggle-btn nav-action-btn px-3 rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-aqua/30 hover:border-ocean-aqua text-ocean-aqua transition shrink-0" aria-label="Toggle Direction"></button>
+
+          <!-- Favorite Heart Button (After RTL Button) -->
+          <button type="button" class="open-favorites-btn nav-action-btn nav-action-square relative rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-ocean-gold hover:text-rose-400 hover:border-rose-400/50 transition shrink-0" aria-label="Saved Favorites" title="View Saved Favorites">
+            <svg class="w-5 h-5 transition-transform hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            <span class="fav-count-badge hidden absolute -top-1.5 -end-1.5 w-5 h-5 rounded-full bg-rose-500 text-white text-[11px] font-black flex items-center justify-center shadow-lg transition-transform">0</span>
+          </button>
+
+          <!-- Tackle Box / Cart Trigger -->
+          <button type="button" class="open-cart-btn nav-action-btn nav-action-square relative rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-ocean-aqua hover:border-ocean-aqua transition shrink-0" aria-label="Open Tackle Box" title="Open Tackle Box Cart">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+            <span class="cart-count-badge hidden absolute -top-1.5 -end-1.5 w-5 h-5 rounded-full bg-ocean-gold text-ocean-navy text-[11px] font-black flex items-center justify-center shadow-lg transition-transform">0</span>
+          </button>
+
+          <!-- Order CTA Button -->
+          <a href="order.html" class="hidden sm:inline-flex nav-action-btn px-5 gold-button rounded-xl text-xs font-bold uppercase tracking-wider shadow-md shrink-0">ORDER</a>
+
+          <!-- Mobile Hamburger Menu Button -->
+          <button type="button" id="mobile-menu-btn" class="lg:hidden nav-action-btn nav-action-square rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-white transition shrink-0" aria-label="Open Navigation Menu" aria-expanded="false">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer Backdrop -->
+  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-ocean-navy-deep/80 backdrop-blur-sm z-40 hidden transition-opacity lg:hidden"></div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu-drawer" class="fixed top-0 bottom-0 end-0 w-80 max-w-[85vw] bg-ocean-navy-surface border-s border-ocean-navy-border z-50 transition-transform duration-300 ease-out flex flex-col p-6 overflow-y-auto lg:hidden">
+    <div class="flex items-center justify-between pb-6 border-b border-ocean-navy-border">
+      <div class="flex items-center gap-2">
+        <img src="assets/images/logo.png" alt="HookPoint" class="w-8 h-8 object-contain" />
+        <span class="text-lg font-bold text-white">Hook<span class="text-ocean-gold">Point</span></span>
+      </div>
+      <button type="button" id="mobile-menu-close-btn" class="mobile-menu-close p-2 text-ocean-text-secondary hover:text-white rounded-lg" aria-label="Close menu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+
+    <nav class="flex-1 py-6 space-y-2">
+      <!-- Mobile Accordion for Home -->
+      <div class="space-y-1">
+        <button type="button" class="mobile-dropdown-toggle w-full flex items-center justify-between p-3 rounded-xl bg-ocean-navy text-white text-sm font-semibold transition border border-ocean-navy-border/60">
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-ocean-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            <span>Home</span>
+          </span>
+          <svg class="w-4 h-4 dropdown-arrow text-ocean-gold transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="hidden ps-4 space-y-1 pt-1">
+          <a href="index.html" class="flex items-center justify-between p-2.5 rounded-lg text-ocean-text-secondary hover:text-white hover:bg-ocean-navy text-xs font-medium transition">
+            <span>Home 1 — Storefront</span>
+            <span class="text-[10px] text-ocean-muted-blue">Cinematic</span>
+          </a>
+          <a href="home-2.html" class="flex items-center justify-between p-2.5 rounded-lg text-ocean-text-secondary hover:text-white hover:bg-ocean-navy text-xs font-medium transition">
+            <span>Home 2 — Equipment</span>
+            <span class="text-[10px] text-ocean-muted-blue">Showcase</span>
+          </a>
+        </div>
+      </div>
+
+      <a href="about.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>About</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="products.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Products</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="pricing.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Pricing &amp; Offers</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="fishing-reports.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Fishing Reports</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="blog.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Blog</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="contact.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Contact</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="order.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl bg-ocean-gold/15 text-ocean-gold text-sm font-bold transition">
+        <span>Order &amp; Cart</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+    </nav>
+
+    <div class="pt-6 border-t border-ocean-navy-border space-y-3">
+      <div class="flex items-center justify-between text-xs text-ocean-text-secondary">
+        <span class="font-semibold text-ocean-muted-blue">Language / Direction:</span>
+        <button type="button" class="direction-toggle-btn nav-action-btn px-3 rounded-xl bg-ocean-navy hover:bg-ocean-navy-card border border-ocean-aqua/30 text-ocean-aqua transition" aria-label="Toggle Direction"></button>
+      </div>
+      <a href="order.html" class="w-full gold-button py-3 text-center text-xs font-bold block rounded-xl shadow-md">Create Order Enquiry</a>
+    </div>
+  </div>
+
+  <main class="flex-1">
+
+    <!-- Header Banner with Cinematic Background & Centered Content -->
+    <section class="page-hero-banner relative py-24 sm:py-32 bg-ocean-navy border-b border-ocean-navy-border/60 overflow-hidden flex items-center justify-center min-h-[380px] sm:min-h-[440px]">
+      <!-- Background Image with High Visibility & Contrast -->
+      <div class="absolute inset-0 z-0">
+        <img src="assets/images/fishing.jpg" alt="Coastal Surf & Telemetry Reports" class="w-full h-full object-cover object-center filter brightness-[0.75] contrast-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-ocean-navy via-ocean-navy/40 to-black/55"></div>
+        <div class="underwater-light"></div>
+      </div>
+
+      <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <span class="hero-eyebrow inline-block text-xs uppercase font-extrabold tracking-widest text-emerald-400 bg-ocean-navy-deep/85 border border-emerald-500/40 px-4 py-1.5 rounded-full shadow-lg backdrop-blur-md mb-4">Live Coastal Telemetry</span>
+        <h1 class="hero-title text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">Indian Coastline Fishing Reports</h1>
+        <p class="hero-desc text-sm sm:text-base text-slate-100 max-w-2xl mx-auto mt-4 leading-relaxed font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+          Real-time water conditions, wave heights, tidal cycles, and recommended terminal setups for premier coastal hotspots.
+        </p>
+      </div>
+    </section>
+
+    <!-- Simulated Data Notice Alert -->
+    <div class="bg-ocean-blue/15 border-b border-ocean-aqua/20 py-3">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-3 text-xs text-ocean-aqua">
+        <svg class="w-4 h-4 shrink-0 text-ocean-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <span><strong>Demonstration Notice:</strong> Tidal movements and temperature telemetry below are simulated demonstration data based on seasonal averages. Always verify local marine weather warnings before casting out.</span>
+      </div>
+    </div>
+
+    <!-- Filter Bar & Reports Grid -->
+    <section class="section-spacing bg-ocean-navy">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Filter Controls -->
+        <div class="ocean-card p-6 rounded-2xl bg-ocean-navy-surface border border-ocean-navy-border mb-10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+          
+          <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs" id="report-type-filters">
+            <button type="button" class="report-filter-btn px-4 py-2 rounded-xl font-semibold bg-ocean-blue text-white shrink-0" data-type="all">
+              All Waterways (6)
+            </button>
+            <button type="button" class="report-filter-btn px-4 py-2 rounded-xl font-semibold bg-ocean-navy hover:bg-ocean-navy-deep text-ocean-text-secondary hover:text-white border border-ocean-navy-border shrink-0" data-type="Surf / Beach">
+              Surf & Beach
+            </button>
+            <button type="button" class="report-filter-btn px-4 py-2 rounded-xl font-semibold bg-ocean-navy hover:bg-ocean-navy-deep text-ocean-text-secondary hover:text-white border border-ocean-navy-border shrink-0" data-type="Estuary / River Mouth">
+              Estuary & Inlets
+            </button>
+            <button type="button" class="report-filter-btn px-4 py-2 rounded-xl font-semibold bg-ocean-navy hover:bg-ocean-navy-deep text-ocean-text-secondary hover:text-white border border-ocean-navy-border shrink-0" data-type="Rocky Cliffs">
+              Rocky Cliffs
+            </button>
+            <button type="button" class="report-filter-btn px-4 py-2 rounded-xl font-semibold bg-ocean-navy hover:bg-ocean-navy-deep text-ocean-text-secondary hover:text-white border border-ocean-navy-border shrink-0" data-type="Deep Sea / Offshore">
+              Deep Sea & Reefs
+            </button>
+          </div>
+
+          <button type="button" id="submit-report-modal-btn" class="gold-button text-xs py-2.5 px-5 font-bold shrink-0">
+            + Submit Catch Log
+          </button>
+        </div>
+
+        <!-- 6 Detailed Location Reports -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="reports-grid">
+          
+          <!-- Report 1 -->
+          <div class="ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border overflow-hidden flex flex-col justify-between report-card reveal-card" data-watertype="Estuary / River Mouth">
+            <div>
+              <div class="aspect-[16/9] overflow-hidden bg-ocean-navy-surface relative">
+                <img src="https://i.pinimg.com/736x/86/af/0e/86af0e15eca3151c121df3424c63a61d.jpg" alt="Mangalore Estuary" class="w-full h-full object-cover" />
+                <span class="absolute top-3 start-3 px-2.5 py-1 text-[10px] font-bold uppercase rounded bg-ocean-blue text-white">Estuary / River Mouth</span>
+                <span class="absolute top-3 end-3 px-2.5 py-1 text-[10px] font-bold uppercase rounded bg-emerald-950/90 text-emerald-400 border border-emerald-500/30">4.9 / 5 Peak Activity</span>
+              </div>
+              <div class="p-6">
+                <div class="text-[11px] font-bold text-ocean-aqua uppercase">Karnataka Coastline • 12.8421° N, 74.8329° E</div>
+                <h3 class="text-lg font-bold text-white mt-1 line-clamp-2 min-h-[3.5rem]">Mangalore Coastal Outcrop & Netravati Estuary</h3>
+
+                <div class="grid grid-cols-2 gap-2 text-xs py-3 border-y border-ocean-navy-border my-4">
+                  <div><span class="text-ocean-text-secondary">Water Temp:</span> <span class="text-white font-medium">28°C / 82°F</span></div>
+                  <div><span class="text-ocean-text-secondary">Wave Swell:</span> <span class="text-white font-medium">1.1m Breakers</span></div>
+                  <div><span class="text-ocean-text-secondary">Tide State:</span> <span class="text-ocean-gold font-medium">Rising (+1.4m)</span></div>
+                  <div><span class="text-ocean-text-secondary">Wind Velocity:</span> <span class="text-white font-medium">11 kts WSW</span></div>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                  <div>
+                    <span class="text-ocean-text-secondary block font-medium">Target Species:</span>
+                    <span class="text-white font-semibold">Barramundi (Asian Seabass), Mangrove Jack, GT, Threadfin</span>
+                  </div>
+                  <div>
+                    <span class="text-ocean-text-secondary block font-medium">Recommended Setup:</span>
+                    <span class="text-ocean-gold font-medium">StrikeScent Preserved Squid Strips & 14g HydroPulse Crankbait</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-ocean-navy-surface border border-ocean-navy-border text-ocean-text-secondary text-[11px]">
+                    <strong class="text-ocean-aqua">Pro Tip:</strong> Target the granitic submerged boulder line 45 mins before high slack tide. Slow rolling twitch jerkbaits along the current seam has yielded multiple 6kg+ Barramundi.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 border-t border-ocean-navy-border bg-ocean-navy-surface/50 text-end text-[11px] text-ocean-muted-blue mt-auto">
+              Updated 2 hours ago (Simulated Demo)
+            </div>
+          </div>
+
+          <!-- Report 2 -->
+          <div class="ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border overflow-hidden flex flex-col justify-between report-card reveal-card" data-watertype="Surf / Beach">
+            <div>
+              <div class="aspect-[16/9] overflow-hidden bg-ocean-navy-surface relative">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Goa Chapora" class="w-full h-full object-cover" />
+                <span class="absolute top-3 start-3 px-2.5 py-1 text-[10px] font-bold uppercase rounded bg-ocean-blue text-white">Surf / Beach</span>
+                <span class="absolute top-3 end-3 px-2.5 py-1 text-[10px] font-bold uppercase rounded bg-emerald-950/90 text-emerald-400 border border-emerald-500/30">4.7 / 5 High</span>
+              </div>
+              <div class="p-6">
+                <div class="text-[11px] font-bold text-ocean-aqua uppercase">North Goa • 15.6042° N, 73.7381° E</div>
+                <h3 class="text-lg font-bold text-white mt-1 line-clamp-2 min-h-[3.5rem]">Goa Chapora River Mouth & Vagator Shelf</h3>
+
+                <div class="grid grid-cols-2 gap-2 text-xs py-3 border-y border-ocean-navy-border my-4">
+                  <div><span class="text-ocean-text-secondary">Water Temp:</span> <span class="text-white font-medium">29°C / 84°F</span></div>
+                  <div><span class="text-ocean-text-secondary">Wave Swell:</span> <span class="text-white font-medium">0.8m Gentle</span></div>
+                  <div><span class="text-ocean-text-secondary">Tide State:</span> <span class="text-ocean-gold font-medium">High Slack</span></div>
+                  <div><span class="text-ocean-text-secondary">Wind Velocity:</span> <span class="text-white font-medium">8 kts NW</span></div>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                  <div>
+                    <span class="text-ocean-text-secondary block font-medium">Target Species:</span>
+                    <span class="text-white font-semibold">Ladyfish (Kane), Queenfish, Golden Snapper</span>
+                  </div>
+                  <div>
+                    <span class="text-ocean-text-secondary block font-medium">Recommended Setup:</span>
+                    <span class="text-ocean-gold font-medium">BioGlow Night Worm Clusters & Phantom Minnow Jerkbait</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-ocean-navy-surface border border-ocean-navy-border text-ocean-text-secondary text-[11px]">
+                    <strong class="text-ocean-aqua">Pro Tip:</strong> Ladyfish schooling heavily along the sandy drop-offs. Use small #1/0 circle hooks with light 10lb fluorocarbon leaders for consistent hookups.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 border-t border-ocean-navy-border bg-ocean-navy-surface/50 text-end text-[11px] text-ocean-muted-blue mt-auto">
+              Updated 4 hours ago (Simulated Demo)
+            </div>
+          </div>
+
+          <!-- Report 3 -->
+          <div class="ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border overflow-hidden flex flex-col justify-between report-card reveal-card" data-watertype="Surf / Beach">
+            <div>
+              <div class="aspect-[16/9] overflow-hidden bg-ocean-navy-surface relative">
+                <img src="https://i.pinimg.com/736x/77/d7/db/77d7db967df1e51439b06965381ea25b.jpg" alt="Chennai Marina" class="w-full h-full object-cover" />
+                <span class="absolute top-3 start-3 px-2.5 py-1 text-[10px] font-bold uppercase rounded bg-ocean-blue text-white">Surf / Beach</span>
+                <span class="absolute top-3 end-3 px-2.5 py-1 text-[10px] font-bold uppercase rounded bg-amber-950/90 text-amber-400 border border-amber-500/30">4.5 / 5 Steady</span>
+              </div>
+              <div class="p-6">
+                <div class="text-[11px] font-bold text-ocean-aqua uppercase">Tamil Nadu Coast • 13.0475° N, 80.2824° E</div>
+                <h3 class="text-lg font-bold text-white mt-1 line-clamp-2 min-h-[3.5rem]">Chennai Marina Breakers & Pulicat Lake</h3>
+
+                <div class="grid grid-cols-2 gap-2 text-xs py-3 border-y border-ocean-navy-border my-4">
+                  <div><span class="text-ocean-text-secondary">Water Temp:</span> <span class="text-white font-medium">30°C / 86°F</span></div>
+                  <div><span class="text-ocean-text-secondary">Wave Swell:</span> <span class="text-white font-medium">1.6m Heavy</span></div>
+                  <div><span class="text-ocean-text-secondary">Tide State:</span> <span class="text-ocean-gold font-medium">Ebbing (-0.2m)</span></div>
+                  <div><span class="text-ocean-text-secondary">Wind Velocity:</span> <span class="text-white font-medium">14 kts ESE</span></div>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                  <div>
+                    <span class="text-ocean-text-secondary block font-medium">Target Species:</span>
+                    <span class="text-white font-semibold">Croaker, Mullet, Rock Cod (Grouper), Pompano</span>
+                  </div>
+                  <div>
+                    <span class="text-ocean-text-secondary block font-medium">Recommended Setup:</span>
+                    <span class="text-ocean-gold font-medium">Apex Surf Rod with 150g Pyramid Sinker & Squid</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-ocean-navy-surface border border-ocean-navy-border text-ocean-text-secondary text-[11px]">
+                    <strong class="text-ocean-aqua">Pro Tip:</strong> Heavy breaker action requires long 12ft casts to clear the outer sandbar. Pack 40g to 50g spider sinkers to anchor against cross-shore drift.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 border-t border-ocean-navy-border bg-ocean-navy-surface/50 text-end text-[11px] text-ocean-muted-blue mt-auto">
+              Updated 5 hours ago (Simulated Demo)
+            </div>
+          </div>
+
+          <!-- Report 4 -->
+          <div class="ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border overflow-hidden flex flex-col justify-between report-card reveal-card" data-watertype="Rocky Cliffs">
+            <div>
+              <div class="aspect-[16/9] overflow-hidden bg-ocean-navy-surface relative">
+                <img src="https://i.pinimg.com/736x/5c/4f/c3/5c4fc3c555e8977e6751b0e5fa2a752e.jpg" alt="Mumbai Worli" class="w-full h-full object-cover" />
+                <span class="absolute top-3 start-3 px-2.5 py-1 text-[10px] font-bold uppercase rounded bg-ocean-blue text-white">Rocky Cliffs</span>
+                <span class="absolute top-3 end-3 px-2.5 py-1 text-[10px] font-bold uppercase rounded bg-emerald-950/90 text-emerald-400 border border-emerald-500/30">4.6 / 5 High</span>
+              </div>
+              <div class="p-6">
+                <div class="text-[11px] font-bold text-ocean-aqua uppercase">Maharashtra Coast • 19.0176° N, 72.8174° E</div>
+                <h3 class="text-lg font-bold text-white mt-1 line-clamp-2 min-h-[3.5rem]">Mumbai Worli Seafront & Bandra Shelf</h3>
+
+                <div class="grid grid-cols-2 gap-2 text-xs py-3 border-y border-ocean-navy-border my-4">
+                  <div><span class="text-ocean-text-secondary">Water Temp:</span> <span class="text-white font-medium">27°C / 80°F</span></div>
+                  <div><span class="text-ocean-text-secondary">Wave Swell:</span> <span class="text-white font-medium">1.3m Choppy</span></div>
+                  <div><span class="text-ocean-text-secondary">Tide State:</span> <span class="text-ocean-gold font-medium">Incoming (+1.8m)</span></div>
+                  <div><span class="text-ocean-text-secondary">Wind Velocity:</span> <span class="text-white font-medium">13 kts W</span></div>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                  <div>
+                    <span class="text-ocean-text-secondary block font-medium">Target Species:</span>
+                    <span class="text-white font-semibold">Ghol (Croaker), Indian Mackerel, Giant Seabass</span>
+                  </div>
+                  <div>
+                    <span class="text-ocean-text-secondary block font-medium">Recommended Setup:</span>
+                    <span class="text-ocean-gold font-medium">Heavy Jigs (40g) & Cured Squid with glow attractant</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-ocean-navy-surface border border-ocean-navy-border text-ocean-text-secondary text-[11px]">
+                    <strong class="text-ocean-aqua">Pro Tip:</strong> Exercise extreme caution on slippery seawall rocks — wear studded boots. Sunset flood tide is triggering explosive strikes from feeding schools of Mackerel.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 border-t border-ocean-navy-border bg-ocean-navy-surface/50 text-end text-[11px] text-ocean-muted-blue mt-auto">
+              Updated 3 hours ago (Simulated Demo)
+            </div>
+          </div>
+
+          <!-- Report 5 -->
+          <div class="ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border overflow-hidden flex flex-col justify-between report-card reveal-card" data-watertype="Deep Sea / Offshore">
+            <div>
+              <div class="aspect-[16/9] overflow-hidden bg-ocean-navy-surface relative">
+                <img src="https://i.pinimg.com/1200x/44/64/93/446493ae712cf2811512eee10a687452.jpg" alt="Andaman Havelock" class="w-full h-full object-cover" />
+                <span class="absolute top-3 start-3 px-2.5 py-1 text-[10px] font-bold uppercase rounded bg-ocean-gold text-ocean-navy">Deep Sea / Offshore</span>
+                <span class="absolute top-3 end-3 px-2.5 py-1 text-[10px] font-bold uppercase rounded bg-ocean-gold/20 text-ocean-gold border border-ocean-gold/30">5.0 / 5 World Class</span>
+              </div>
+              <div class="p-6">
+                <div class="text-[11px] font-bold text-ocean-gold uppercase">Andaman Islands • 11.9761° N, 93.0031° E</div>
+                <h3 class="text-lg font-bold text-white mt-1 line-clamp-2 min-h-[3.5rem]">Andaman South Trench & Havelock Outer Reef</h3>
+
+                <div class="grid grid-cols-2 gap-2 text-xs py-3 border-y border-ocean-navy-border my-4">
+                  <div><span class="text-ocean-text-secondary">Water Temp:</span> <span class="text-white font-medium">29°C / 84°F</span></div>
+                  <div><span class="text-ocean-text-secondary">Wave Swell:</span> <span class="text-white font-medium">1.4m Swell</span></div>
+                  <div><span class="text-ocean-text-secondary">Tide State:</span> <span class="text-ocean-gold font-medium">Mid-Flood</span></div>
+                  <div><span class="text-ocean-text-secondary">Wind Velocity:</span> <span class="text-white font-medium">9 kts SW</span></div>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                  <div>
+                    <span class="text-ocean-text-secondary block font-medium">Target Species:</span>
+                    <span class="text-white font-semibold">Monster Giant Trevally (30kg+), Dogtooth Tuna, Sailfish</span>
+                  </div>
+                  <div>
+                    <span class="text-ocean-text-secondary block font-medium">Recommended Setup:</span>
+                    <span class="text-ocean-gold font-medium">ViperTopwater Popper & DeepDrop 8000 Trolling Combo</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-ocean-navy-surface border border-ocean-navy-border text-ocean-text-secondary text-[11px]">
+                    <strong class="text-ocean-aqua">Pro Tip:</strong> Giant Trevally smashing topwater poppers around reef pinnacles. Heavy 100lb leader is mandatory; anything lighter is instantly severed on coral heads.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 border-t border-ocean-navy-border bg-ocean-navy-surface/50 text-end text-[11px] text-ocean-muted-blue mt-auto">
+              Updated 1 hour ago (Simulated Demo)
+            </div>
+          </div>
+
+          <!-- Report 6 -->
+          <div class="ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border overflow-hidden flex flex-col justify-between report-card reveal-card" data-watertype="Rocky Cliffs">
+            <div>
+              <div class="aspect-[16/9] overflow-hidden bg-ocean-navy-surface relative">
+                <img src="https://i.pinimg.com/736x/31/88/84/31888431303148adadbd1a6745e1613c.jpg" alt="Vizag Dolphin's Nose" class="w-full h-full object-cover" />
+                <span class="absolute top-3 start-3 px-2.5 py-1 text-[10px] font-bold uppercase rounded bg-ocean-blue text-white">Rocky Cliffs</span>
+                <span class="absolute top-3 end-3 px-2.5 py-1 text-[10px] font-bold uppercase rounded bg-emerald-950/90 text-emerald-400 border border-emerald-500/30">4.8 / 5 High</span>
+              </div>
+              <div class="p-6">
+                <div class="text-[11px] font-bold text-ocean-aqua uppercase">Andhra Coast • 17.6833° N, 83.2833° E</div>
+                <h3 class="text-lg font-bold text-white mt-1 line-clamp-2 min-h-[3.5rem]">Vizag Dolphin's Nose & Rocky Shelf</h3>
+
+                <div class="grid grid-cols-2 gap-2 text-xs py-3 border-y border-ocean-navy-border my-4">
+                  <div><span class="text-ocean-text-secondary">Water Temp:</span> <span class="text-white font-medium">28.5°C / 83°F</span></div>
+                  <div><span class="text-ocean-text-secondary">Wave Swell:</span> <span class="text-white font-medium">1.0m Swell</span></div>
+                  <div><span class="text-ocean-text-secondary">Tide State:</span> <span class="text-ocean-gold font-medium">Turn of Tide</span></div>
+                  <div><span class="text-ocean-text-secondary">Wind Velocity:</span> <span class="text-white font-medium">10 kts SE</span></div>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                  <div>
+                    <span class="text-ocean-text-secondary block font-medium">Target Species:</span>
+                    <span class="text-white font-semibold">Red Snapper, Cobia, Spanish Mackerel, Kingfish</span>
+                  </div>
+                  <div>
+                    <span class="text-ocean-text-secondary block font-medium">Recommended Setup:</span>
+                    <span class="text-ocean-gold font-medium">Live Bait Dropper Rig on Titan Forged Circle Hooks</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-ocean-navy-surface border border-ocean-navy-border text-ocean-text-secondary text-[11px]">
+                    <strong class="text-ocean-aqua">Pro Tip:</strong> Cobia cruising just 20 meters off the rocky drop-off at slack water. Drift live prawns or small mullet without sinkers for natural presentations.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 border-t border-ocean-navy-border bg-ocean-navy-surface/50 text-end text-[11px] text-ocean-muted-blue mt-auto">
+              Updated 6 hours ago (Simulated Demo)
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 1 (WITHOUT IMAGES): Coastal Solunar & Tidal Feeding Windows Matrix -->
+    <section class="section-spacing bg-ocean-navy-surface border-t border-ocean-navy-border/60 relative overflow-hidden">
+      <!-- Atmospheric Underwater Glow Effect -->
+      <div class="underwater-light opacity-60"></div>
+
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Section Header -->
+        <div class="max-w-3xl mb-12 reveal">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-ocean-blue/20 text-ocean-aqua border border-ocean-aqua/30 mb-3">
+            <svg class="w-4 h-4 text-ocean-aqua shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <span>Astronomical Tidal Telemetry</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
+            Coastal Solunar & Tidal Feeding Windows
+          </h2>
+          <p class="text-sm sm:text-base text-ocean-text-secondary mt-2 leading-relaxed">
+            Predatory saltwater species synchronize their hunting bursts with tidal flushes and lunar gravitational transits. Monitor today's major and minor bite windows across major coastal fishing sectors before rigging up.
+          </p>
+        </div>
+
+        <!-- 4 Live Solunar Key Indicator Cards (No Images, Pure SVGs & Metrics) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+          
+          <!-- Key Metric 1 -->
+          <div class="ocean-card p-5 rounded-2xl bg-ocean-navy border border-ocean-navy-border hover:border-ocean-aqua/50 transition-all duration-300 reveal-card">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-ocean-muted-blue">Major Bite Window</span>
+              <div class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-2xl font-black text-white">05:30 – 07:45 AM</div>
+            <div class="text-xs text-emerald-400 font-semibold mt-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Peak Predatory Flush • High Tide Turn</span>
+            </div>
+            <p class="text-[11px] text-ocean-muted-blue mt-2">Maximum aggressive strikes on surface poppers and live bait drift rigs.</p>
+          </div>
+
+          <!-- Key Metric 2 -->
+          <div class="ocean-card p-5 rounded-2xl bg-ocean-navy border border-ocean-navy-border hover:border-ocean-aqua/50 transition-all duration-300 reveal-card">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-ocean-muted-blue">Minor Bite Window</span>
+              <div class="w-9 h-9 rounded-xl bg-ocean-blue/15 border border-ocean-blue/30 text-ocean-aqua flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-2xl font-black text-white">01:15 – 02:45 PM</div>
+            <div class="text-xs text-ocean-aqua font-semibold mt-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-ocean-aqua"></span>
+              <span>Mid-Flood Rip • Secondary Feeding</span>
+            </div>
+            <p class="text-[11px] text-ocean-muted-blue mt-2">Pelagic schools patrol rocky drop-offs; ideal for metal casting spoons & deep jigs.</p>
+          </div>
+
+          <!-- Key Metric 3 -->
+          <div class="ocean-card p-5 rounded-2xl bg-ocean-navy border border-ocean-navy-border hover:border-ocean-aqua/50 transition-all duration-300 reveal-card">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-ocean-muted-blue">Lunar Phase & Grav</span>
+              <div class="w-9 h-9 rounded-xl bg-ocean-gold/10 border border-ocean-gold/25 text-ocean-gold flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-2xl font-black text-white">Waxing Crescent</div>
+            <div class="text-xs text-ocean-gold font-semibold mt-1 flex items-center gap-1.5">
+              <span>28% Illumination • Moderate Neap Tide</span>
+            </div>
+            <p class="text-[11px] text-ocean-muted-blue mt-2">Dark water favors luminous lures, glow attractant squid, and silent rattles.</p>
+          </div>
+
+          <!-- Key Metric 4 -->
+          <div class="ocean-card p-5 rounded-2xl bg-ocean-navy border border-ocean-navy-border hover:border-ocean-aqua/50 transition-all duration-300 reveal-card">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-ocean-muted-blue">Barometric Pressure</span>
+              <div class="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-2xl font-black text-white">1013.4 hPa</div>
+            <div class="text-xs text-sky-400 font-semibold mt-1 flex items-center gap-1.5">
+              <span>Steady Barometer • Stable Swim Bladder</span>
+            </div>
+            <p class="text-[11px] text-ocean-muted-blue mt-2">Optimal digestive comfort for pelagic fish; predictable strike depth throughout water column.</p>
+          </div>
+
+        </div>
+
+        <!-- Feeding Windows Telemetry Table (Fully Responsive, Clean Data Grid) -->
+        <div class="ocean-card rounded-2xl bg-ocean-navy border border-ocean-navy-border overflow-hidden reveal">
+          <div class="p-5 border-b border-ocean-navy-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-ocean-navy-card/60">
+            <div>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">
+                <svg class="w-4 h-4 text-ocean-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                <span>Indian Coastal Solunar Schedule & Tackle Readiness</span>
+              </h3>
+              <p class="text-xs text-ocean-muted-blue mt-0.5">Updated every 6 hours based on regional marine tide stations and lunar transit models.</p>
+            </div>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-950/80 text-emerald-400 border border-emerald-500/30">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              Live Telemetry Calibrated
+            </span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-start text-xs border-collapse">
+              <thead>
+                <tr class="border-b border-ocean-navy-border bg-ocean-navy-surface/80 text-ocean-muted-blue uppercase text-[10px] font-bold tracking-wider">
+                  <th class="py-3.5 px-4 text-start">Coastal Zone & Waterway</th>
+                  <th class="py-3.5 px-4 text-start">Current Tide Phase</th>
+                  <th class="py-3.5 px-4 text-start">Optimal Strike Window</th>
+                  <th class="py-3.5 px-4 text-start">Tidal Drift Velocity</th>
+                  <th class="py-3.5 px-4 text-start">Calibrated Tackle Setup</th>
+                  <th class="py-3.5 px-4 text-start">Bite Rating</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-ocean-navy-border/60 text-ocean-text-secondary">
+                <tr class="hover:bg-ocean-navy-surface/50 transition">
+                  <td class="py-3.5 px-4 font-semibold text-white">
+                    <div>Coromandel Coast (Chennai / ECR)</div>
+                    <div class="text-[10px] text-ocean-muted-blue font-normal">Surf Beach & Sandbars</div>
+                  </td>
+                  <td class="py-3.5 px-4">
+                    <span class="text-ocean-aqua font-medium">Incoming Flood (+1.2m)</span>
+                  </td>
+                  <td class="py-3.5 px-4 text-white font-mono font-bold">05:45 AM – 07:15 AM</td>
+                  <td class="py-3.5 px-4">1.4 knots Northward</td>
+                  <td class="py-3.5 px-4 text-ocean-gold font-medium">35g Casting Jig + 30lb Wire Leader</td>
+                  <td class="py-3.5 px-4">
+                    <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-500/30">96% Frenzy</span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-ocean-navy-surface/50 transition">
+                  <td class="py-3.5 px-4 font-semibold text-white">
+                    <div>Goa Coastal Inlets (Chapora / Morjim)</div>
+                    <div class="text-[10px] text-ocean-muted-blue font-normal">Estuary & Rocky Point</div>
+                  </td>
+                  <td class="py-3.5 px-4">
+                    <span class="text-ocean-gold font-medium">Turn to Ebb Tide (-0.8m)</span>
+                  </td>
+                  <td class="py-3.5 px-4 text-white font-mono font-bold">04:30 PM – 06:15 PM</td>
+                  <td class="py-3.5 px-4">2.1 knots Outgoing</td>
+                  <td class="py-3.5 px-4 text-ocean-gold font-medium">14g Walk-the-Dog Floating Pencil</td>
+                  <td class="py-3.5 px-4">
+                    <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-500/30">92% Very High</span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-ocean-navy-surface/50 transition">
+                  <td class="py-3.5 px-4 font-semibold text-white">
+                    <div>Andaman Outer Reefs (Havelock / Neil)</div>
+                    <div class="text-[10px] text-ocean-muted-blue font-normal">Coral Shelf & Deep Drop</div>
+                  </td>
+                  <td class="py-3.5 px-4">
+                    <span class="text-ocean-aqua font-medium">Spring Tide Surge (+1.9m)</span>
+                  </td>
+                  <td class="py-3.5 px-4 text-white font-mono font-bold">06:00 AM – 08:30 AM</td>
+                  <td class="py-3.5 px-4">3.2 knots Seaward</td>
+                  <td class="py-3.5 px-4 text-ocean-gold font-medium">120g Heavy Chugger Popper & 80lb Braid</td>
+                  <td class="py-3.5 px-4">
+                    <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase bg-rose-950 text-rose-400 border border-rose-500/30">98% Explosive</span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-ocean-navy-surface/50 transition">
+                  <td class="py-3.5 px-4 font-semibold text-white">
+                    <div>Vizag Dolphin's Nose (Andhra)</div>
+                    <div class="text-[10px] text-ocean-muted-blue font-normal">Submerged Rock Shelf</div>
+                  </td>
+                  <td class="py-3.5 px-4">
+                    <span class="text-ocean-text-secondary font-medium">High Slack Water</span>
+                  </td>
+                  <td class="py-3.5 px-4 text-white font-mono font-bold">11:30 AM – 01:00 PM</td>
+                  <td class="py-3.5 px-4">0.8 knots Southward</td>
+                  <td class="py-3.5 px-4 text-ocean-gold font-medium">Live Prawn Dropper on 6/0 Titan Hooks</td>
+                  <td class="py-3.5 px-4">
+                    <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase bg-sky-950 text-sky-400 border border-sky-500/30">84% Strong</span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-ocean-navy-surface/50 transition">
+                  <td class="py-3.5 px-4 font-semibold text-white">
+                    <div>Mumbai Coastal Seawall (Colaba / Marine)</div>
+                    <div class="text-[10px] text-ocean-muted-blue font-normal">Urban Saltwater Shoreline</div>
+                  </td>
+                  <td class="py-3.5 px-4">
+                    <span class="text-ocean-aqua font-medium">Mid-Flood Rip (+1.0m)</span>
+                  </td>
+                  <td class="py-3.5 px-4 text-white font-mono font-bold">06:45 PM – 08:30 PM</td>
+                  <td class="py-3.5 px-4">1.2 knots Shoreward</td>
+                  <td class="py-3.5 px-4 text-ocean-gold font-medium">Cured Squid Strip + Luminous Glow Bead</td>
+                  <td class="py-3.5 px-4">
+                    <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase bg-amber-950 text-amber-400 border border-amber-500/30">78% Moderate</span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-ocean-navy-surface/50 transition">
+                  <td class="py-3.5 px-4 font-semibold text-white">
+                    <div>Malabar Shipping Channel (Kochi Inlet)</div>
+                    <div class="text-[10px] text-ocean-muted-blue font-normal">Deep Backwater Outflow</div>
+                  </td>
+                  <td class="py-3.5 px-4">
+                    <span class="text-ocean-gold font-medium">Fast Ebb Flush (-1.1m)</span>
+                  </td>
+                  <td class="py-3.5 px-4 text-white font-mono font-bold">05:15 AM – 06:45 AM</td>
+                  <td class="py-3.5 px-4">2.5 knots Westward</td>
+                  <td class="py-3.5 px-4 text-ocean-gold font-medium">28g Deep Diving Minnow + 40lb Leader</td>
+                  <td class="py-3.5 px-4">
+                    <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-500/30">90% High</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="p-4 bg-ocean-navy-surface/40 border-t border-ocean-navy-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ocean-muted-blue">
+            <span class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-ocean-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Timing calculations reflect Indian Standard Time (IST UTC+05:30).</span>
+            </span>
+            <a href="products.html?category=lures" class="text-ocean-aqua hover:text-white font-bold transition flex items-center gap-1">
+              <span>Equip Lures For Next Tidal Flush</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2 (WITHOUT IMAGES): Terminal Tackle Calibration by Sea State -->
+    <section class="section-spacing bg-ocean-navy border-t border-ocean-navy-border/60 relative overflow-hidden">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Section Header -->
+        <div class="max-w-3xl mb-12 reveal">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-ocean-gold/15 text-ocean-gold border border-ocean-gold/30 mb-3">
+            <svg class="w-4 h-4 text-ocean-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span>Tackle Setup & Rig Engineering</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
+            Terminal Tackle Calibration by Sea State
+          </h2>
+          <p class="text-sm sm:text-base text-ocean-text-secondary mt-2 leading-relaxed">
+            Water clarity, current velocity, wave surge, and seabed topography dictate hook penetration and lure presentation. Review our calibrated equipment setups for each coastal condition profile before heading onto the water.
+          </p>
+        </div>
+
+        <!-- 4 Condition Calibration Cards (No Images, Rich Architectural Breakdown) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          
+          <!-- Card 1: Heavy Surf & Turbid Surge -->
+          <div class="ocean-card p-6 sm:p-7 rounded-2xl bg-ocean-navy-surface border border-ocean-navy-border hover:border-ocean-aqua/50 transition-all duration-300 flex flex-col justify-between reveal-card">
+            <div class="mb-5">
+              <div class="flex items-center justify-between pb-4 border-b border-ocean-navy-border">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-ocean-blue/20 border border-ocean-blue/30 text-ocean-aqua flex items-center justify-center shrink-0">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-ocean-aqua">Condition Profile 01</span>
+                    <h3 class="text-lg font-bold text-white">Heavy Surf & Turbid Surge</h3>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 rounded text-[10px] font-extrabold uppercase bg-amber-950/80 text-amber-400 border border-amber-500/30">1.8m – 2.5m Swell</span>
+              </div>
+
+              <!-- Condition Metrics Grid -->
+              <div class="grid grid-cols-3 gap-2 py-4 border-b border-ocean-navy-border/60 text-xs">
+                <div>
+                  <span class="text-[10px] text-ocean-muted-blue block">Water Clarity</span>
+                  <span class="text-white font-semibold">&lt; 0.5m Turbid</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-ocean-muted-blue block">Seabed Type</span>
+                  <span class="text-white font-semibold">Sand / Shell Bed</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-ocean-muted-blue block">Current Speed</span>
+                  <span class="text-white font-semibold">2.5 – 3.5 kts</span>
+                </div>
+              </div>
+
+              <!-- Calibrated Tackle Specs -->
+              <div class="space-y-3 py-4 text-xs">
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Target:</span>
+                  <span class="text-ocean-text-secondary">Ghol (Croaker), Indian Threadfin Salmon, Sand Whiting, Guitarfish</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Line Setup:</span>
+                  <span class="text-ocean-text-secondary">50lb 8-Strand HydroWeave Braid + 60lb Wire/Mono Shock Leader</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Terminal Rig:</span>
+                  <span class="text-ocean-text-secondary">5oz Spikeless Pyramid Sinker + Twin 7/0 Forged Titan Circle Hooks</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Bait Strategy:</span>
+                  <span class="text-ocean-text-secondary">Heavy-scented squid strips with fluorescent glow attractant beads</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-ocean-navy-border/60 flex items-center justify-between mt-auto">
+              <span class="text-[11px] text-ocean-muted-blue font-medium">Recommended: HookPoint Surfmaster Series</span>
+              <a href="products.html?category=rods" class="text-xs font-bold text-ocean-gold hover:text-white transition flex items-center gap-1">
+                <span>View Surf Gear</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2: Crystal Clear Flats & Coral Bommies -->
+          <div class="ocean-card p-6 sm:p-7 rounded-2xl bg-ocean-navy-surface border border-ocean-navy-border hover:border-ocean-aqua/50 transition-all duration-300 flex flex-col justify-between reveal-card">
+            <div class="mb-5">
+              <div class="flex items-center justify-between pb-4 border-b border-ocean-navy-border">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-ocean-blue/20 border border-ocean-blue/30 text-ocean-aqua flex items-center justify-center shrink-0">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-ocean-aqua">Condition Profile 02</span>
+                    <h3 class="text-lg font-bold text-white">Clear Flats & Coral Bommies</h3>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 rounded text-[10px] font-extrabold uppercase bg-emerald-950/80 text-emerald-400 border border-emerald-500/30">0.2m – 0.5m Swell</span>
+              </div>
+
+              <!-- Condition Metrics Grid -->
+              <div class="grid grid-cols-3 gap-2 py-4 border-b border-ocean-navy-border/60 text-xs">
+                <div>
+                  <span class="text-[10px] text-ocean-muted-blue block">Water Clarity</span>
+                  <span class="text-white font-semibold">&gt; 12m Gin Clear</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-ocean-muted-blue block">Seabed Type</span>
+                  <span class="text-white font-semibold">Coral & Sand Flats</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-ocean-muted-blue block">Current Speed</span>
+                  <span class="text-white font-semibold">0.5 – 1.0 kts</span>
+                </div>
+              </div>
+
+              <!-- Calibrated Tackle Specs -->
+              <div class="space-y-3 py-4 text-xs">
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Target:</span>
+                  <span class="text-ocean-text-secondary">Giant Trevally (GT), Queenfish, Coral Trout, Bluefin Trevally</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Line Setup:</span>
+                  <span class="text-ocean-text-secondary">30lb Super-Smooth Braid + 40lb 100% Zero-Refraction Fluorocarbon</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Terminal Rig:</span>
+                  <span class="text-ocean-text-secondary">Direct Loop Knot to Weedless Single 5/0 In-line Barbless Hook</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Lure Strategy:</span>
+                  <span class="text-ocean-text-secondary">Ultra-natural translucent walking stickbaits & erratically skittered pencils</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-ocean-navy-border/60 flex items-center justify-between mt-auto">
+              <span class="text-[11px] text-ocean-muted-blue font-medium">Recommended: HydroPulse Topwater Pencils</span>
+              <a href="products.html?category=lures" class="text-xs font-bold text-ocean-gold hover:text-white transition flex items-center gap-1">
+                <span>View Topwater Lures</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 3: Deep Estuary & Mangrove Inlets -->
+          <div class="ocean-card p-6 sm:p-7 rounded-2xl bg-ocean-navy-surface border border-ocean-navy-border hover:border-ocean-aqua/50 transition-all duration-300 flex flex-col justify-between reveal-card">
+            <div class="mb-5">
+              <div class="flex items-center justify-between pb-4 border-b border-ocean-navy-border">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-ocean-blue/20 border border-ocean-blue/30 text-ocean-aqua flex items-center justify-center shrink-0">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-ocean-aqua">Condition Profile 03</span>
+                    <h3 class="text-lg font-bold text-white">Deep Estuary Inlets & Rips</h3>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 rounded text-[10px] font-extrabold uppercase bg-sky-950/80 text-sky-400 border border-sky-500/30">0.8m – 1.2m Chop</span>
+              </div>
+
+              <!-- Condition Metrics Grid -->
+              <div class="grid grid-cols-3 gap-2 py-4 border-b border-ocean-navy-border/60 text-xs">
+                <div>
+                  <span class="text-[10px] text-ocean-muted-blue block">Water Clarity</span>
+                  <span class="text-white font-semibold">1.0 – 2.0m Brackish</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-ocean-muted-blue block">Seabed Type</span>
+                  <span class="text-white font-semibold">Roots, Snags & Mud</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-ocean-muted-blue block">Current Speed</span>
+                  <span class="text-white font-semibold">1.8 – 3.0 kts</span>
+                </div>
+              </div>
+
+              <!-- Calibrated Tackle Specs -->
+              <div class="space-y-3 py-4 text-xs">
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Target:</span>
+                  <span class="text-ocean-text-secondary">Barramundi (Asian Seabass), Mangrove Red Snapper, Giant Trevally</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Line Setup:</span>
+                  <span class="text-ocean-text-secondary">30lb Abrasion-Resistant Braided Mainline + 50lb Mono Rub-Leader</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Terminal Rig:</span>
+                  <span class="text-ocean-text-secondary">30g Tungsten Head Jig with Heavy-Wire Extra-Wide-Gap (EWG) Hook</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Lure Strategy:</span>
+                  <span class="text-ocean-text-secondary">Paddle-tail soft swimbaits with salt-cured garlic scent & deep rattle</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-ocean-navy-border/60 flex items-center justify-between mt-auto">
+              <span class="text-[11px] text-ocean-muted-blue font-medium">Recommended: Titan Forged Jig Heads</span>
+              <a href="products.html?category=hooks" class="text-xs font-bold text-ocean-gold hover:text-white transition flex items-center gap-1">
+                <span>View Hooks & Jigs</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 4: Offshore Deep Blue & Continental Trench -->
+          <div class="ocean-card p-6 sm:p-7 rounded-2xl bg-ocean-navy-surface border border-ocean-navy-border hover:border-ocean-aqua/50 transition-all duration-300 flex flex-col justify-between reveal-card">
+            <div class="mb-5">
+              <div class="flex items-center justify-between pb-4 border-b border-ocean-navy-border">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-ocean-blue/20 border border-ocean-blue/30 text-ocean-aqua flex items-center justify-center shrink-0">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-ocean-aqua">Condition Profile 04</span>
+                    <h3 class="text-lg font-bold text-white">Offshore Deep Trench (50m+)</h3>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 rounded text-[10px] font-extrabold uppercase bg-rose-950/80 text-rose-400 border border-rose-500/30">1.5m – 3.0m Swell</span>
+              </div>
+
+              <!-- Condition Metrics Grid -->
+              <div class="grid grid-cols-3 gap-2 py-4 border-b border-ocean-navy-border/60 text-xs">
+                <div>
+                  <span class="text-[10px] text-ocean-muted-blue block">Water Clarity</span>
+                  <span class="text-white font-semibold">&gt; 20m Oceanic Blue</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-ocean-muted-blue block">Seabed Type</span>
+                  <span class="text-white font-semibold">Continental Shelf</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-ocean-muted-blue block">Current Speed</span>
+                  <span class="text-white font-semibold">2.0 – 4.0 kts</span>
+                </div>
+              </div>
+
+              <!-- Calibrated Tackle Specs -->
+              <div class="space-y-3 py-4 text-xs">
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Target:</span>
+                  <span class="text-ocean-text-secondary">Yellowfin Tuna, Wahoo, Indo-Pacific Sailfish, Mahi Mahi, Dogtooth Tuna</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Line Setup:</span>
+                  <span class="text-ocean-text-secondary">80lb Hollow-Core Braid + 100lb Premium Monofilament Wind-on Leader</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Terminal Rig:</span>
+                  <span class="text-ocean-text-secondary">Heavy-Duty Ball Bearing Swivel (300lb) + 9/0 Southern Tuna Stainless Hook</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-gold font-bold shrink-0">Lure Strategy:</span>
+                  <span class="text-ocean-text-secondary">High-speed skirted bullet jet heads trolled at 8-10 knots over drop-off contours</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-ocean-navy-border/60 flex items-center justify-between mt-auto">
+              <span class="text-[11px] text-ocean-muted-blue font-medium">Recommended: DeepDrop 8000 Sealed Reels</span>
+              <a href="products.html?category=reels" class="text-xs font-bold text-ocean-gold hover:text-white transition flex items-center gap-1">
+                <span>View Heavy Reels</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Call-to-Action Dispatch Box (No Images, Deep Ocean Gradient & Direct Shop Navigation) -->
+        <div class="ocean-card rounded-2xl bg-gradient-to-r from-ocean-navy-surface via-ocean-navy-card to-ocean-navy-surface border border-ocean-gold/40 p-6 sm:p-10 relative overflow-hidden reveal">
+          <div class="flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
+            <div class="space-y-2 text-center lg:text-start max-w-2xl">
+              <span class="text-xs font-extrabold uppercase tracking-widest text-ocean-gold">Tackle Consultation & Custom Spooling</span>
+              <h3 class="text-xl sm:text-2xl font-black text-white">Need Terminal Tackle Calibrated For Your Local Waterway?</h3>
+              <p class="text-xs sm:text-sm text-ocean-text-secondary leading-relaxed">
+                Our coastal outpost specialists match line pound-test, fluorocarbon leaders, and hook wire gauges directly to your local target species and current tidal charts.
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-3 shrink-0">
+              <a href="products.html" class="gold-button py-3 px-6 text-xs font-bold uppercase tracking-wider shadow-lg">
+                Explore Tackle Catalog
+              </a>
+              <a href="contact.html" class="outline-ocean-button py-3 px-6 text-xs font-bold uppercase tracking-wider">
+                Ask Tackle Specialist
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Catch Report Submission Modal (Hidden by Default) -->
+    <div id="catch-report-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ocean-navy-deep/80 backdrop-blur-md hidden">
+      <div class="ocean-card max-w-lg w-full bg-ocean-navy-card border border-ocean-navy-border p-6 sm:p-8 rounded-2xl shadow-2xl relative">
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="text-lg font-bold text-white">Log Your Coastal Catch</h3>
+          <button type="button" id="close-report-modal" class="p-1.5 text-ocean-text-secondary hover:text-white rounded-lg">✕</button>
+        </div>
+
+        <form id="catch-report-form" class="space-y-4 text-xs">
+          <div>
+            <label class="block text-ocean-text-secondary font-medium mb-1">Angler Name:</label>
+            <input type="text" id="report-angler-name" required placeholder="e.g. Captain Rohan" class="w-full px-3 py-2 rounded-xl bg-ocean-navy-surface border border-ocean-navy-border text-white outline-none focus:border-ocean-aqua" />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-ocean-text-secondary font-medium mb-1">Location Hotspot:</label>
+              <input type="text" id="report-spot" required placeholder="e.g. Goa Chapora" class="w-full px-3 py-2 rounded-xl bg-ocean-navy-surface border border-ocean-navy-border text-white outline-none focus:border-ocean-aqua" />
+            </div>
+            <div>
+              <label class="block text-ocean-text-secondary font-medium mb-1">Target Species:</label>
+              <input type="text" id="report-fish" required placeholder="e.g. 7kg Barramundi" class="w-full px-3 py-2 rounded-xl bg-ocean-navy-surface border border-ocean-navy-border text-white outline-none focus:border-ocean-aqua" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-ocean-text-secondary font-medium mb-1">Lure / Bait Used:</label>
+            <input type="text" id="report-lure" required placeholder="e.g. 14g HydroPulse Deep Crankbait" class="w-full px-3 py-2 rounded-xl bg-ocean-navy-surface border border-ocean-navy-border text-white outline-none focus:border-ocean-aqua" />
+          </div>
+          <div>
+            <label class="block text-ocean-text-secondary font-medium mb-1">Field Observation / Water Notes:</label>
+            <textarea id="report-notes" rows="3" required placeholder="Tide status, depth, and presentation technique..." class="w-full px-3 py-2 rounded-xl bg-ocean-navy-surface border border-ocean-navy-border text-white outline-none focus:border-ocean-aqua"></textarea>
+          </div>
+          <button type="submit" class="w-full gold-button py-3 text-xs font-bold shadow-lg">
+            Submit Log to Community Feed
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Shared Footer -->
+  <!-- Shared Footer -->
+  <footer class="bg-ocean-navy-deep border-t border-ocean-navy-border/60 text-ocean-text-secondary text-xs pt-16 pb-12">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12 border-b border-ocean-navy-border/60">
+        
+        <!-- Brand Column -->
+        <div class="space-y-4">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/15 p-1.5 flex items-center justify-center shrink-0">
+              <img src="assets/images/logo.png" alt="HookPoint Logo" class="w-full h-full object-contain" />
+            </div>
+            <div>
+              <div class="text-xl font-black text-white tracking-wide">HOOK<span class="text-ocean-gold">POINT</span></div>
+              <div class="text-[9px] tracking-widest uppercase font-bold text-ocean-gold mt-0.5">GEAR UP. CAST OUT. REEL IN.</div>
+            </div>
+          </a>
+          <p class="text-xs text-ocean-muted-blue leading-relaxed">
+            India's dedicated saltwater fishing tackle brand. We engineer, calibrate, and supply marine-grade carbon rods, sealed drag reels, tournament artificial lures, and coastal baits built for Indian waters.
+          </p>
+          <div class="flex items-center gap-2.5 pt-1">
+            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500 hover:text-white flex items-center justify-center transition" aria-label="WhatsApp" title="Chat on WhatsApp">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-rose-950/40 border border-rose-500/30 text-rose-400 hover:bg-rose-600 hover:text-white flex items-center justify-center transition" aria-label="Instagram" title="Follow on Instagram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/5 border border-white/15 text-slate-300 hover:bg-white/20 hover:text-white flex items-center justify-center transition" aria-label="X" title="Follow on X">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-blue-950/40 border border-blue-500/30 text-blue-400 hover:bg-blue-600 hover:text-white flex items-center justify-center transition" aria-label="Facebook" title="Follow on Facebook">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Catalog & Store Column -->
+        <div class="space-y-3.5">
+          <div class="text-xs font-black uppercase tracking-wider text-white">CATALOG &amp; STORE</div>
+          <ul class="space-y-2.5 text-xs text-ocean-muted-blue">
+            <li><a href="index.html" class="hover:text-ocean-aqua transition">Home 1 (Cinematic)</a></li>
+            <li><a href="home-2.html" class="hover:text-ocean-aqua transition">Home 2 (Equipment Showcase)</a></li>
+            <li><a href="products.html" class="hover:text-ocean-aqua transition">All Fishing Tackle</a></li>
+            <li><a href="products.html?category=rods" class="hover:text-ocean-aqua transition">Rods &amp; Reels</a></li>
+            <li><a href="products.html?category=lures" class="hover:text-ocean-aqua transition">Artificial Lures &amp; Baits</a></li>
+            <li><a href="pricing.html" class="hover:text-ocean-aqua transition">Tackle Packages &amp; Offers</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Support Column -->
+        <div class="space-y-3.5">
+          <div class="text-xs font-black uppercase tracking-wider text-white">CUSTOMER SUPPORT</div>
+          <ul class="space-y-2.5 text-xs text-ocean-muted-blue">
+            <li><a href="order.html" class="hover:text-ocean-aqua transition">Your Tackle Box &amp; Orders</a></li>
+            <li><a href="about.html" class="hover:text-ocean-aqua transition">About Our Brand &amp; Heritage</a></li>
+            <li><a href="pricing.html#pricing-faqs" class="hover:text-ocean-aqua transition">Equipment &amp; Pricing FAQs</a></li>
+            <li><a href="fishing-reports.html" class="hover:text-ocean-aqua transition">Live Coastal Fishing Reports</a></li>
+            <li><a href="blog.html" class="hover:text-ocean-aqua transition">Saltwater Angler Journal</a></li>
+            <li><a href="contact.html" class="hover:text-ocean-aqua transition">Contact Storefront &amp; Dispatch</a></li>
+          </ul>
+        </div>
+
+        <!-- Chennai Outpost Column -->
+        <div class="space-y-3.5">
+          <div class="text-xs font-black uppercase tracking-wider text-white">CHENNAI OUTPOST</div>
+          <div class="space-y-2 text-xs text-ocean-muted-blue leading-relaxed">
+            <div class="font-bold text-white">HookPoint Tackle Shop — Chennai</div>
+            <p>Marina Beach Road / ECR Coastal Highway<br>Chennai, Tamil Nadu, India</p>
+            <div class="pt-2">
+              <span class="font-semibold text-white">Hours:</span> Mon – Sat: 06:00 AM – 08:30 PM
+            </div>
+            <div>
+              <span class="font-semibold text-white">Phone:</span> <a href="tel:+919876543210" class="hover:text-ocean-aqua transition text-ocean-muted-blue">+91 98765 43210</a>
+            </div>
+            <div>
+              <span class="font-semibold text-white">WhatsApp:</span> <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition text-ocean-muted-blue">+91 98765 43210</a>
+            </div>
+            <div>
+              <span class="font-semibold text-white">Email:</span> <a href="mailto:support@hookpoint-tackle.com" class="hover:text-ocean-aqua transition text-ocean-muted-blue">support@hookpoint-tackle.com</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bottom Bar -->
+      <div class="pt-8 text-center text-xs text-ocean-muted-blue">
+        &copy; 2026 HookPoint &mdash; Fishing Tackle &amp; Bait Shop. All Rights Reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/favorites.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Inline Filter Logic for Reports
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterButtons = document.querySelectorAll('.report-filter-btn');
+      const cards = document.querySelectorAll('.report-card');
+      
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => {
+            b.classList.remove('bg-ocean-blue', 'text-white');
+            b.classList.add('bg-ocean-navy', 'text-ocean-text-secondary');
+          });
+          btn.classList.add('bg-ocean-blue', 'text-white');
+          btn.classList.remove('bg-ocean-navy', 'text-ocean-text-secondary');
+
+          const targetType = btn.getAttribute('data-type');
+          cards.forEach(card => {
+            const cardType = card.getAttribute('data-watertype');
+            if (targetType === 'all' || cardType === targetType) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+          if (window.initCardScrollReveal) window.initCardScrollReveal();
+        });
+      });
+
+      // Catch report modal
+      const modal = document.getElementById('catch-report-modal');
+      const openBtn = document.getElementById('submit-report-modal-btn');
+      const closeBtn = document.getElementById('close-report-modal');
+      const form = document.getElementById('catch-report-form');
+
+      if (openBtn && modal) {
+        openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
+      }
+      if (closeBtn && modal) {
+        closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+      }
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) modal.classList.add('hidden');
+        });
+      }
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          modal.classList.add('hidden');
+          if (window.HookPointCart) {
+            window.HookPointCart.showToast("Catch report logged successfully! Thank you for sharing local telemetry.", "success");
+          }
+          form.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+

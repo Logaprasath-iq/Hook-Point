@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — HookPoint Fishing Tackle & Bait Shop</title>
+  <meta name="description" content="Learn about HookPoint's heritage, master craftsmanship, saltwater durability standards, and our commitment to marine angling excellence." />
+  
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'ocean-navy': '#061B2C',
+            'ocean-navy-deep': '#030D16',
+            'ocean-navy-surface': '#0B253A',
+            'ocean-navy-card': '#0E2E47',
+            'ocean-blue': '#087EAB',
+            'ocean-blue-hover': '#0A96CC',
+            'ocean-aqua': '#42C6E8',
+            'ocean-gold': '#D6A928',
+            'ocean-gold-hover': '#E8B936',
+            'ocean-white': '#FFFFFF',
+            'ocean-soft-white': '#F4FAFC',
+            'ocean-muted-blue': '#7894A8',
+            'ocean-text-secondary': '#94AEC0'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/theme.js"></script>
+  <script src="js/direction.js"></script>
+</head>
+<body class="bg-ocean-navy text-white min-h-screen flex flex-col antialiased selection:bg-ocean-aqua selection:text-ocean-navy">
+
+  <!-- Sticky Navbar -->
+  <header class="site-nav">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <a href="index.html" class="flex items-center gap-3 shrink-0 group">
+          <img src="assets/images/logo.png" alt="HookPoint Logo" class="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-105" />
+          <div class="flex flex-col">
+            <span class="text-2xl font-black tracking-tight text-white group-hover:text-ocean-aqua transition leading-none">
+              Hook<span class="text-ocean-gold">Point</span>
+            </span>
+            <span class="text-[10px] tracking-widest uppercase font-semibold text-ocean-muted-blue mt-0.5">
+              Gear Up &bull; Cast Out &bull; Reel In
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center lg:gap-3.5 xl:gap-6 text-xs xl:text-sm">
+          <!-- Home Dropdown -->
+          <div class="nav-dropdown group">
+            <button type="button" class="nav-link nav-dropdown-btn flex items-center gap-1.5 py-2 cursor-pointer outline-none" aria-haspopup="true" aria-expanded="false">
+              <span>Home</span>
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a href="index.html" class="nav-dropdown-item group/item">
+                <div>
+                  <div class="font-bold text-white group-hover/item:text-ocean-aqua transition">Home 1</div>
+                  <div class="text-[11px] text-ocean-muted-blue font-normal">Cinematic Storefront</div>
+                </div>
+                <span class="text-xs text-ocean-gold">→</span>
+              </a>
+              <a href="home-2.html" class="nav-dropdown-item group/item mt-1">
+                <div>
+                  <div class="font-bold text-white group-hover/item:text-ocean-aqua transition">Home 2</div>
+                  <div class="text-[11px] text-ocean-muted-blue font-normal">Equipment Showcase</div>
+                </div>
+                <span class="text-xs text-ocean-gold">→</span>
+              </a>
+            </div>
+          </div>
+          <a href="about.html" class="nav-link active">About</a>
+          <a href="products.html" class="nav-link">Products</a>
+          <a href="pricing.html" class="nav-link">Pricing</a>
+          <a href="fishing-reports.html" class="nav-link">Fishing Reports</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-2 sm:gap-2.5">
+          <!-- Theme Toggle -->
+          <button type="button" class="theme-toggle-btn nav-action-btn nav-action-square rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-ocean-aqua transition shrink-0" aria-label="Toggle Theme"></button>
+
+          <!-- RTL / LTR Toggle -->
+          <button type="button" class="direction-toggle-btn nav-action-btn px-3 rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-aqua/30 hover:border-ocean-aqua text-ocean-aqua transition shrink-0" aria-label="Toggle Direction"></button>
+
+          <!-- Favorite Heart Button (After RTL Button) -->
+          <button type="button" class="open-favorites-btn nav-action-btn nav-action-square relative rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-ocean-gold hover:text-rose-400 hover:border-rose-400/50 transition shrink-0" aria-label="Saved Favorites" title="View Saved Favorites">
+            <svg class="w-5 h-5 transition-transform hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            <span class="fav-count-badge hidden absolute -top-1.5 -end-1.5 w-5 h-5 rounded-full bg-rose-500 text-white text-[11px] font-black flex items-center justify-center shadow-lg transition-transform">0</span>
+          </button>
+
+          <!-- Tackle Box / Cart Trigger -->
+          <button type="button" class="open-cart-btn nav-action-btn nav-action-square relative rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-ocean-aqua hover:border-ocean-aqua transition shrink-0" aria-label="Open Tackle Box" title="Open Tackle Box Cart">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+            <span class="cart-count-badge hidden absolute -top-1.5 -end-1.5 w-5 h-5 rounded-full bg-ocean-gold text-ocean-navy text-[11px] font-black flex items-center justify-center shadow-lg transition-transform">0</span>
+          </button>
+
+          <!-- Order CTA Button -->
+          <a href="order.html" class="hidden sm:inline-flex nav-action-btn px-5 gold-button rounded-xl text-xs font-bold uppercase tracking-wider shadow-md shrink-0">ORDER</a>
+
+          <!-- Mobile Hamburger Menu Button -->
+          <button type="button" id="mobile-menu-btn" class="lg:hidden nav-action-btn nav-action-square rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-white transition shrink-0" aria-label="Open Navigation Menu" aria-expanded="false">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer Backdrop -->
+  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-ocean-navy-deep/80 backdrop-blur-sm z-40 hidden transition-opacity lg:hidden"></div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu-drawer" class="fixed top-0 bottom-0 end-0 w-80 max-w-[85vw] bg-ocean-navy-surface border-s border-ocean-navy-border z-50 transition-transform duration-300 ease-out flex flex-col p-6 overflow-y-auto lg:hidden">
+    <div class="flex items-center justify-between pb-6 border-b border-ocean-navy-border">
+      <div class="flex items-center gap-2">
+        <img src="assets/images/logo.png" alt="HookPoint" class="w-8 h-8 object-contain" />
+        <span class="text-lg font-bold text-white">Hook<span class="text-ocean-gold">Point</span></span>
+      </div>
+      <button type="button" id="mobile-menu-close-btn" class="mobile-menu-close p-2 text-ocean-text-secondary hover:text-white rounded-lg" aria-label="Close menu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+
+    <nav class="flex-1 py-6 space-y-2">
+      <!-- Mobile Accordion for Home -->
+      <div class="space-y-1">
+        <button type="button" class="mobile-dropdown-toggle w-full flex items-center justify-between p-3 rounded-xl bg-ocean-navy text-white text-sm font-semibold transition border border-ocean-navy-border/60">
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-ocean-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            <span>Home</span>
+          </span>
+          <svg class="w-4 h-4 dropdown-arrow text-ocean-gold transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="hidden ps-4 space-y-1 pt-1">
+          <a href="index.html" class="flex items-center justify-between p-2.5 rounded-lg text-ocean-text-secondary hover:text-white hover:bg-ocean-navy text-xs font-medium transition">
+            <span>Home 1 — Storefront</span>
+            <span class="text-[10px] text-ocean-muted-blue">Cinematic</span>
+          </a>
+          <a href="home-2.html" class="flex items-center justify-between p-2.5 rounded-lg text-ocean-text-secondary hover:text-white hover:bg-ocean-navy text-xs font-medium transition">
+            <span>Home 2 — Equipment</span>
+            <span class="text-[10px] text-ocean-muted-blue">Showcase</span>
+          </a>
+        </div>
+      </div>
+
+      <a href="about.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>About</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="products.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Products</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="pricing.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Pricing &amp; Offers</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="fishing-reports.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Fishing Reports</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="blog.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Blog</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="contact.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Contact</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="order.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl bg-ocean-gold/15 text-ocean-gold text-sm font-bold transition">
+        <span>Order &amp; Cart</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+    </nav>
+
+    <div class="pt-6 border-t border-ocean-navy-border space-y-3">
+      <div class="flex items-center justify-between text-xs text-ocean-text-secondary">
+        <span class="font-semibold text-ocean-muted-blue">Language / Direction:</span>
+        <button type="button" class="direction-toggle-btn nav-action-btn px-3 rounded-xl bg-ocean-navy hover:bg-ocean-navy-card border border-ocean-aqua/30 text-ocean-aqua transition" aria-label="Toggle Direction"></button>
+      </div>
+      <a href="order.html" class="w-full gold-button py-3 text-center text-xs font-bold block rounded-xl shadow-md">Create Order Enquiry</a>
+    </div>
+  </div>
+
+  <main class="flex-1">
+
+    <!-- Hero Banner with Cinematic Background & Centered Content -->
+    <section class="page-hero-banner relative py-24 sm:py-32 bg-ocean-navy border-b border-ocean-navy-border/60 overflow-hidden flex items-center justify-center min-h-[380px] sm:min-h-[440px]">
+      <!-- Background Image with High Visibility & Contrast -->
+      <div class="absolute inset-0 z-0">
+        <img src="assets/images/about.jpg" alt="HookPoint Heritage Offshore Fishing" class="w-full h-full object-cover object-center filter brightness-[0.75] contrast-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-ocean-navy via-ocean-navy/40 to-black/55"></div>
+        <div class="underwater-light"></div>
+      </div>
+
+      <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <span class="hero-eyebrow inline-block text-xs uppercase font-extrabold tracking-widest text-ocean-aqua bg-ocean-navy-deep/85 border border-ocean-aqua/40 px-4 py-1.5 rounded-full shadow-lg backdrop-blur-md mb-4">The Heritage of HookPoint</span>
+        <h1 class="hero-title text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">Our Heritage, Mission &amp; Standards</h1>
+        <p class="hero-desc text-sm sm:text-base text-slate-100 max-w-2xl mx-auto mt-4 leading-relaxed font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+          Born from a passion for the untamed Indian Ocean. We engineer, calibrate, and supply tournament-grade tackle that gives every angler the confidence to cast into punishing surf and reel in saltwater legends.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Brand Story & Introduction -->
+    <section class="section-spacing bg-ocean-navy">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-6 space-y-6 reveal-left">
+            <span class="text-xs uppercase font-extrabold tracking-widest text-ocean-gold">The HookPoint Story</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+              Started on the Rocky Headlands of the Konkan Coastline.
+            </h2>
+            <p class="text-sm sm:text-base text-ocean-text-secondary leading-relaxed">
+              In 2011, a group of dedicated coastal anglers grew frustrated by the fragile, mass-produced tackle imported into India. Saltwater would freeze bearings within three trips, guide rings cracked on beach pebbles, and generic rods buckled when monster Barramundi made their explosive first runs.
+            </p>
+            <p class="text-sm text-ocean-muted-blue leading-relaxed">
+              We started HookPoint in a small tackle repair shop on Pier 7. We began hand-wrapping Japanese Toray carbon blanks, substituting zinc hardware with marine-grade 316 stainless steel, and designing lures whose internal rattles trigger predatory strikes in turbulent monsoon waters.
+            </p>
+            <div class="p-4 rounded-xl bg-ocean-navy-surface border-s-4 border-ocean-gold border border-ocean-navy-border text-xs sm:text-sm italic text-white">
+              “We don’t engineer tackle for trophy cabinets. We engineer tackle for the salt spray, the jagged barnacles, and the fight of a lifetime.”
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 relative reveal-right">
+            <div class="rounded-2xl overflow-hidden border border-ocean-navy-border shadow-2xl aspect-[4/3] bg-ocean-navy-surface">
+              <img src="https://i.pinimg.com/1200x/cf/93/e2/cf93e25b89c68538f84e9b6740d311e7.jpg" alt="HookPoint Tackle Craftsmanship" class="w-full h-full object-cover" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission, Vision & Core Values -->
+    <section class="section-spacing bg-ocean-navy-deep border-y border-ocean-navy-border/60">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
+          <span class="text-xs uppercase font-extrabold tracking-widest text-ocean-aqua">Guiding Principles</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Our Mission, Vision & Values</h2>
+          <p class="text-sm text-ocean-text-secondary mt-2">
+            Every product we design and every service we offer is rooted in our commitment to marine excellence and community stewardship.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <!-- Mission -->
+          <div class="ocean-card p-8 rounded-2xl bg-ocean-navy-card border border-ocean-navy-border reveal-up stagger-1">
+            <div class="w-12 h-12 rounded-xl bg-ocean-blue/20 text-ocean-aqua flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            </div>
+            <h3 class="text-xl font-bold text-white">Our Mission</h3>
+            <p class="text-xs sm:text-sm text-ocean-text-secondary mt-2 leading-relaxed">
+              To empower Indian anglers of all skill levels with uncompromising saltwater tackle, transparent pricing, verified coastal fishing reports, and battle-tested gear knowledge that elevates the pursuit of marine angling.
+            </p>
+          </div>
+
+          <!-- Vision -->
+          <div class="ocean-card p-8 rounded-2xl bg-ocean-navy-card border border-ocean-navy-border reveal-up stagger-2">
+            <div class="w-12 h-12 rounded-xl bg-ocean-gold/20 text-ocean-gold flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            </div>
+            <h3 class="text-xl font-bold text-white">Our Vision</h3>
+            <p class="text-xs sm:text-sm text-ocean-text-secondary mt-2 leading-relaxed">
+              To be the benchmark outdoor fishing brand across the Indian Ocean rim, recognized globally for marine durability, sustainable catch-and-release ethics, and technological innovation in lightweight composite blanks.
+            </p>
+          </div>
+        </div>
+
+        <!-- 5 Core Values -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div class="p-5 rounded-xl bg-ocean-navy-surface border border-ocean-navy-border reveal-up stagger-1">
+            <div class="text-ocean-gold font-bold text-sm">01. Integrity</div>
+            <p class="text-xs text-ocean-text-secondary mt-1">Honest drag ratings and true breaking strengths. No false claims.</p>
+          </div>
+          <div class="p-5 rounded-xl bg-ocean-navy-surface border border-ocean-navy-border reveal-up stagger-2">
+            <div class="text-ocean-aqua font-bold text-sm">02. Conservation</div>
+            <p class="text-xs text-ocean-text-secondary mt-1">Promoting barbless circle hooks and careful fish revival techniques.</p>
+          </div>
+          <div class="p-5 rounded-xl bg-ocean-navy-surface border border-ocean-navy-border reveal-up stagger-3">
+            <div class="text-white font-bold text-sm">03. Craftsmanship</div>
+            <p class="text-xs text-ocean-text-secondary mt-1">Japanese Toray carbon, Fuji guides, and CNC aerospace aluminum.</p>
+          </div>
+          <div class="p-5 rounded-xl bg-ocean-navy-surface border border-ocean-navy-border reveal-up stagger-4">
+            <div class="text-ocean-gold font-bold text-sm">04. Angler Family</div>
+            <p class="text-xs text-ocean-text-secondary mt-1">Hosting free youth clinics and sharing unbiased local spot intelligence.</p>
+          </div>
+          <div class="p-5 rounded-xl bg-ocean-navy-surface border border-ocean-navy-border reveal-up stagger-5">
+            <div class="text-ocean-aqua font-bold text-sm">05. Innovation</div>
+            <p class="text-xs text-ocean-text-secondary mt-1">Continual R&D on IPX6 sealing and UV amino-acid scent matrices.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Product Quality & Saltwater Testing Standards -->
+    <section class="section-spacing bg-ocean-navy">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-14 reveal-up">
+          <span class="text-xs uppercase font-extrabold tracking-widest text-ocean-gold">No Compromise Engineering</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Product Quality & Stress Standards</h2>
+          <p class="text-xs sm:text-sm text-ocean-text-secondary mt-2">
+            Before any rod or reel earns the HookPoint golden hook hallmark, it must pass four non-negotiable stress protocols.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="ocean-card p-6 rounded-2xl bg-ocean-navy-card reveal-up stagger-1">
+            <div class="text-2xl font-black text-ocean-aqua mb-2">500h</div>
+            <h4 class="text-base font-bold text-white">Continuous Salt Spray</h4>
+            <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed">
+              Components are locked inside 35Â°C ASTM-B117 salt mist chambers to ensure zero pitting or surface blistering.
+            </p>
+          </div>
+
+          <div class="ocean-card p-6 rounded-2xl bg-ocean-navy-card reveal-up stagger-2">
+            <div class="text-2xl font-black text-ocean-gold mb-2">120Â°</div>
+            <h4 class="text-base font-bold text-white">Full-Parabolic Blank Flex</h4>
+            <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed">
+              Every rod blank is dead-weight flexed to twice its rated maximum to eliminate microscopic carbon resin voids.
+            </p>
+          </div>
+
+          <div class="ocean-card p-6 rounded-2xl bg-ocean-navy-card reveal-up stagger-3">
+            <div class="text-2xl font-black text-white mb-2">IPX6</div>
+            <h4 class="text-base font-bold text-white">High-Pressure Water Jets</h4>
+            <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed">
+              Reel bodies are blasted from 3 meters with 100 kPa heavy water jets to verify the integrity of all silicone O-rings.
+            </p>
+          </div>
+
+          <div class="ocean-card p-6 rounded-2xl bg-ocean-navy-card reveal-up stagger-4">
+            <div class="text-2xl font-black text-ocean-gold mb-2">100%</div>
+            <h4 class="text-base font-bold text-white">Biodegradable Baits</h4>
+            <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed">
+              Our artificial scents and soft baits break down naturally in marine water without releasing microplastics.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Core Tackle Guarantees & Retail Standards -->
+    <section class="section-spacing bg-ocean-navy-deep border-y border-ocean-navy-border/60">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4 reveal-up">
+          <div>
+            <span class="text-xs uppercase font-extrabold tracking-widest text-ocean-aqua">Direct-To-Angler Quality</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Our Core Tackle Guarantees</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-ocean-text-secondary max-w-md">
+            Built from scratch to survive the abrasive salt mist, jagged reefs, and blistering runs of Indian coastal game fish.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          
+          <!-- Pillar 1 -->
+          <div class="reveal-card ocean-card bg-ocean-navy-card rounded-2xl overflow-hidden border border-ocean-navy-border flex flex-col justify-between h-full group hover:border-ocean-gold/50 transition duration-300">
+            <div>
+              <div class="relative h-44 w-full overflow-hidden bg-ocean-navy-deep">
+                <img src="https://i.pinimg.com/1200x/e3/d6/d8/e3d6d8386c5133fe23b1c8a8f877c855.jpg" alt="2-Year Blank Warranty" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-ocean-navy-card via-transparent to-black/30"></div>
+                <div class="absolute top-3 start-3 w-11 h-11 rounded-xl bg-ocean-gold text-ocean-navy font-black text-sm flex items-center justify-center shadow-lg backdrop-blur-sm">
+                  2YR
+                </div>
+                <div class="absolute bottom-2 end-3 text-[10px] uppercase font-bold text-ocean-gold bg-ocean-navy-deep/80 px-2 py-0.5 rounded border border-ocean-gold/30">
+                  Toray Carbon
+                </div>
+              </div>
+              <div class="p-5">
+                <h3 class="text-base font-bold text-white group-hover:text-ocean-gold transition line-clamp-1 min-h-[1.5rem]">2-Year Blank Warranty</h3>
+                <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed line-clamp-3 min-h-[3.25rem]">
+                  Every HookPoint high-modulus Toray carbon rod is backed by a 24-month replacement guarantee against blank fractures and guide corrosion under normal angling.
+                </p>
+              </div>
+            </div>
+            <div class="px-5 pb-5 pt-0 mt-auto">
+              <div class="pt-3 border-t border-ocean-navy-border text-[11px] text-ocean-gold font-semibold flex items-center justify-between">
+                <span>100% Genuine Coverage</span>
+                <span>✓ Verified</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="reveal-card ocean-card bg-ocean-navy-card rounded-2xl overflow-hidden border border-ocean-navy-border flex flex-col justify-between h-full group hover:border-ocean-aqua/50 transition duration-300">
+            <div>
+              <div class="relative h-44 w-full overflow-hidden bg-ocean-navy-deep">
+                <img src="https://i.pinimg.com/1200x/a7/43/77/a74377268252bc1cb19a5a8581265195.jpg" alt="500h Salt Mist Tested" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-ocean-navy-card via-transparent to-black/30"></div>
+                <div class="absolute top-3 start-3 w-11 h-11 rounded-xl bg-ocean-aqua text-ocean-navy font-black text-xs flex items-center justify-center shadow-lg backdrop-blur-sm">
+                  ASTM
+                </div>
+                <div class="absolute bottom-2 end-3 text-[10px] uppercase font-bold text-ocean-aqua bg-ocean-navy-deep/80 px-2 py-0.5 rounded border border-ocean-aqua/30">
+                  IPX6 Sealed
+                </div>
+              </div>
+              <div class="p-5">
+                <h3 class="text-base font-bold text-white group-hover:text-ocean-aqua transition line-clamp-1 min-h-[1.5rem]">500h Salt Mist Tested</h3>
+                <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed line-clamp-3 min-h-[3.25rem]">
+                  Our reels and components endure 500 hours inside 35°C ASTM-B117 saltwater fog chambers to guarantee zero gear oxidation and flawless IPX6 seal endurance.
+                </p>
+              </div>
+            </div>
+            <div class="px-5 pb-5 pt-0 mt-auto">
+              <div class="pt-3 border-t border-ocean-navy-border text-[11px] text-ocean-aqua font-semibold flex items-center justify-between">
+                <span>Lab-Certified Durability</span>
+                <span>✓ Verified</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="reveal-card ocean-card bg-ocean-navy-card rounded-2xl overflow-hidden border border-ocean-navy-border flex flex-col justify-between h-full group hover:border-emerald-500/50 transition duration-300">
+            <div>
+              <div class="relative h-44 w-full overflow-hidden bg-ocean-navy-deep">
+                <img src="https://i.pinimg.com/736x/11/dc/66/11dc6690747c3adcda97bbda393640eb.jpg" alt="Direct Honest Pricing" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-ocean-navy-card via-transparent to-black/30"></div>
+                <div class="absolute top-3 start-3 w-11 h-11 rounded-xl bg-emerald-500 text-white font-black text-xs flex items-center justify-center shadow-lg backdrop-blur-sm">
+                  INR
+                </div>
+                <div class="absolute bottom-2 end-3 text-[10px] uppercase font-bold text-emerald-400 bg-ocean-navy-deep/80 px-2 py-0.5 rounded border border-emerald-500/30">
+                  Zero Markup
+                </div>
+              </div>
+              <div class="p-5">
+                <h3 class="text-base font-bold text-white group-hover:text-emerald-400 transition line-clamp-1 min-h-[1.5rem]">Direct Honest Pricing</h3>
+                <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed line-clamp-3 min-h-[3.25rem]">
+                  By eliminating import middlemen and third-party retailer markups, we deliver tournament-grade Japanese carbon and Fuji hardware at true Indian Rupee prices.
+                </p>
+              </div>
+            </div>
+            <div class="px-5 pb-5 pt-0 mt-auto">
+              <div class="pt-3 border-t border-ocean-navy-border text-[11px] text-emerald-400 font-semibold flex items-center justify-between">
+                <span>Free Express Over ₹2,999</span>
+                <span>✓ Verified</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="reveal-card ocean-card bg-ocean-navy-card rounded-2xl overflow-hidden border border-ocean-navy-border flex flex-col justify-between h-full group hover:border-purple-400/50 transition duration-300">
+            <div>
+              <div class="relative h-44 w-full overflow-hidden bg-ocean-navy-deep">
+                <img src="https://i.pinimg.com/736x/9d/15/03/9d15034a23182dde0725eb6d42ce0092.jpg" alt="Pre-Tuned Precision" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-ocean-navy-card via-transparent to-black/30"></div>
+                <div class="absolute top-3 start-3 w-11 h-11 rounded-xl bg-purple-500 text-white font-black text-xs flex items-center justify-center shadow-lg backdrop-blur-sm">
+                  CAL
+                </div>
+                <div class="absolute bottom-2 end-3 text-[10px] uppercase font-bold text-purple-300 bg-ocean-navy-deep/80 px-2 py-0.5 rounded border border-purple-500/30">
+                  FG Knot Ready
+                </div>
+              </div>
+              <div class="p-5">
+                <h3 class="text-base font-bold text-white group-hover:text-purple-300 transition line-clamp-1 min-h-[1.5rem]">Pre-Tuned Precision</h3>
+                <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed line-clamp-3 min-h-[3.25rem]">
+                  Every combo order can be machine-spooled under uniform tension with our AquaShield 8X micro-braid and precision FG leader knots ready to cast out of the box.
+                </p>
+              </div>
+            </div>
+            <div class="px-5 pb-5 pt-0 mt-auto">
+              <div class="pt-3 border-t border-ocean-navy-border text-[11px] text-purple-300 font-semibold flex items-center justify-between">
+                <span>Zero Wind-Knot Setup</span>
+                <span>✓ Verified</span>
+              </div>
+            </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BRAND JOURNEY & EVOLUTION TIMELINE (2018 – 2026)
+         ========================================================================== -->
+    <section class="section-spacing bg-ocean-navy border-t border-ocean-navy-border/60">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="reveal-group text-center max-w-3xl mx-auto mb-16">
+          <span class="reveal-text text-xs uppercase font-extrabold tracking-widest text-ocean-gold">The Journey of Durability</span>
+          <h2 class="reveal-heading text-2xl sm:text-4xl font-extrabold text-white mt-1">From a Chennai Workshop to India's Saltwater Standard</h2>
+          <p class="reveal-text text-xs sm:text-sm text-ocean-text-secondary mt-2">
+            A relentless timeline of engineering, field calibrations, and coastal stress tests across the Bay of Bengal and Arabian Sea.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch">
+          
+          <!-- Milestone 1: 2018 -->
+          <div class="reveal-card ocean-card p-6 rounded-2xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-4">
+              <div class="text-xs font-black text-ocean-gold tracking-widest mb-1">FOUNDATION</div>
+              <div class="text-3xl font-black text-white">2018</div>
+              <h3 class="text-sm font-bold text-ocean-aqua mt-2 line-clamp-1 min-h-[1.5rem]">Marina Beach Outpost</h3>
+              <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed line-clamp-4 min-h-[4.5rem]">
+                Started as a specialized reel repair and custom carbon-wrapping shop on Chennai's ECR coastal corridor to fix salt-frozen bearings for local surfcasters.
+              </p>
+            </div>
+            <div class="pt-4 mt-auto border-t border-ocean-navy-border/60 text-[11px] text-ocean-muted-blue">
+              Phase 1: Local Coastal Lab
+            </div>
+          </div>
+
+          <!-- Milestone 2: 2020 -->
+          <div class="reveal-card ocean-card p-6 rounded-2xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-4">
+              <div class="text-xs font-black text-ocean-aqua tracking-widest mb-1">INNOVATION</div>
+              <div class="text-3xl font-black text-white">2020</div>
+              <h3 class="text-sm font-bold text-ocean-aqua mt-2 line-clamp-1 min-h-[1.5rem]">Toray Carbon Blanks</h3>
+              <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed line-clamp-4 min-h-[4.5rem]">
+                Engineered our first proprietary 30T and 40T multi-axis blanks capable of launching 150g pyramid sinkers 100m+ beyond the heavy Coromandel surf breakers.
+              </p>
+            </div>
+            <div class="pt-4 mt-auto border-t border-ocean-navy-border/60 text-[11px] text-ocean-muted-blue">
+              Phase 2: Proprietary Blanks
+            </div>
+          </div>
+
+          <!-- Milestone 3: 2022 -->
+          <div class="reveal-card ocean-card p-6 rounded-2xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-4">
+              <div class="text-xs font-black text-emerald-400 tracking-widest mb-1">CERTIFICATION</div>
+              <div class="text-3xl font-black text-white">2022</div>
+              <h3 class="text-sm font-bold text-emerald-400 mt-2 line-clamp-1 min-h-[1.5rem]">AquaShield IPX6 Sealing</h3>
+              <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed line-clamp-4 min-h-[4.5rem]">
+                Standardized multi-layer silicone O-ring sealing on all spinning reel bodies, eliminating saltwater intrusion during surf dunking and heavy monsoon downpours.
+              </p>
+            </div>
+            <div class="pt-4 mt-auto border-t border-ocean-navy-border/60 text-[11px] text-ocean-muted-blue">
+              Phase 3: Lab Salt Testing
+            </div>
+          </div>
+
+          <!-- Milestone 4: 2024 -->
+          <div class="reveal-card ocean-card p-6 rounded-2xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-4">
+              <div class="text-xs font-black text-ocean-gold tracking-widest mb-1">DISRUPTION</div>
+              <div class="text-3xl font-black text-white">2024</div>
+              <h3 class="text-sm font-bold text-ocean-gold mt-2 line-clamp-1 min-h-[1.5rem]">Direct Honest Pricing</h3>
+              <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed line-clamp-4 min-h-[4.5rem]">
+                Eliminated third-party distributor markups to offer genuine Japanese carbon tackle at transparent Indian Rupee rates with custom rigid PVC transport armor.
+              </p>
+            </div>
+            <div class="pt-4 mt-auto border-t border-ocean-navy-border/60 text-[11px] text-ocean-muted-blue">
+              Phase 4: Direct to Angler
+            </div>
+          </div>
+
+          <!-- Milestone 5: 2026 -->
+          <div class="reveal-card ocean-card p-6 rounded-2xl bg-ocean-navy-card border-2 border-ocean-gold/50 flex flex-col justify-between h-full shadow-[0_0_20px_rgba(214,169,40,0.15)]">
+            <div class="mb-4">
+              <div class="text-xs font-black text-ocean-gold tracking-widest mb-1">TODAY</div>
+              <div class="text-3xl font-black text-ocean-gold">2026</div>
+              <h3 class="text-sm font-bold text-white mt-2 line-clamp-1 min-h-[1.5rem]">The Coastal Standard</h3>
+              <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed line-clamp-4 min-h-[4.5rem]">
+                Over 35,000 active saltwater anglers equipped across all 9 maritime Indian states and the Andaman archipelago with verified coastal catch telemetry.
+              </p>
+            </div>
+            <div class="pt-4 mt-auto border-t border-ocean-gold/30 text-[11px] text-ocean-gold font-bold">
+              35,000+ Indian Anglers
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INDIAN COASTAL HABITATS WE ENGINEER FOR
+         ========================================================================== -->
+    <section class="section-spacing bg-ocean-navy-deep border-y border-ocean-navy-border/60">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="reveal-group text-center max-w-3xl mx-auto mb-16">
+          <span class="reveal-text text-xs uppercase font-extrabold tracking-widest text-ocean-aqua">Marine Environment Calibration</span>
+          <h2 class="reveal-heading text-2xl sm:text-4xl font-extrabold text-white mt-1">Four Coastal Theaters We Engineer For</h2>
+          <p class="reveal-text text-xs sm:text-sm text-ocean-text-secondary mt-2">
+            India's 7,516 km coastline presents wildly contrasting hydrodynamics, rock structures, and game species. Here is how HookPoint gear masters each arena.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          
+          <!-- Habitat 1 -->
+          <div class="reveal-card ocean-card p-8 rounded-3xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-6">
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-ocean-navy border border-ocean-gold/40 text-ocean-gold">Theater 01</span>
+                <span class="text-xs text-ocean-muted-blue">East Coast • Tamil Nadu &amp; Andhra</span>
+              </div>
+              <h3 class="text-xl font-bold text-white line-clamp-1 min-h-[1.75rem]">Coromandel Surf &amp; Crashing Breakers</h3>
+              <p class="text-xs sm:text-sm text-ocean-text-secondary mt-3 leading-relaxed line-clamp-3 min-h-[3.75rem]">
+                Heavy tidal undertows, churning quartz sand, and steep beach troughs where giant Threadfin Salmon, GT, and Guitarfish feed just past the third breaker line.
+              </p>
+              <div class="mt-6 p-4 rounded-xl bg-ocean-navy-surface border border-ocean-navy-border/60 space-y-2">
+                <div class="text-[11px] font-black uppercase text-ocean-gold">Our Tackle Solution:</div>
+                <p class="text-xs text-white leading-relaxed line-clamp-2 min-h-[2.5rem]">
+                  12ft Apex 40T Toray parabolic blanks engineered for high kinetic tip recovery to throw 150g sinkers past crashing white water, paired with high-capacity surf spools.
+                </p>
+              </div>
+            </div>
+            <div class="mt-auto pt-6 border-t border-ocean-navy-border/60 flex items-center justify-between text-xs text-ocean-muted-blue">
+              <span>Target: Threadfin Salmon, Bigeye Trevally, Guitarfish</span>
+              <span class="text-ocean-aqua font-bold">120m+ Distance</span>
+            </div>
+          </div>
+
+          <!-- Habitat 2 -->
+          <div class="reveal-card ocean-card p-8 rounded-3xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-6">
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-ocean-navy border border-amber-500/40 text-amber-400">Theater 02</span>
+                <span class="text-xs text-ocean-muted-blue">West Coast • Goa, Karnataka &amp; Kerala</span>
+              </div>
+              <h3 class="text-xl font-bold text-white line-clamp-1 min-h-[1.75rem]">Konkan &amp; Malabar Mangrove Estuaries</h3>
+              <p class="text-xs sm:text-sm text-ocean-text-secondary mt-3 leading-relaxed line-clamp-3 min-h-[3.75rem]">
+                Tidal backwaters flanked by dense mangrove root labyrinths, submerged granite snags, and fierce Barramundi and Mangrove Jack that strike hard and dive for cover.
+              </p>
+              <div class="mt-6 p-4 rounded-xl bg-ocean-navy-surface border border-ocean-navy-border/60 space-y-2">
+                <div class="text-[11px] font-black uppercase text-amber-400">Our Tackle Solution:</div>
+                <p class="text-xs text-white leading-relaxed line-clamp-2 min-h-[2.5rem]">
+                  Fast-action 7ft Predator Pro rods with high-density backbone power, coupled with 60lb Japanese fluorocarbon leaders that withstand abrasive barnacle scraping.
+                </p>
+              </div>
+            </div>
+            <div class="mt-auto pt-6 border-t border-ocean-navy-border/60 flex items-center justify-between text-xs text-ocean-muted-blue">
+              <span>Target: Barramundi, Mangrove Jack, Giant Trevally</span>
+              <span class="text-amber-400 font-bold">High Abrasion Resistance</span>
+            </div>
+          </div>
+
+          <!-- Habitat 3 -->
+          <div class="reveal-card ocean-card p-8 rounded-3xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-6">
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-ocean-navy border border-ocean-aqua/40 text-ocean-aqua">Theater 03</span>
+                <span class="text-xs text-ocean-muted-blue">Bay of Bengal • Andaman Sea</span>
+              </div>
+              <h3 class="text-xl font-bold text-white line-clamp-1 min-h-[1.75rem]">Andaman Oceanic Drop-Offs &amp; Reef Walls</h3>
+              <p class="text-xs sm:text-sm text-ocean-text-secondary mt-3 leading-relaxed line-clamp-3 min-h-[3.75rem]">
+                Vertical submarine trenches dropping past 100 meters, heavy oceanic cross-currents, and aggressive pelagic predators capable of burning through standard reel drag stacks.
+              </p>
+              <div class="mt-6 p-4 rounded-xl bg-ocean-navy-surface border border-ocean-navy-border/60 space-y-2">
+                <div class="text-[11px] font-black uppercase text-ocean-aqua">Our Tackle Solution:</div>
+                <p class="text-xs text-white leading-relaxed line-clamp-2 min-h-[2.5rem]">
+                  DeepDrop 8000 CNC all-metal reels boasting 22kg+ dual carbon-matrix drag washers, teamed with 80lb hollow-core braid and heavy holographic jig sets.
+                </p>
+              </div>
+            </div>
+            <div class="mt-auto pt-6 border-t border-ocean-navy-border/60 flex items-center justify-between text-xs text-ocean-muted-blue">
+              <span>Target: Yellowfin Tuna, Dogtooth Tuna, Wahoo</span>
+              <span class="text-ocean-aqua font-bold">22kg+ Lever Drag</span>
+            </div>
+          </div>
+
+          <!-- Habitat 4 -->
+          <div class="reveal-card ocean-card p-8 rounded-3xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-6">
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-ocean-navy border border-emerald-500/40 text-emerald-400">Theater 04</span>
+                <span class="text-xs text-ocean-muted-blue">South Coast • Rameswaram &amp; Gulf of Mannar</span>
+              </div>
+              <h3 class="text-xl font-bold text-white line-clamp-1 min-h-[1.75rem]">Palk Bay &amp; Gulf of Mannar Shallow Flats</h3>
+              <p class="text-xs sm:text-sm text-ocean-text-secondary mt-3 leading-relaxed line-clamp-3 min-h-[3.75rem]">
+                Crystal-clear sand and seagrass flats with ultra-spooky gamefish that bolt at the slightest line shadow or unnatural lure vibration.
+              </p>
+              <div class="mt-6 p-4 rounded-xl bg-ocean-navy-surface border border-ocean-navy-border/60 space-y-2">
+                <div class="text-[11px] font-black uppercase text-emerald-400">Our Tackle Solution:</div>
+                <p class="text-xs text-white leading-relaxed line-clamp-2 min-h-[2.5rem]">
+                  Delicate ultra-light carbon tips for stealthy presentations, invisible zero-memory fluorocarbon traces, and aerated live bait containers keeping fresh shrimp lively.
+                </p>
+              </div>
+            </div>
+            <div class="mt-auto pt-6 border-t border-ocean-navy-border/60 flex items-center justify-between text-xs text-ocean-muted-blue">
+              <span>Target: Queenfish, Bonefish, Permit, Milkfish</span>
+              <span class="text-emerald-400 font-bold">Stealth Rigging</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INSIDE THE CHENNAI OUTPOST WORKSHOP
+         ========================================================================== -->
+    <section class="section-spacing bg-ocean-navy">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="reveal-group text-center max-w-3xl mx-auto mb-16">
+          <span class="reveal-text text-xs uppercase font-extrabold tracking-widest text-ocean-gold">The Outpost Workshop</span>
+          <h2 class="reveal-heading text-2xl sm:text-4xl font-extrabold text-white mt-1">Four Dedicated In-House Service Bays</h2>
+          <p class="reveal-text text-xs sm:text-sm text-ocean-text-secondary mt-2">
+            Located on Chennai's coastal highway, our facility combines a materials testing laboratory, an in-house rod-tuning atelier, and an overland dispatch bay.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          
+          <!-- Bay 1 -->
+          <div class="reveal-card ocean-card p-6 rounded-2xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-4">
+              <div class="w-12 h-12 rounded-xl bg-ocean-gold/20 text-ocean-gold flex items-center justify-center font-black text-sm mb-4">
+                BAY 01
+              </div>
+              <h3 class="text-base font-bold text-white line-clamp-1 min-h-[1.5rem]">Digital Line Spooling</h3>
+              <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed line-clamp-3 min-h-[3rem]">
+                Custom computerized line spooling under steady tension prevents spool dig-in and eliminates casting wind-knots right out of the box.
+              </p>
+            </div>
+            <div class="mt-auto pt-3 border-t border-ocean-navy-border text-[11px] text-ocean-gold font-semibold">
+              Zero-Twist Precision
+            </div>
+          </div>
+
+          <!-- Bay 2 -->
+          <div class="reveal-card ocean-card p-6 rounded-2xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-4">
+              <div class="w-12 h-12 rounded-xl bg-ocean-blue/20 text-ocean-aqua flex items-center justify-center font-black text-sm mb-4">
+                BAY 02
+              </div>
+              <h3 class="text-base font-bold text-white line-clamp-1 min-h-[1.5rem]">Guide Friction Bench</h3>
+              <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed line-clamp-3 min-h-[3rem]">
+                Ceramic ring guide inserts are verified using laser heat-dissipation sensors to ensure zero micro-cracks under 100m high-speed drag runs.
+              </p>
+            </div>
+            <div class="mt-auto pt-3 border-t border-ocean-navy-border text-[11px] text-ocean-aqua font-semibold">
+              Thermal Calibration
+            </div>
+          </div>
+
+          <!-- Bay 3 -->
+          <div class="reveal-card ocean-card p-6 rounded-2xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-black text-sm mb-4">
+                BAY 03
+              </div>
+              <h3 class="text-base font-bold text-white line-clamp-1 min-h-[1.5rem]">Carbon Drag Tuning</h3>
+              <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed line-clamp-3 min-h-[3rem]">
+                Multi-stack carbon washers are treated with genuine Cal’s universal marine drag grease for glass-smooth startup inertia and zero stutter.
+              </p>
+            </div>
+            <div class="mt-auto pt-3 border-t border-ocean-navy-border text-[11px] text-emerald-400 font-semibold">
+              Smooth Startup Inertia
+            </div>
+          </div>
+
+          <!-- Bay 4 -->
+          <div class="reveal-card ocean-card p-6 rounded-2xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-4">
+              <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center font-black text-sm mb-4">
+                BAY 04
+              </div>
+              <h3 class="text-base font-bold text-white line-clamp-1 min-h-[1.5rem]">Rigid PVC Armor Station</h3>
+              <p class="text-xs text-ocean-text-secondary mt-2 leading-relaxed line-clamp-3 min-h-[3rem]">
+                Every rod is sealed inside heavy-duty industrial PVC cylinders with closed-cell neoprene end caps to survive rough overland transit.
+              </p>
+            </div>
+            <div class="mt-auto pt-3 border-t border-ocean-navy-border text-[11px] text-purple-300 font-semibold">
+              100% Transit Safe
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         MARINE CONSERVATION & SUSTAINABLE ANGLING
+         ========================================================================== -->
+    <section class="section-spacing bg-ocean-navy-deep border-y border-ocean-navy-border/60">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="reveal-group text-center max-w-3xl mx-auto mb-16">
+          <span class="reveal-text text-xs uppercase font-extrabold tracking-widest text-emerald-400">Our Ocean Pledge</span>
+          <h2 class="reveal-heading text-2xl sm:text-4xl font-extrabold text-white mt-1">Marine Conservation &amp; Catch-and-Release</h2>
+          <p class="reveal-text text-xs sm:text-sm text-ocean-text-secondary mt-2">
+            We believe true sportsmanship is measured not by what you take, but by the marine ecosystems you protect for tomorrow.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          
+          <div class="reveal-card ocean-card p-8 rounded-3xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg mb-4">
+                01
+              </div>
+              <h3 class="text-lg font-bold text-white line-clamp-2 min-h-[3.5rem]">100% Circle Hook Advocacy</h3>
+              <p class="text-xs sm:text-sm text-ocean-text-secondary mt-3 leading-relaxed line-clamp-4 min-h-[4.5rem]">
+                We champion non-offset circle hooks that hook fish cleanly in the corner of the mouth in over 95% of strikes. This prevents deep gut-hooking and guarantees healthy survival upon release.
+              </p>
+            </div>
+            <div class="mt-auto pt-4 border-t border-ocean-navy-border/60 text-xs font-semibold text-emerald-400">
+              Safe Dehooking &amp; Revival
+            </div>
+          </div>
+
+          <div class="reveal-card ocean-card p-8 rounded-3xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-ocean-aqua/20 text-ocean-aqua flex items-center justify-center font-bold text-lg mb-4">
+                02
+              </div>
+              <h3 class="text-lg font-bold text-white line-clamp-2 min-h-[3.5rem]">Lead-Free Tungsten Terminal Rigs</h3>
+              <p class="text-xs sm:text-sm text-ocean-text-secondary mt-3 leading-relaxed line-clamp-4 min-h-[4.5rem]">
+                We are actively transitioning terminal sinkers and jig weights to eco-friendly, non-toxic high-density tungsten and alloy alternatives that never poison estuarine sea beds or coral reefs.
+              </p>
+            </div>
+            <div class="mt-auto pt-4 border-t border-ocean-navy-border/60 text-xs font-semibold text-ocean-aqua">
+              Non-Toxic Marine Alternatives
+            </div>
+          </div>
+
+          <div class="reveal-card ocean-card p-8 rounded-3xl bg-ocean-navy-card border border-ocean-navy-border flex flex-col justify-between h-full">
+            <div class="mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-ocean-gold/20 text-ocean-gold flex items-center justify-center font-bold text-lg mb-4">
+                03
+              </div>
+              <h3 class="text-lg font-bold text-white line-clamp-2 min-h-[3.5rem]">Chennai Beach Ghost Net Recovery</h3>
+              <p class="text-xs sm:text-sm text-ocean-text-secondary mt-3 leading-relaxed line-clamp-4 min-h-[4.5rem]">
+                Our staff and local angler community organize monthly ghost net and monofilament line clearing drives across Marina Beach, Besant Nagar, and Kovalam groynes to keep our shores clean.
+              </p>
+            </div>
+            <div class="mt-auto pt-4 border-t border-ocean-navy-border/60 text-xs font-semibold text-ocean-gold">
+              Monthly Coastal Cleanups
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         EXPANDED FAQS SECTION
+         ========================================================================== -->
+    <section class="section-spacing bg-ocean-navy">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-14 reveal-up">
+          <span class="text-xs uppercase font-extrabold tracking-widest text-ocean-gold">Frequently Asked Questions</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Everything You Need to Know</h2>
+          <p class="text-xs sm:text-sm text-ocean-text-secondary mt-2">
+            Clear, straightforward answers regarding our retail products, dispatch packaging, and warranty service.
+          </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-4">
+          
+          <details class="faq-accordion reveal-card ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border group overflow-hidden transition-all duration-300">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none outline-none font-bold text-white text-sm hover:text-ocean-aqua transition">
+              <span class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-ocean-gold/20 text-ocean-gold text-xs font-black flex items-center justify-center shrink-0">Q</span>
+                <span class="text-sm font-bold text-white group-hover:text-ocean-aqua transition">Do HookPoint rods ship in protective rigid packaging?</span>
+              </span>
+              <span class="w-8 h-8 rounded-lg bg-ocean-navy text-ocean-aqua flex items-center justify-center shrink-0 ml-3 transition-transform duration-300 group-open:rotate-180 group-open:bg-ocean-aqua group-open:text-ocean-navy">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <div class="px-5 pb-5 pt-1 text-xs text-ocean-text-secondary leading-relaxed border-t border-ocean-navy-border/40 mt-1">
+              <p class="pt-2">Yes, absolutely. All 1-piece, 2-piece, and surf rods are shipped in heavy-gauge rigid PVC cylinders reinforced with high-density foam end-caps to guarantee zero transit damage during overland courier transport across India.</p>
+            </div>
+          </details>
+
+          <details class="faq-accordion reveal-card ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border group overflow-hidden transition-all duration-300">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none outline-none font-bold text-white text-sm hover:text-ocean-aqua transition">
+              <span class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-ocean-gold/20 text-ocean-gold text-xs font-black flex items-center justify-center shrink-0">Q</span>
+                <span class="text-sm font-bold text-white group-hover:text-ocean-aqua transition">What is your 2-Year Saltwater Integrity Warranty?</span>
+              </span>
+              <span class="w-8 h-8 rounded-lg bg-ocean-navy text-ocean-aqua flex items-center justify-center shrink-0 ml-3 transition-transform duration-300 group-open:rotate-180 group-open:bg-ocean-aqua group-open:text-ocean-navy">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <div class="px-5 pb-5 pt-1 text-xs text-ocean-text-secondary leading-relaxed border-t border-ocean-navy-border/40 mt-1">
+              <p class="pt-2">If any HookPoint rod suffers blank failure under rated line tension, or if any reel gear or bearing seizes due to manufacturing seal defects within 24 months, we repair or replace it free of charge with door-to-door courier assistance.</p>
+            </div>
+          </details>
+
+          <details class="faq-accordion reveal-card ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border group overflow-hidden transition-all duration-300">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none outline-none font-bold text-white text-sm hover:text-ocean-aqua transition">
+              <span class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-ocean-gold/20 text-ocean-gold text-xs font-black flex items-center justify-center shrink-0">Q</span>
+                <span class="text-sm font-bold text-white group-hover:text-ocean-aqua transition">Can I visit your Chennai outpost workshop in person?</span>
+              </span>
+              <span class="w-8 h-8 rounded-lg bg-ocean-navy text-ocean-aqua flex items-center justify-center shrink-0 ml-3 transition-transform duration-300 group-open:rotate-180 group-open:bg-ocean-aqua group-open:text-ocean-navy">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <div class="px-5 pb-5 pt-1 text-xs text-ocean-text-secondary leading-relaxed border-t border-ocean-navy-border/40 mt-1">
+              <p class="pt-2">Yes! Our flagship outpost is located on Marina Beach Road / ECR Coastal Highway, Chennai. You can visit us in person for hands-on gear demonstrations, custom rod flex tests, reel maintenance, or order collection.</p>
+            </div>
+          </details>
+
+          <details class="faq-accordion reveal-card ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border group overflow-hidden transition-all duration-300">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none outline-none font-bold text-white text-sm hover:text-ocean-aqua transition">
+              <span class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-ocean-gold/20 text-ocean-gold text-xs font-black flex items-center justify-center shrink-0">Q</span>
+                <span class="text-sm font-bold text-white group-hover:text-ocean-aqua transition">Are your live and preserved baits safe for the marine environment?</span>
+              </span>
+              <span class="w-8 h-8 rounded-lg bg-ocean-navy text-ocean-aqua flex items-center justify-center shrink-0 ml-3 transition-transform duration-300 group-open:rotate-180 group-open:bg-ocean-aqua group-open:text-ocean-navy">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <div class="px-5 pb-5 pt-1 text-xs text-ocean-text-secondary leading-relaxed border-t border-ocean-navy-border/40 mt-1">
+              <p class="pt-2">Yes. Our StrikeScent preserved baits use food-grade sea salts, betaine, and natural amino acids. They are completely biodegradable, leave zero synthetic chemical residue in seawater, and are 100% fish-safe.</p>
+            </div>
+          </details>
+
+          <details class="faq-accordion reveal-card ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border group overflow-hidden transition-all duration-300">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none outline-none font-bold text-white text-sm hover:text-ocean-aqua transition">
+              <span class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-ocean-gold/20 text-ocean-gold text-xs font-black flex items-center justify-center shrink-0">Q</span>
+                <span class="text-sm font-bold text-white group-hover:text-ocean-aqua transition">How do I submit an order enquiry without creating an account?</span>
+              </span>
+              <span class="w-8 h-8 rounded-lg bg-ocean-navy text-ocean-aqua flex items-center justify-center shrink-0 ml-3 transition-transform duration-300 group-open:rotate-180 group-open:bg-ocean-aqua group-open:text-ocean-navy">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <div class="px-5 pb-5 pt-1 text-xs text-ocean-text-secondary leading-relaxed border-t border-ocean-navy-border/40 mt-1">
+              <p class="pt-2">We eliminated mandatory logins. Simply add items or packages to your Tackle Box, click "Proceed to Order Enquiry" or visit our Order page, fill in your delivery details, and submit!</p>
+            </div>
+          </details>
+
+          <details class="faq-accordion reveal-card ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border group overflow-hidden transition-all duration-300">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none outline-none font-bold text-white text-sm hover:text-ocean-aqua transition">
+              <span class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-ocean-gold/20 text-ocean-gold text-xs font-black flex items-center justify-center shrink-0">Q</span>
+                <span class="text-sm font-bold text-white group-hover:text-ocean-aqua transition">How should I maintain my HookPoint saltwater reel after a trip?</span>
+              </span>
+              <span class="w-8 h-8 rounded-lg bg-ocean-navy text-ocean-aqua flex items-center justify-center shrink-0 ml-3 transition-transform duration-300 group-open:rotate-180 group-open:bg-ocean-aqua group-open:text-ocean-navy">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <div class="px-5 pb-5 pt-1 text-xs text-ocean-text-secondary leading-relaxed border-t border-ocean-navy-border/40 mt-1">
+              <p class="pt-2">After every saltwater session, tighten your reel drag slightly to prevent moisture entering the drag stack, gently rinse with fresh lukewarm water under low pressure, shake off excess droplets, and loosen the drag completely before storing in a ventilated tackle bag.</p>
+            </div>
+          </details>
+
+          <details class="faq-accordion reveal-card ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border group overflow-hidden transition-all duration-300">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none outline-none font-bold text-white text-sm hover:text-ocean-aqua transition">
+              <span class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-ocean-gold/20 text-ocean-gold text-xs font-black flex items-center justify-center shrink-0">Q</span>
+                <span class="text-sm font-bold text-white group-hover:text-ocean-aqua transition">Do you offer custom spooling and leader knot service?</span>
+              </span>
+              <span class="w-8 h-8 rounded-lg bg-ocean-navy text-ocean-aqua flex items-center justify-center shrink-0 ml-3 transition-transform duration-300 group-open:rotate-180 group-open:bg-ocean-aqua group-open:text-ocean-navy">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <div class="px-5 pb-5 pt-1 text-xs text-ocean-text-secondary leading-relaxed border-t border-ocean-navy-border/40 mt-1">
+              <p class="pt-2">Yes! For all reel orders and curated packages, our workshop team can pre-spool your reel under calibrated machine tension with your chosen AquaShield braided line and connect a fluorocarbon shock leader with a seamless FG knot ready to fish.</p>
+            </div>
+          </details>
+
+          <details class="faq-accordion reveal-card ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border group overflow-hidden transition-all duration-300">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none outline-none font-bold text-white text-sm hover:text-ocean-aqua transition">
+              <span class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-ocean-gold/20 text-ocean-gold text-xs font-black flex items-center justify-center shrink-0">Q</span>
+                <span class="text-sm font-bold text-white group-hover:text-ocean-aqua transition">What payment methods and delivery timelines do you offer?</span>
+              </span>
+              <span class="w-8 h-8 rounded-lg bg-ocean-navy text-ocean-aqua flex items-center justify-center shrink-0 ml-3 transition-transform duration-300 group-open:rotate-180 group-open:bg-ocean-aqua group-open:text-ocean-navy">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <div class="px-5 pb-5 pt-1 text-xs text-ocean-text-secondary leading-relaxed border-t border-ocean-navy-border/40 mt-1">
+              <p class="pt-2">Upon submitting your order enquiry, our Chennai dispatch desk contacts you with a transparent pro-forma invoice supporting UPI, NEFT/IMPS, and card transfers. Metro orders arrive in 2–3 business days, while regional coastal locations take 3–5 business days.</p>
+            </div>
+          </details>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Final Dual CTA Banner -->
+    <section class="py-16 bg-ocean-navy-deep border-t border-ocean-navy-border/60">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white">Gear Up with India's Premier Saltwater Tackle</h2>
+        <p class="text-xs sm:text-sm text-ocean-text-secondary max-w-md mx-auto">
+          Explore our complete product catalogue or contact our Chennai outpost specialists today.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="products.html" class="gold-button text-xs sm:text-sm py-3 px-6">Browse Tackle Catalogue</a>
+          <a href="contact.html" class="outline-ocean-button text-xs sm:text-sm py-3 px-6">Contact Chennai Outpost</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shared Footer -->
+  <!-- Shared Footer -->
+  <footer class="bg-ocean-navy-deep border-t border-ocean-navy-border/60 text-ocean-text-secondary text-xs pt-16 pb-12">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12 border-b border-ocean-navy-border/60">
+        
+        <!-- Brand Column -->
+        <div class="space-y-4">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/15 p-1.5 flex items-center justify-center shrink-0">
+              <img src="assets/images/logo.png" alt="HookPoint Logo" class="w-full h-full object-contain" />
+            </div>
+            <div>
+              <div class="text-xl font-black text-white tracking-wide">HOOK<span class="text-ocean-gold">POINT</span></div>
+              <div class="text-[9px] tracking-widest uppercase font-bold text-ocean-gold mt-0.5">GEAR UP. CAST OUT. REEL IN.</div>
+            </div>
+          </a>
+          <p class="text-xs text-ocean-muted-blue leading-relaxed">
+            India's dedicated saltwater fishing tackle brand. We engineer, calibrate, and supply marine-grade carbon rods, sealed drag reels, tournament artificial lures, and coastal baits built for Indian waters.
+          </p>
+          <div class="flex items-center gap-2.5 pt-1">
+            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500 hover:text-white flex items-center justify-center transition" aria-label="WhatsApp" title="Chat on WhatsApp">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-rose-950/40 border border-rose-500/30 text-rose-400 hover:bg-rose-600 hover:text-white flex items-center justify-center transition" aria-label="Instagram" title="Follow on Instagram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/5 border border-white/15 text-slate-300 hover:bg-white/20 hover:text-white flex items-center justify-center transition" aria-label="X" title="Follow on X">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-blue-950/40 border border-blue-500/30 text-blue-400 hover:bg-blue-600 hover:text-white flex items-center justify-center transition" aria-label="Facebook" title="Follow on Facebook">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Catalog & Store Column -->
+        <div class="space-y-3.5">
+          <div class="text-xs font-black uppercase tracking-wider text-white">CATALOG &amp; STORE</div>
+          <ul class="space-y-2.5 text-xs text-ocean-muted-blue">
+            <li><a href="index.html" class="hover:text-ocean-aqua transition">Home 1 (Cinematic)</a></li>
+            <li><a href="home-2.html" class="hover:text-ocean-aqua transition">Home 2 (Equipment Showcase)</a></li>
+            <li><a href="products.html" class="hover:text-ocean-aqua transition">All Fishing Tackle</a></li>
+            <li><a href="products.html?category=rods" class="hover:text-ocean-aqua transition">Rods &amp; Reels</a></li>
+            <li><a href="products.html?category=lures" class="hover:text-ocean-aqua transition">Artificial Lures &amp; Baits</a></li>
+            <li><a href="pricing.html" class="hover:text-ocean-aqua transition">Tackle Packages &amp; Offers</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Support Column -->
+        <div class="space-y-3.5">
+          <div class="text-xs font-black uppercase tracking-wider text-white">CUSTOMER SUPPORT</div>
+          <ul class="space-y-2.5 text-xs text-ocean-muted-blue">
+            <li><a href="order.html" class="hover:text-ocean-aqua transition">Your Tackle Box &amp; Orders</a></li>
+            <li><a href="about.html" class="hover:text-ocean-aqua transition">About Our Brand &amp; Heritage</a></li>
+            <li><a href="pricing.html#pricing-faqs" class="hover:text-ocean-aqua transition">Equipment &amp; Pricing FAQs</a></li>
+            <li><a href="fishing-reports.html" class="hover:text-ocean-aqua transition">Live Coastal Fishing Reports</a></li>
+            <li><a href="blog.html" class="hover:text-ocean-aqua transition">Saltwater Angler Journal</a></li>
+            <li><a href="contact.html" class="hover:text-ocean-aqua transition">Contact Storefront &amp; Dispatch</a></li>
+          </ul>
+        </div>
+
+        <!-- Chennai Outpost Column -->
+        <div class="space-y-3.5">
+          <div class="text-xs font-black uppercase tracking-wider text-white">CHENNAI OUTPOST</div>
+          <div class="space-y-2 text-xs text-ocean-muted-blue leading-relaxed">
+            <div class="font-bold text-white">HookPoint Tackle Shop — Chennai</div>
+            <p>Marina Beach Road / ECR Coastal Highway<br>Chennai, Tamil Nadu, India</p>
+            <div class="pt-2">
+              <span class="font-semibold text-white">Hours:</span> Mon – Sat: 06:00 AM – 08:30 PM
+            </div>
+            <div>
+              <span class="font-semibold text-white">Phone:</span> <a href="tel:+919876543210" class="hover:text-ocean-aqua transition text-ocean-muted-blue">+91 98765 43210</a>
+            </div>
+            <div>
+              <span class="font-semibold text-white">WhatsApp:</span> <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition text-ocean-muted-blue">+91 98765 43210</a>
+            </div>
+            <div>
+              <span class="font-semibold text-white">Email:</span> <a href="mailto:support@hookpoint-tackle.com" class="hover:text-ocean-aqua transition text-ocean-muted-blue">support@hookpoint-tackle.com</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bottom Bar -->
+      <div class="pt-8 text-center text-xs text-ocean-muted-blue">
+        &copy; 2026 HookPoint &mdash; Fishing Tackle &amp; Bait Shop. All Rights Reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/favorites.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+

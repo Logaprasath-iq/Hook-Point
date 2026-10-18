@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fishing Gear & Prices — HookPoint</title>
+  <meta name="description" content="Explore fishing rods, reels, bait, tackle, and accessories at a glance. Transparent Indian Rupee (INR) pricing across budget, mid-range, and premium tiers." />
+  
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'ocean-navy': '#061B2C',
+            'ocean-navy-deep': '#030D16',
+            'ocean-navy-surface': '#0B253A',
+            'ocean-navy-card': '#0E2E47',
+            'ocean-blue': '#087EAB',
+            'ocean-blue-hover': '#0A96CC',
+            'ocean-aqua': '#42C6E8',
+            'ocean-gold': '#D6A928',
+            'ocean-gold-hover': '#E8B936',
+            'ocean-white': '#FFFFFF',
+            'ocean-soft-white': '#F4FAFC',
+            'ocean-muted-blue': '#7894A8',
+            'ocean-text-secondary': '#94AEC0'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/theme.js"></script>
+  <script src="js/direction.js"></script>
+</head>
+<body class="bg-ocean-navy text-white min-h-screen flex flex-col antialiased selection:bg-ocean-aqua selection:text-ocean-navy">
+
+  <!-- Sticky Navbar -->
+  <header class="site-nav">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <a href="index.html" class="flex items-center gap-3 shrink-0 group">
+          <img src="assets/images/logo.png" alt="HookPoint Logo" class="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-105" />
+          <div class="flex flex-col">
+            <span class="text-2xl font-black tracking-tight text-white group-hover:text-ocean-aqua transition leading-none">
+              Hook<span class="text-ocean-gold">Point</span>
+            </span>
+            <span class="text-[10px] tracking-widest uppercase font-semibold text-ocean-muted-blue mt-0.5">
+              Gear Up &bull; Cast Out &bull; Reel In
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center lg:gap-3.5 xl:gap-6 text-xs xl:text-sm">
+          <!-- Home Dropdown -->
+          <div class="nav-dropdown group">
+            <button type="button" class="nav-link nav-dropdown-btn flex items-center gap-1.5 py-2 cursor-pointer outline-none" aria-haspopup="true" aria-expanded="false">
+              <span>Home</span>
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a href="index.html" class="nav-dropdown-item group/item">
+                <div>
+                  <div class="font-bold text-white group-hover/item:text-ocean-aqua transition">Home 1</div>
+                  <div class="text-[11px] text-ocean-muted-blue font-normal">Cinematic Storefront</div>
+                </div>
+                <span class="text-xs text-ocean-gold">→</span>
+              </a>
+              <a href="home-2.html" class="nav-dropdown-item group/item mt-1">
+                <div>
+                  <div class="font-bold text-white group-hover/item:text-ocean-aqua transition">Home 2</div>
+                  <div class="text-[11px] text-ocean-muted-blue font-normal">Equipment Showcase</div>
+                </div>
+                <span class="text-xs text-ocean-gold">→</span>
+              </a>
+            </div>
+          </div>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="products.html" class="nav-link">Products</a>
+          <a href="pricing.html" class="nav-link active">Pricing</a>
+          <a href="fishing-reports.html" class="nav-link">Fishing Reports</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-2 sm:gap-2.5">
+          <!-- Theme Toggle -->
+          <button type="button" class="theme-toggle-btn nav-action-btn nav-action-square rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-ocean-aqua transition shrink-0" aria-label="Toggle Theme"></button>
+
+          <!-- RTL / LTR Toggle -->
+          <button type="button" class="direction-toggle-btn nav-action-btn px-3 rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-aqua/30 hover:border-ocean-aqua text-ocean-aqua transition shrink-0" aria-label="Toggle Direction"></button>
+
+          <!-- Favorite Heart Button (After RTL Button) -->
+          <button type="button" class="open-favorites-btn nav-action-btn nav-action-square relative rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-ocean-gold hover:text-rose-400 hover:border-rose-400/50 transition shrink-0" aria-label="Saved Favorites" title="View Saved Favorites">
+            <svg class="w-5 h-5 transition-transform hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            <span class="fav-count-badge hidden absolute -top-1.5 -end-1.5 w-5 h-5 rounded-full bg-rose-500 text-white text-[11px] font-black flex items-center justify-center shadow-lg transition-transform">0</span>
+          </button>
+
+          <!-- Tackle Box / Cart Trigger -->
+          <button type="button" class="open-cart-btn nav-action-btn nav-action-square relative rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-ocean-aqua hover:border-ocean-aqua transition shrink-0" aria-label="Open Tackle Box" title="Open Tackle Box Cart">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+            <span class="cart-count-badge hidden absolute -top-1.5 -end-1.5 w-5 h-5 rounded-full bg-ocean-gold text-ocean-navy text-[11px] font-black flex items-center justify-center shadow-lg transition-transform">0</span>
+          </button>
+
+          <!-- Order CTA Button -->
+          <a href="order.html" class="hidden sm:inline-flex nav-action-btn px-5 gold-button rounded-xl text-xs font-bold uppercase tracking-wider shadow-md shrink-0">ORDER</a>
+
+          <!-- Mobile Hamburger Menu Button -->
+          <button type="button" id="mobile-menu-btn" class="lg:hidden nav-action-btn nav-action-square rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy-card border border-ocean-navy-border text-white transition shrink-0" aria-label="Open Navigation Menu" aria-expanded="false">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer Backdrop -->
+  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-ocean-navy-deep/80 backdrop-blur-sm z-40 hidden transition-opacity lg:hidden"></div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu-drawer" class="fixed top-0 bottom-0 end-0 w-80 max-w-[85vw] bg-ocean-navy-surface border-s border-ocean-navy-border z-50 transition-transform duration-300 ease-out flex flex-col p-6 overflow-y-auto lg:hidden">
+    <div class="flex items-center justify-between pb-6 border-b border-ocean-navy-border">
+      <div class="flex items-center gap-2">
+        <img src="assets/images/logo.png" alt="HookPoint" class="w-8 h-8 object-contain" />
+        <span class="text-lg font-bold text-white">Hook<span class="text-ocean-gold">Point</span></span>
+      </div>
+      <button type="button" id="mobile-menu-close-btn" class="mobile-menu-close p-2 text-ocean-text-secondary hover:text-white rounded-lg" aria-label="Close menu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+
+    <nav class="flex-1 py-6 space-y-2">
+      <!-- Mobile Accordion for Home -->
+      <div class="space-y-1">
+        <button type="button" class="mobile-dropdown-toggle w-full flex items-center justify-between p-3 rounded-xl bg-ocean-navy text-white text-sm font-semibold transition border border-ocean-navy-border/60">
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-ocean-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            <span>Home</span>
+          </span>
+          <svg class="w-4 h-4 dropdown-arrow text-ocean-gold transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="hidden ps-4 space-y-1 pt-1">
+          <a href="index.html" class="flex items-center justify-between p-2.5 rounded-lg text-ocean-text-secondary hover:text-white hover:bg-ocean-navy text-xs font-medium transition">
+            <span>Home 1 — Storefront</span>
+            <span class="text-[10px] text-ocean-muted-blue">Cinematic</span>
+          </a>
+          <a href="home-2.html" class="flex items-center justify-between p-2.5 rounded-lg text-ocean-text-secondary hover:text-white hover:bg-ocean-navy text-xs font-medium transition">
+            <span>Home 2 — Equipment</span>
+            <span class="text-[10px] text-ocean-muted-blue">Showcase</span>
+          </a>
+        </div>
+      </div>
+
+      <a href="about.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>About</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="products.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Products</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="pricing.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Pricing &amp; Offers</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="fishing-reports.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Fishing Reports</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="blog.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Blog</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="contact.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl hover:bg-ocean-navy text-ocean-text-secondary hover:text-white text-sm font-semibold transition">
+        <span>Contact</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href="order.html" class="mobile-nav-link flex items-center justify-between p-3 rounded-xl bg-ocean-gold/15 text-ocean-gold text-sm font-bold transition">
+        <span>Order &amp; Cart</span>
+        <svg class="w-4 h-4 text-ocean-gold rtl:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+    </nav>
+
+    <div class="pt-6 border-t border-ocean-navy-border space-y-3">
+      <div class="flex items-center justify-between text-xs text-ocean-text-secondary">
+        <span class="font-semibold text-ocean-muted-blue">Language / Direction:</span>
+        <button type="button" class="direction-toggle-btn nav-action-btn px-3 rounded-xl bg-ocean-navy hover:bg-ocean-navy-card border border-ocean-aqua/30 text-ocean-aqua transition" aria-label="Toggle Direction"></button>
+      </div>
+      <a href="order.html" class="w-full gold-button py-3 text-center text-xs font-bold block rounded-xl shadow-md">Create Order Enquiry</a>
+    </div>
+  </div>
+
+  <main class="flex-1">
+
+    <!-- Header Banner with Cinematic Background & Centered Content -->
+    <section class="page-hero-banner relative py-24 sm:py-32 bg-ocean-navy border-b border-ocean-navy-border/60 overflow-hidden flex items-center justify-center min-h-[380px] sm:min-h-[440px]">
+      <!-- Background Image with High Visibility & Contrast -->
+      <div class="absolute inset-0 z-0">
+        <img src="assets/images/price.jpg" alt="HookPoint Precision Gear & Water" class="w-full h-full object-cover object-center filter brightness-[0.72] contrast-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-ocean-navy via-ocean-navy/40 to-black/55"></div>
+        <div class="underwater-light"></div>
+      </div>
+
+      <div class="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div class="reveal-group">
+          <span class="hero-eyebrow inline-block text-xs uppercase font-extrabold tracking-widest text-ocean-gold bg-ocean-navy-deep/85 border border-ocean-gold/50 px-4 py-1.5 rounded-full shadow-lg backdrop-blur-md mb-4">Direct Indian Rupee (INR) Pricing</span>
+          <h1 class="hero-title text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">Curated Tackle Packages &amp; Direct Pricing</h1>
+          <p class="hero-desc text-sm sm:text-base text-slate-100 max-w-2xl mx-auto mt-4 leading-relaxed font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            Pre-calibrated turnkey outfits engineered by saltwater guides. Zero tackle mismatch, transparent Indian Rupee rates, and genuine marine warranty protection.
+          </p>
+        </div>
+
+        <!-- Quick Jump Navigation Pills (Centered) -->
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-6">
+          <a href="#packages" class="px-4 py-2 rounded-xl text-xs font-bold bg-ocean-navy/90 border border-ocean-navy-border hover:border-ocean-gold text-white transition flex items-center gap-1.5 backdrop-blur-md shadow-md">
+            <span class="text-ocean-gold">★</span> Curated Packages (4 Tiers)
+          </a>
+          <a href="#comparison-table" class="px-4 py-2 rounded-xl text-xs font-bold bg-ocean-navy/90 border border-ocean-navy-border hover:border-ocean-aqua text-white transition flex items-center gap-1.5 backdrop-blur-md shadow-md">
+            <span class="text-ocean-aqua">📊</span> Technical Comparison Table
+          </a>
+          <a href="#special-discounts" class="px-4 py-2 rounded-xl text-xs font-bold bg-ocean-navy/90 border border-ocean-navy-border hover:border-ocean-aqua text-white transition flex items-center gap-1.5 backdrop-blur-md shadow-md">
+            <span class="text-emerald-400">🔥</span> Volume &amp; Combo Discounts
+          </a>
+          <a href="#pricing-faqs" class="px-4 py-2 rounded-xl text-xs font-bold bg-ocean-gold/20 border border-ocean-gold/40 text-ocean-gold hover:bg-ocean-gold/30 transition flex items-center gap-1.5 backdrop-blur-md shadow-md">
+            <span>❓</span> Pricing FAQs
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 1: CURATED TACKLE PACKAGES (MATCHING REFERENCE IMAGE 2)
+         ========================================================================== -->
+    <section id="packages" class="section-spacing bg-ocean-navy relative">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="reveal-group text-center max-w-3xl mx-auto mb-16">
+          <span class="reveal-text text-xs uppercase font-extrabold tracking-widest text-ocean-aqua">Turnkey Outfits</span>
+          <h2 class="reveal-heading text-2xl sm:text-4xl font-extrabold text-white mt-1">Balanced Hardware Tiers for Every Water</h2>
+          <p class="reveal-text text-xs sm:text-sm text-ocean-text-secondary mt-2">
+            Each package is pre-calibrated to eliminate tackle mismatch. Includes rod, reel, spooling, terminal tackle, and protective transport hardware.
+          </p>
+        </div>
+
+        <!-- 4 Column Package Grid (No Images, Pure Content) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+
+          <!-- TIER 1: Coastal Starter Package -->
+          <div class="reveal-card ocean-card bg-ocean-navy-card/90 border border-ocean-navy-border rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-500/40 transition duration-300">
+            <div>
+              <!-- Category Pill -->
+              <div class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold border border-emerald-500/40 text-emerald-400 bg-emerald-500/10 mb-4">
+                Beginners & Weekend
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight line-clamp-2 min-h-[4rem]">Starter Coastal Package</h3>
+
+              <!-- Description -->
+              <p class="text-xs text-ocean-text-secondary mt-3 leading-relaxed line-clamp-2 min-h-[2.5rem]">
+                Everything required for your first comfortable coastal fishing session. Eliminates equipment mismatch.
+              </p>
+
+              <!-- Package Price Box -->
+              <div class="my-6 p-4 rounded-2xl bg-ocean-navy-deep/80 border border-ocean-navy-border">
+                <div class="text-[10px] font-extrabold uppercase tracking-widest text-ocean-muted-blue">PACKAGE PRICE</div>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span class="text-2xl sm:text-3xl font-black text-white">₹4,999</span>
+                  <span class="text-xs text-ocean-muted-blue line-through">₹6,699</span>
+                </div>
+                <div class="text-xs font-bold text-emerald-400 mt-1">Save ₹1,700</div>
+              </div>
+
+              <!-- Included Hardware -->
+              <div class="space-y-3 pb-6 border-b border-ocean-navy-border/60">
+                <div class="text-[11px] font-black uppercase tracking-wider text-ocean-muted-blue">INCLUDED HARDWARE</div>
+                <ul class="space-y-2 text-xs text-white">
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 font-bold shrink-0">✓</span>
+                    <span>TidalWave 8.5ft Carbon Rod <span class="text-ocean-muted-blue">(₹3,799)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 font-bold shrink-0">✓</span>
+                    <span>WaveRunner 3000 Salt Reel <span class="text-ocean-muted-blue">(₹2,299)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 font-bold shrink-0">✓</span>
+                    <span>AquaShield 8X Micro-Braid 20lb <span class="text-ocean-muted-blue">(₹799)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 font-bold shrink-0">✓</span>
+                    <span>Titan Circle Hooks 50-Pack <span class="text-ocean-muted-blue">(₹199)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 font-bold shrink-0">✓</span>
+                    <span>Float & Sinker Terminal Kit <span class="text-ocean-muted-blue">(₹249)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 font-bold shrink-0">✓</span>
+                    <span>First-Time Angler Field Manual</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Package Benefits -->
+              <div class="pt-5 space-y-2">
+                <div class="text-[11px] font-black uppercase tracking-wider text-ocean-muted-blue">PACKAGE BENEFITS</div>
+                <ul class="space-y-1.5 text-xs text-ocean-text-secondary">
+                  <li>• Lightweight setup (&lt;680g total)</li>
+                  <li>• Free Pan-India Courier with Rod Tube</li>
+                  <li>• 100% Saltwater ready out of the box</li>
+                  <li>• 1-Year HookPoint Warranty Coverage</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="pt-6 mt-auto">
+              <button type="button" class="add-to-cart-btn w-full py-3 px-4 rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy text-white hover:text-ocean-aqua border border-ocean-navy-border font-bold text-xs uppercase tracking-wider transition" data-product-id="bundle-001">
+                Add Package to Order
+              </button>
+            </div>
+          </div>
+
+          <!-- TIER 2: Estuary Hunter Package -->
+          <div class="reveal-card ocean-card bg-ocean-navy-card/90 border border-ocean-navy-border rounded-3xl p-6 flex flex-col justify-between hover:border-amber-500/40 transition duration-300">
+            <div>
+              <!-- Category Pill -->
+              <div class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold border border-amber-500/40 text-amber-400 bg-amber-500/10 mb-4">
+                Fast-Action & Estuary
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight line-clamp-2 min-h-[4rem]">Estuary Hunter Package</h3>
+
+              <!-- Description -->
+              <p class="text-xs text-ocean-text-secondary mt-3 leading-relaxed line-clamp-2 min-h-[2.5rem]">
+                Lightweight precision hardware configured for all-day twitching, mangrove snags, and heavy backwater Barramundi.
+              </p>
+
+              <!-- Package Price Box -->
+              <div class="my-6 p-4 rounded-2xl bg-ocean-navy-deep/80 border border-ocean-navy-border">
+                <div class="text-[10px] font-extrabold uppercase tracking-widest text-ocean-muted-blue">PACKAGE PRICE</div>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span class="text-2xl sm:text-3xl font-black text-white">₹11,499</span>
+                  <span class="text-xs text-ocean-muted-blue line-through">₹14,299</span>
+                </div>
+                <div class="text-xs font-bold text-emerald-400 mt-1">Save ₹2,800</div>
+              </div>
+
+              <!-- Included Hardware -->
+              <div class="space-y-3 pb-6 border-b border-ocean-navy-border/60">
+                <div class="text-[11px] font-black uppercase tracking-wider text-ocean-muted-blue">INCLUDED HARDWARE</div>
+                <ul class="space-y-2 text-xs text-white">
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 font-bold shrink-0">✓</span>
+                    <span>Predator Pro 7ft Carbon Rod <span class="text-ocean-muted-blue">(₹5,499)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 font-bold shrink-0">✓</span>
+                    <span>Kraken 3000 IPX6 Sealed Reel <span class="text-ocean-muted-blue">(₹6,299)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 font-bold shrink-0">✓</span>
+                    <span>GhostFluor 100% Fluoro 30lb <span class="text-ocean-muted-blue">(₹899)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 font-bold shrink-0">✓</span>
+                    <span>HydroPulse & Phantom Minnows <span class="text-ocean-muted-blue">(₹1,199)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 font-bold shrink-0">✓</span>
+                    <span>Titanium Braid & Wire Pliers <span class="text-ocean-muted-blue">(₹349)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 font-bold shrink-0">✓</span>
+                    <span>Aerated Live Bait Keeper <span class="text-ocean-muted-blue">(₹299)</span></span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Package Benefits -->
+              <div class="pt-5 space-y-2">
+                <div class="text-[11px] font-black uppercase tracking-wider text-ocean-muted-blue">PACKAGE BENEFITS</div>
+                <ul class="space-y-1.5 text-xs text-ocean-text-secondary">
+                  <li>• Gram-counted Toray carbon blank</li>
+                  <li>• 12kg Sealed carbon-matrix drag</li>
+                  <li>• Rigid PVC courier tube included</li>
+                  <li>• 2-Year HookPoint Warranty Coverage</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="pt-6 mt-auto">
+              <button type="button" class="add-to-cart-btn w-full py-3 px-4 rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy text-white hover:text-ocean-aqua border border-ocean-navy-border font-bold text-xs uppercase tracking-wider transition" data-product-id="bundle-002">
+                Add Package to Order
+              </button>
+            </div>
+          </div>
+
+          <!-- TIER 3: Surfcasting Breaker Arsenal (MOST POPULAR - HIGHLIGHTED) -->
+          <div class="reveal-card ocean-card relative bg-gradient-to-b from-ocean-navy-card to-ocean-navy-surface border-2 border-ocean-gold rounded-3xl p-6 flex flex-col justify-between shadow-[0_0_35px_rgba(214,169,40,0.2)] hover:border-ocean-gold-hover transition duration-300">
+            <!-- Most Popular Badge -->
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-ocean-gold text-ocean-navy text-[10px] font-black uppercase tracking-widest shadow-lg">
+              MOST POPULAR
+            </div>
+
+            <div>
+              <!-- Category Pill -->
+              <div class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold border border-ocean-gold/50 text-ocean-gold bg-ocean-gold/10 mb-4 mt-1">
+                Surf & Heavy Inshore
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight line-clamp-2 min-h-[4rem]">Surfcasting Breaker Arsenal</h3>
+
+              <!-- Description -->
+              <p class="text-xs text-ocean-text-secondary mt-3 leading-relaxed line-clamp-2 min-h-[2.5rem]">
+                Our definitive setup for 3 to 7-day coastal adventures, punching 150g sinkers past heavy beach breakers.
+              </p>
+
+              <!-- Package Price Box (Warmer Tint) -->
+              <div class="my-6 p-4 rounded-2xl bg-ocean-navy-deep/80 border border-ocean-gold/40">
+                <div class="text-[10px] font-extrabold uppercase tracking-widest text-ocean-gold">PACKAGE PRICE</div>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span class="text-2xl sm:text-3xl font-black text-white">₹15,999</span>
+                  <span class="text-xs text-ocean-muted-blue line-through">₹19,499</span>
+                </div>
+                <div class="text-xs font-bold text-emerald-400 mt-1">Save ₹3,500</div>
+              </div>
+
+              <!-- Included Hardware -->
+              <div class="space-y-3 pb-6 border-b border-ocean-gold/20">
+                <div class="text-[11px] font-black uppercase tracking-wider text-ocean-gold">INCLUDED HARDWARE</div>
+                <ul class="space-y-2 text-xs text-white">
+                  <li class="flex items-start gap-2">
+                    <span class="text-ocean-gold font-bold shrink-0">✓</span>
+                    <span>Apex 12ft 40T Toray Surf Rod <span class="text-ocean-muted-blue">(₹8,499)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-ocean-gold font-bold shrink-0">✓</span>
+                    <span>Kraken 5000 Surf Salt Reel <span class="text-ocean-muted-blue">(₹7,299)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-ocean-gold font-bold shrink-0">✓</span>
+                    <span>AquaShield 8X Braid 40lb 300m <span class="text-ocean-muted-blue">(₹1,299)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-ocean-gold font-bold shrink-0">✓</span>
+                    <span>60lb Heavy Shock Leader & Swivels <span class="text-ocean-muted-blue">(₹599)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-ocean-gold font-bold shrink-0">✓</span>
+                    <span>AeroBullet Pyramid Sinkers 5-Pk <span class="text-ocean-muted-blue">(₹499)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-ocean-gold font-bold shrink-0">✓</span>
+                    <span>Waterproof Double-Sided Case <span class="text-ocean-muted-blue">(₹499)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-ocean-gold font-bold shrink-0">✓</span>
+                    <span>StrikeScent Preserved Squid Strips <span class="text-ocean-muted-blue">(₹399)</span></span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Package Benefits -->
+              <div class="pt-5 space-y-2">
+                <div class="text-[11px] font-black uppercase tracking-wider text-ocean-gold">PACKAGE BENEFITS</div>
+                <ul class="space-y-1.5 text-xs text-ocean-text-secondary">
+                  <li>• Coromandel surf 75 km/h wind tested</li>
+                  <li>• 15kg Heavy-duty drag stopping power</li>
+                  <li>• Free Express Pan-India Courier</li>
+                  <li>• 3-Year Saltwater Hardware Guarantee</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="pt-6 mt-auto">
+              <button type="button" class="add-to-cart-btn w-full gold-button py-3 px-4 text-xs font-bold uppercase tracking-wider shadow-lg" data-product-id="bundle-003">
+                Add Package to Order
+              </button>
+            </div>
+          </div>
+
+          <!-- TIER 4: Offshore Big Game Expedition -->
+          <div class="reveal-card ocean-card bg-ocean-navy-card/90 border border-ocean-navy-border rounded-3xl p-6 flex flex-col justify-between hover:border-ocean-aqua/40 transition duration-300">
+            <div>
+              <!-- Category Pill -->
+              <div class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold border border-ocean-aqua/40 text-ocean-aqua bg-ocean-aqua/10 mb-4">
+                Offshore & Bluewater
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight line-clamp-2 min-h-[4rem]">Ultimate Expedition</h3>
+
+              <!-- Description -->
+              <p class="text-xs text-ocean-text-secondary mt-3 leading-relaxed line-clamp-2 min-h-[2.5rem]">
+                Uncompromising hardware for deep vertical jigging, GT surface popping, and 50kg+ pelagic monster battles.
+              </p>
+
+              <!-- Package Price Box -->
+              <div class="my-6 p-4 rounded-2xl bg-ocean-navy-deep/80 border border-ocean-navy-border">
+                <div class="text-[10px] font-extrabold uppercase tracking-widest text-ocean-muted-blue">PACKAGE PRICE</div>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span class="text-2xl sm:text-3xl font-black text-white">₹28,999</span>
+                  <span class="text-xs text-ocean-muted-blue line-through">₹34,999</span>
+                </div>
+                <div class="text-xs font-bold text-emerald-400 mt-1">Save ₹6,000</div>
+              </div>
+
+              <!-- Included Hardware -->
+              <div class="space-y-3 pb-6 border-b border-ocean-navy-border/60">
+                <div class="text-[11px] font-black uppercase tracking-wider text-ocean-muted-blue">INCLUDED HARDWARE</div>
+                <ul class="space-y-2 text-xs text-white">
+                  <li class="flex items-start gap-2">
+                    <span class="text-ocean-aqua font-bold shrink-0">✓</span>
+                    <span>Apex 40T Nano Popping Rod <span class="text-ocean-muted-blue">(₹9,999)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-ocean-aqua font-bold shrink-0">✓</span>
+                    <span>DeepDrop 8000 Billet Reel <span class="text-ocean-muted-blue">(₹13,999)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-ocean-aqua font-bold shrink-0">✓</span>
+                    <span>Hollow-Core 9X 80lb Braid 500m <span class="text-ocean-muted-blue">(₹2,499)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-ocean-aqua font-bold shrink-0">✓</span>
+                    <span>ViperTopwater 160mm Poppers <span class="text-ocean-muted-blue">(₹2,199)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-ocean-aqua font-bold shrink-0">✓</span>
+                    <span>GripLock 25kg Digital Lip Gripper <span class="text-ocean-muted-blue">(₹1,899)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-ocean-aqua font-bold shrink-0">✓</span>
+                    <span>Heavy Wind-On Pelagic Leader <span class="text-ocean-muted-blue">(₹899)</span></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-ocean-aqua font-bold shrink-0">✓</span>
+                    <span>90L Marine Dry Duffel Bag <span class="text-ocean-muted-blue">(₹2,499)</span></span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Package Benefits -->
+              <div class="pt-5 space-y-2">
+                <div class="text-[11px] font-black uppercase tracking-wider text-ocean-muted-blue">PACKAGE BENEFITS</div>
+                <ul class="space-y-1.5 text-xs text-ocean-text-secondary">
+                  <li>• Monster 22kg+ Lever Drag Stopping Power</li>
+                  <li>• Sub-surface IPX6 & saltwater tested</li>
+                  <li>• Free Express Air Courier Pan-India</li>
+                  <li>• Lifetime Hardware & Blank Guarantee</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="pt-6 mt-auto">
+              <button type="button" class="add-to-cart-btn w-full py-3 px-4 rounded-xl bg-ocean-navy-surface hover:bg-ocean-navy text-white hover:text-ocean-aqua border border-ocean-navy-border font-bold text-xs uppercase tracking-wider transition" data-product-id="bundle-004">
+                Add Package to Order
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 2: TECHNICAL COMPARISON TABLE (MATCHING REFERENCE IMAGE 3)
+         ========================================================================== -->
+    <section id="comparison-table" class="section-spacing bg-ocean-navy-deep/90 border-t border-ocean-navy-border/60">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="reveal-group text-center max-w-3xl mx-auto mb-12">
+          <p class="reveal-text text-xs uppercase font-extrabold tracking-widest text-ocean-gold">
+            Compare technical hardware inclusions across all four HookPoint curated tiers.
+          </p>
+          <h2 class="reveal-heading text-2xl sm:text-4xl font-extrabold text-white mt-1">Technical Hardware Specification Matrix</h2>
+        </div>
+
+        <!-- Comparison Table Container -->
+        <div class="reveal-card overflow-x-auto rounded-3xl border border-ocean-navy-border bg-ocean-navy-surface/40 shadow-2xl">
+          <table class="w-full text-start text-xs sm:text-sm border-collapse min-w-[760px]">
+            <thead>
+              <tr class="border-b border-ocean-navy-border text-start">
+                <th scope="col" class="py-5 px-6 font-extrabold text-white text-start w-1/4">Feature / Capability</th>
+                <th scope="col" class="py-5 px-5 font-bold text-white text-start">Starter (₹4,999)</th>
+                <th scope="col" class="py-5 px-5 font-bold text-white text-start">Hunter (₹11,499)</th>
+                <th scope="col" class="py-5 px-5 font-extrabold text-ocean-gold text-start bg-ocean-gold/10 border-x border-ocean-gold/30">
+                  Surfcasting (₹15,999)
+                </th>
+                <th scope="col" class="py-5 px-5 font-bold text-white text-start">Ultimate (₹28,999)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-ocean-navy-border/60 text-ocean-text-secondary">
+              <!-- Row 1: Rod Blank -->
+              <tr class="hover:bg-ocean-navy/40 transition">
+                <td class="py-4 px-6 font-semibold text-white">Rod Blank Tier</td>
+                <td class="py-4 px-5">24T High Modulus Carbon</td>
+                <td class="py-4 px-5">30T Toray Spiral Carbon</td>
+                <td class="py-4 px-5 font-medium text-white bg-ocean-gold/5 border-x border-ocean-gold/20">40T Multi-Layer Japanese Carbon</td>
+                <td class="py-4 px-5">Toray Nanoalloy 46T Extreme Blank</td>
+              </tr>
+
+              <!-- Row 2: Reel Construction -->
+              <tr class="hover:bg-ocean-navy/40 transition">
+                <td class="py-4 px-6 font-semibold text-white">Reel Body & Spool</td>
+                <td class="py-4 px-5">High-Tensile Composite</td>
+                <td class="py-4 px-5">Cold-Forged Aluminium Body</td>
+                <td class="py-4 px-5 font-medium text-white bg-ocean-gold/5 border-x border-ocean-gold/20">Full CNC All-Metal Marine Body</td>
+                <td class="py-4 px-5">Machined Aircraft 6061-T6 Billet</td>
+              </tr>
+
+              <!-- Row 3: Drag Stopping Power -->
+              <tr class="hover:bg-ocean-navy/40 transition">
+                <td class="py-4 px-6 font-semibold text-white">Drag Stopping Power</td>
+                <td class="py-4 px-5">Felt Washers (7kg Drag)</td>
+                <td class="py-4 px-5">Carbon Matrix (12kg Drag)</td>
+                <td class="py-4 px-5 font-medium text-white bg-ocean-gold/5 border-x border-ocean-gold/20">Dual-Sealed Carbon (15kg Drag)</td>
+                <td class="py-4 px-5">Extreme Lever Drag (22kg+ Monster)</td>
+              </tr>
+
+              <!-- Row 4: Bearing System -->
+              <tr class="hover:bg-ocean-navy/40 transition">
+                <td class="py-4 px-6 font-semibold text-white">Bearing System</td>
+                <td class="py-4 px-5">4+1 Shielded Stainless</td>
+                <td class="py-4 px-5">7+1 Marine SaltShield</td>
+                <td class="py-4 px-5 font-medium text-white bg-ocean-gold/5 border-x border-ocean-gold/20">10+1 IPX6 Sealed Precision</td>
+                <td class="py-4 px-5">12+1 Submersible Ceramic-Coated</td>
+              </tr>
+
+              <!-- Row 5: Braided Line -->
+              <tr class="hover:bg-ocean-navy/40 transition">
+                <td class="py-4 px-6 font-semibold text-white">Braided Line Included</td>
+                <td class="py-4 px-5">AquaShield 4X (20lb / 300m)</td>
+                <td class="py-4 px-5">AquaShield 8X (30lb / 300m)</td>
+                <td class="py-4 px-5 font-medium text-white bg-ocean-gold/5 border-x border-ocean-gold/20">AquaShield 8X Tournament (40lb)</td>
+                <td class="py-4 px-5">Hollow-Core 9X Braid (80lb / 500m)</td>
+              </tr>
+
+              <!-- Row 6: Shock Leader -->
+              <tr class="hover:bg-ocean-navy/40 transition">
+                <td class="py-4 px-6 font-semibold text-white">Shock Leader Spec</td>
+                <td class="py-4 px-5">Monofilament (25lb / 30m)</td>
+                <td class="py-4 px-5">GhostFluor 100% Fluoro (30lb)</td>
+                <td class="py-4 px-5 font-medium text-white bg-ocean-gold/5 border-x border-ocean-gold/20">Heavy Shock Leader (60lb / 50m)</td>
+                <td class="py-4 px-5">Wind-On Pelagic Leader (100lb)</td>
+              </tr>
+
+              <!-- Row 7: Tackle Storage -->
+              <tr class="hover:bg-ocean-navy/40 transition">
+                <td class="py-4 px-6 font-semibold text-white">Tackle Storage Hardware</td>
+                <td class="py-4 px-5 text-ocean-muted-blue">— Optional —</td>
+                <td class="py-4 px-5 text-ocean-muted-blue">— Optional —</td>
+                <td class="py-4 px-5 font-medium text-white bg-ocean-gold/5 border-x border-ocean-gold/20">Waterproof Double-Sided Case</td>
+                <td class="py-4 px-5">90L Marine Heavy Duffel Included</td>
+              </tr>
+
+              <!-- Row 8: Marine Tools & Rigging -->
+              <tr class="hover:bg-ocean-navy/40 transition">
+                <td class="py-4 px-6 font-semibold text-white">Marine Tools & Baits</td>
+                <td class="py-4 px-5">Circle Hooks + Bobber Kit</td>
+                <td class="py-4 px-5">Titanium Pliers + Bait Keeper</td>
+                <td class="py-4 px-5 font-medium text-white bg-ocean-gold/5 border-x border-ocean-gold/20">Pyramid Sinkers + Preserved Squid</td>
+                <td class="py-4 px-5">25kg Digital Scale Lip Gripper</td>
+              </tr>
+
+              <!-- Row 9: Salt Spray Rating -->
+              <tr class="hover:bg-ocean-navy/40 transition">
+                <td class="py-4 px-6 font-semibold text-white">Salt Spray Rating</td>
+                <td class="py-4 px-5">250h Salt Chamber Tested</td>
+                <td class="py-4 px-5">500h Salt Chamber Tested</td>
+                <td class="py-4 px-5 font-medium text-white bg-ocean-gold/5 border-x border-ocean-gold/20">1,000h Marine Gold Anodized</td>
+                <td class="py-4 px-5">Mil-Spec Submersible Marine Anodized</td>
+              </tr>
+
+              <!-- Row 10: Warranty -->
+              <tr class="hover:bg-ocean-navy/40 transition">
+                <td class="py-4 px-6 font-semibold text-white">Warranty Protection</td>
+                <td class="py-4 px-5">1-Year Full Coverage</td>
+                <td class="py-4 px-5">2-Year Full Coverage</td>
+                <td class="py-4 px-5 font-medium text-white bg-ocean-gold/5 border-x border-ocean-gold/20">3-Year Saltwater Guarantee</td>
+                <td class="py-4 px-5">Lifetime Hardware &amp; Blank Guarantee</td>
+              </tr>
+
+              <!-- Row 11: Pan-India Shipping -->
+              <tr class="hover:bg-ocean-navy/40 transition">
+                <td class="py-4 px-6 font-semibold text-white">Courier Shipping</td>
+                <td class="py-4 px-5 font-bold text-emerald-400">Free Express Pan-India</td>
+                <td class="py-4 px-5 font-bold text-emerald-400">Free Express Pan-India</td>
+                <td class="py-4 px-5 font-bold text-emerald-400 bg-ocean-gold/5 border-x border-ocean-gold/20">Free Express Pan-India</td>
+                <td class="py-4 px-5 font-bold text-emerald-400">Free Air Courier Pan-India</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3: SPECIAL OFFERS & DISCOUNTS SUMMARY (NO IMAGES)
+         ========================================================================== -->
+    <section id="special-discounts" class="section-spacing bg-ocean-navy border-t border-ocean-navy-border/60">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="reveal-group text-center max-w-2xl mx-auto mb-12">
+          <span class="reveal-text text-xs uppercase font-extrabold tracking-widest text-ocean-gold">Direct Angler Savings</span>
+          <h2 class="reveal-heading text-2xl sm:text-4xl font-extrabold text-white mt-1">Special Volume &amp; Combo Discounts</h2>
+          <p class="reveal-text text-xs sm:text-sm text-ocean-text-secondary mt-2">
+            Save on your tackle setup when assembling complete kits or ordering terminal essentials in bulk.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="reveal-card ocean-card p-6 rounded-2xl bg-ocean-navy-card border border-ocean-navy-border flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-ocean-gold/20 text-ocean-gold flex items-center justify-center font-black text-xl shrink-0">
+              10%
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-white">Full Combo Discount</h3>
+              <p class="text-xs text-ocean-text-secondary mt-1">Purchase any rod and reel combo together to receive an automatic 10% discount on order submission.</p>
+            </div>
+          </div>
+
+          <div class="reveal-card ocean-card p-6 rounded-2xl bg-ocean-navy-card border border-ocean-navy-border flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-ocean-aqua/20 text-ocean-aqua flex items-center justify-center font-black text-xl shrink-0">
+              15%
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-white">Bulk Terminal Pack</h3>
+              <p class="text-xs text-ocean-text-secondary mt-1">Order 5 or more packs of circle hooks, braided lines, or sinkers to claim 15% volume savings.</p>
+            </div>
+          </div>
+
+          <div class="reveal-card ocean-card p-6 rounded-2xl bg-ocean-navy-card border border-ocean-navy-border flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-black text-xl shrink-0">
+              FREE
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-white">Express Delivery</h3>
+              <p class="text-xs text-ocean-text-secondary mt-1">Zero shipping fees across all of India on orders over ₹2,999. Use promotional voucher code <strong class="text-ocean-gold">TIGHTLINES</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charter & Club Wholesale Callout -->
+        <div class="reveal-card mt-8 p-6 rounded-2xl bg-ocean-navy-surface border border-ocean-gold/30 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-1 text-center md:text-start">
+            <div class="text-xs font-bold uppercase tracking-wider text-ocean-gold">Charter Fleets & Angling Clubs</div>
+            <h3 class="text-lg font-bold text-white">Need Custom Outfitting for 5+ Anglers?</h3>
+            <p class="text-xs text-ocean-text-secondary max-w-xl">
+              We provide custom bulk discount tiers, spooling calibrations, and priority PVC tube dispatch for coastal charter boats, competitive tournament teams, and angling societies across India.
+            </p>
+          </div>
+          <a href="contact.html" class="gold-button py-3 px-6 text-xs font-bold uppercase tracking-wider shrink-0 whitespace-nowrap">
+            Request Club Quote
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4: PRICING FAQS
+         ========================================================================== -->
+    <section id="pricing-faqs" class="section-spacing bg-ocean-navy-deep/90 border-t border-ocean-navy-border/60">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="reveal-group text-center max-w-2xl mx-auto mb-12">
+          <span class="reveal-text text-xs uppercase font-extrabold tracking-widest text-ocean-aqua">Got Questions?</span>
+          <h2 class="reveal-heading text-2xl sm:text-3xl font-extrabold text-white mt-1">Frequently Asked Pricing Questions</h2>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-4">
+          
+          <!-- Pricing FAQ 1 -->
+          <details class="faq-accordion reveal-card ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border group overflow-hidden transition-all duration-300">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none outline-none font-bold text-white text-sm hover:text-ocean-aqua transition">
+              <span class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-ocean-gold/20 text-ocean-gold text-xs font-black flex items-center justify-center shrink-0">Q</span>
+                <span class="text-sm font-bold text-white group-hover:text-ocean-aqua transition">Can I customize or swap items inside a package?</span>
+              </span>
+              <span class="w-8 h-8 rounded-lg bg-ocean-navy text-ocean-aqua flex items-center justify-center shrink-0 ml-3 transition-transform duration-300 group-open:rotate-180 group-open:bg-ocean-aqua group-open:text-ocean-navy">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <div class="px-5 pb-5 pt-1 text-xs text-ocean-text-secondary leading-relaxed border-t border-ocean-navy-border/40 mt-1">
+              <p class="pt-2">Yes, absolutely. If you want a heavier braid rating, a left-hand retrieve reel, or specific hook sizes, simply specify your preference in the Special Instructions field on the Order Enquiry page, and our Chennai workshop team will configure it at no additional labor charge.</p>
+            </div>
+          </details>
+
+          <!-- Pricing FAQ 2 -->
+          <details class="faq-accordion reveal-card ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border group overflow-hidden transition-all duration-300">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none outline-none font-bold text-white text-sm hover:text-ocean-aqua transition">
+              <span class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-ocean-gold/20 text-ocean-gold text-xs font-black flex items-center justify-center shrink-0">Q</span>
+                <span class="text-sm font-bold text-white group-hover:text-ocean-aqua transition">How does free shipping across India work?</span>
+              </span>
+              <span class="w-8 h-8 rounded-lg bg-ocean-navy text-ocean-aqua flex items-center justify-center shrink-0 ml-3 transition-transform duration-300 group-open:rotate-180 group-open:bg-ocean-aqua group-open:text-ocean-navy">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <div class="px-5 pb-5 pt-1 text-xs text-ocean-text-secondary leading-relaxed border-t border-ocean-navy-border/40 mt-1">
+              <p class="pt-2">All 4 curated packages automatically qualify for Free Express Pan-India Courier delivery. Fishing rods are packed inside reinforced rigid PVC cylinders with foam end-caps, while reels and terminal tackle travel in cushioned cartons.</p>
+            </div>
+          </details>
+
+          <!-- Pricing FAQ 3 -->
+          <details class="faq-accordion reveal-card ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border group overflow-hidden transition-all duration-300">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none outline-none font-bold text-white text-sm hover:text-ocean-aqua transition">
+              <span class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-ocean-gold/20 text-ocean-gold text-xs font-black flex items-center justify-center shrink-0">Q</span>
+                <span class="text-sm font-bold text-white group-hover:text-ocean-aqua transition">What warranty comes with HookPoint packages?</span>
+              </span>
+              <span class="w-8 h-8 rounded-lg bg-ocean-navy text-ocean-aqua flex items-center justify-center shrink-0 ml-3 transition-transform duration-300 group-open:rotate-180 group-open:bg-ocean-aqua group-open:text-ocean-navy">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <div class="px-5 pb-5 pt-1 text-xs text-ocean-text-secondary leading-relaxed border-t border-ocean-navy-border/40 mt-1">
+              <p class="pt-2">Starter packages include 1-Year Full Coverage; Hunter and Surfcasting packages include 2 to 3 years of coverage against blank breakage and corrosion; our Ultimate Expedition package carries a Lifetime Hardware Guarantee.</p>
+            </div>
+          </details>
+
+          <!-- Pricing FAQ 4 -->
+          <details class="faq-accordion reveal-card ocean-card rounded-2xl bg-ocean-navy-card border border-ocean-navy-border group overflow-hidden transition-all duration-300">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none outline-none font-bold text-white text-sm hover:text-ocean-aqua transition">
+              <span class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-lg bg-ocean-gold/20 text-ocean-gold text-xs font-black flex items-center justify-center shrink-0">Q</span>
+                <span class="text-sm font-bold text-white group-hover:text-ocean-aqua transition">How do I submit an order enquiry without creating an account?</span>
+              </span>
+              <span class="w-8 h-8 rounded-lg bg-ocean-navy text-ocean-aqua flex items-center justify-center shrink-0 ml-3 transition-transform duration-300 group-open:rotate-180 group-open:bg-ocean-aqua group-open:text-ocean-navy">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </summary>
+            <div class="px-5 pb-5 pt-1 text-xs text-ocean-text-secondary leading-relaxed border-t border-ocean-navy-border/40 mt-1">
+              <p class="pt-2">We eliminated mandatory account logins. Simply click "Add Package to Order" on your preferred package, review your Tackle Box drawer, proceed to the Order page, enter your delivery address, and submit.</p>
+            </div>
+          </details>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shared Footer -->
+  <!-- Shared Footer -->
+  <footer class="bg-ocean-navy-deep border-t border-ocean-navy-border/60 text-ocean-text-secondary text-xs pt-16 pb-12">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12 border-b border-ocean-navy-border/60">
+        
+        <!-- Brand Column -->
+        <div class="space-y-4">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/15 p-1.5 flex items-center justify-center shrink-0">
+              <img src="assets/images/logo.png" alt="HookPoint Logo" class="w-full h-full object-contain" />
+            </div>
+            <div>
+              <div class="text-xl font-black text-white tracking-wide">HOOK<span class="text-ocean-gold">POINT</span></div>
+              <div class="text-[9px] tracking-widest uppercase font-bold text-ocean-gold mt-0.5">GEAR UP. CAST OUT. REEL IN.</div>
+            </div>
+          </a>
+          <p class="text-xs text-ocean-muted-blue leading-relaxed">
+            India's dedicated saltwater fishing tackle brand. We engineer, calibrate, and supply marine-grade carbon rods, sealed drag reels, tournament artificial lures, and coastal baits built for Indian waters.
+          </p>
+          <div class="flex items-center gap-2.5 pt-1">
+            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500 hover:text-white flex items-center justify-center transition" aria-label="WhatsApp" title="Chat on WhatsApp">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-rose-950/40 border border-rose-500/30 text-rose-400 hover:bg-rose-600 hover:text-white flex items-center justify-center transition" aria-label="Instagram" title="Follow on Instagram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/5 border border-white/15 text-slate-300 hover:bg-white/20 hover:text-white flex items-center justify-center transition" aria-label="X" title="Follow on X">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-blue-950/40 border border-blue-500/30 text-blue-400 hover:bg-blue-600 hover:text-white flex items-center justify-center transition" aria-label="Facebook" title="Follow on Facebook">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Catalog & Store Column -->
+        <div class="space-y-3.5">
+          <div class="text-xs font-black uppercase tracking-wider text-white">CATALOG &amp; STORE</div>
+          <ul class="space-y-2.5 text-xs text-ocean-muted-blue">
+            <li><a href="index.html" class="hover:text-ocean-aqua transition">Home 1 (Cinematic)</a></li>
+            <li><a href="home-2.html" class="hover:text-ocean-aqua transition">Home 2 (Equipment Showcase)</a></li>
+            <li><a href="products.html" class="hover:text-ocean-aqua transition">All Fishing Tackle</a></li>
+            <li><a href="products.html?category=rods" class="hover:text-ocean-aqua transition">Rods &amp; Reels</a></li>
+            <li><a href="products.html?category=lures" class="hover:text-ocean-aqua transition">Artificial Lures &amp; Baits</a></li>
+            <li><a href="pricing.html" class="hover:text-ocean-aqua transition">Tackle Packages &amp; Offers</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Support Column -->
+        <div class="space-y-3.5">
+          <div class="text-xs font-black uppercase tracking-wider text-white">CUSTOMER SUPPORT</div>
+          <ul class="space-y-2.5 text-xs text-ocean-muted-blue">
+            <li><a href="order.html" class="hover:text-ocean-aqua transition">Your Tackle Box &amp; Orders</a></li>
+            <li><a href="about.html" class="hover:text-ocean-aqua transition">About Our Brand &amp; Heritage</a></li>
+            <li><a href="pricing.html#pricing-faqs" class="hover:text-ocean-aqua transition">Equipment &amp; Pricing FAQs</a></li>
+            <li><a href="fishing-reports.html" class="hover:text-ocean-aqua transition">Live Coastal Fishing Reports</a></li>
+            <li><a href="blog.html" class="hover:text-ocean-aqua transition">Saltwater Angler Journal</a></li>
+            <li><a href="contact.html" class="hover:text-ocean-aqua transition">Contact Storefront &amp; Dispatch</a></li>
+          </ul>
+        </div>
+
+        <!-- Chennai Outpost Column -->
+        <div class="space-y-3.5">
+          <div class="text-xs font-black uppercase tracking-wider text-white">CHENNAI OUTPOST</div>
+          <div class="space-y-2 text-xs text-ocean-muted-blue leading-relaxed">
+            <div class="font-bold text-white">HookPoint Tackle Shop — Chennai</div>
+            <p>Marina Beach Road / ECR Coastal Highway<br>Chennai, Tamil Nadu, India</p>
+            <div class="pt-2">
+              <span class="font-semibold text-white">Hours:</span> Mon – Sat: 06:00 AM – 08:30 PM
+            </div>
+            <div>
+              <span class="font-semibold text-white">Phone:</span> <a href="tel:+919876543210" class="hover:text-ocean-aqua transition text-ocean-muted-blue">+91 98765 43210</a>
+            </div>
+            <div>
+              <span class="font-semibold text-white">WhatsApp:</span> <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition text-ocean-muted-blue">+91 98765 43210</a>
+            </div>
+            <div>
+              <span class="font-semibold text-white">Email:</span> <a href="mailto:support@hookpoint-tackle.com" class="hover:text-ocean-aqua transition text-ocean-muted-blue">support@hookpoint-tackle.com</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bottom Bar -->
+      <div class="pt-8 text-center text-xs text-ocean-muted-blue">
+        &copy; 2026 HookPoint &mdash; Fishing Tackle &amp; Bait Shop. All Rights Reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/favorites.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
