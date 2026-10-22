@@ -133,10 +133,21 @@ function initProductsCatalogue() {
     const displayed = filtered.slice(0, visibleCount);
 
     if (currentView === "grid") {
-      gridContainer.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6";
-      gridContainer.innerHTML = displayed.map((p) => createProductCardHtml(p)).join("");
+      if (displayed.length === 1) {
+        gridContainer.className = "flex justify-center w-full";
+        gridContainer.innerHTML = `<div class="w-full max-w-sm">${createProductCardHtml(displayed[0])}</div>`;
+      } else if (displayed.length === 2) {
+        gridContainer.className = "grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto w-full";
+        gridContainer.innerHTML = displayed.map((p) => createProductCardHtml(p)).join("");
+      } else if (displayed.length === 3) {
+        gridContainer.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full";
+        gridContainer.innerHTML = displayed.map((p) => createProductCardHtml(p)).join("");
+      } else {
+        gridContainer.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full";
+        gridContainer.innerHTML = displayed.map((p) => createProductCardHtml(p)).join("");
+      }
     } else {
-      gridContainer.className = "space-y-4";
+      gridContainer.className = "space-y-4 max-w-4xl mx-auto w-full";
       gridContainer.innerHTML = displayed.map((p) => createProductListRowHtml(p)).join("");
     }
 
@@ -151,7 +162,14 @@ function initProductsCatalogue() {
       }
     }
 
-    // Trigger scroll reveals on newly rendered cards
+    // Immediately ensure all rendered product cards are visible and aligned with zero empty gaps
+    gridContainer.querySelectorAll(".reveal-card").forEach((el) => {
+      el.classList.add("is-visible");
+      el.style.opacity = "1";
+      el.style.transform = "none";
+    });
+
+    // Trigger cart badges and listeners
     if (window.HookPointCart && window.HookPointCart.updateBadges) {
       window.HookPointCart.updateBadges();
     }
@@ -177,20 +195,20 @@ function initProductsCatalogue() {
           <div class="absolute inset-0 bg-gradient-to-t from-ocean-navy/80 via-transparent to-transparent opacity-60"></div>
           
           <!-- Badges -->
-          <div class="absolute top-3 start-3 flex flex-col gap-1.5 z-10">
+          <div class="absolute top-3 start-3 flex flex-col items-start gap-1.5 z-10">
             ${
               p.badge
-                ? `<span class="px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider rounded-md bg-ocean-gold text-ocean-navy shadow-md">${p.badge}</span>`
+                ? `<span class="inline-flex items-center px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider rounded-md bg-ocean-gold text-ocean-navy shadow-md">${p.badge}</span>`
                 : ""
             }
-            <span class="px-2.5 py-1 text-[10px] font-semibold rounded-md ${
+            <span class="inline-flex items-center px-2.5 py-1 text-[10px] font-semibold rounded-md ${
               p.stockStatus === "In Stock" ? "bg-emerald-950/80 text-emerald-400 border border-emerald-500/30" : "bg-amber-950/80 text-amber-400 border border-amber-500/30"
             }">${p.stockStatus}</span>
           </div>
 
           <!-- Quick Action Hover Overlay -->
           <div class="absolute inset-x-0 bottom-3 px-3 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-            <a href="product-details.html?id=${p.id}" class="flex-1 text-center py-2 px-3 text-xs font-semibold rounded-lg bg-ocean-navy-surface/90 text-white hover:text-ocean-aqua border border-ocean-aqua/30 backdrop-blur transition">
+            <a href="product-details.html?id=${p.id}" class="card-overlay-btn flex-1 text-center py-2 px-3 text-xs font-semibold rounded-lg bg-ocean-navy-surface/90 text-white hover:text-ocean-aqua border border-ocean-aqua/30 backdrop-blur transition">
               View Details
             </a>
             <button type="button" class="add-to-cart-btn p-2 rounded-lg bg-ocean-gold text-ocean-navy hover:bg-ocean-gold-hover shadow-lg transition" data-product-id="${p.id}" title="Add to Tackle Box">
